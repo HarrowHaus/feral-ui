@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "type": "registry:ui",
+  "description": "feral/ui Checkbox component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/checkbox.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport const Checkbox = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(({ className, type: _type, ...props }, ref) => {\n  return <input ref={ref} type=\"checkbox\" className={cn(\"feral-checkbox feral-focus-ring\", className)} {...props} />;\n});\nCheckbox.displayName = \"Checkbox\";\n\nexport function CheckboxRow({ className, ...props }: React.LabelHTMLAttributes<HTMLLabelElement>) {\n  return <label className={cn(\"feral-checkbox-row\", className)} {...props} />;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

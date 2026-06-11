@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "title": "Button",
+  "type": "registry:ui",
+  "description": "feral/ui Button component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/button.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type FeralButtonTone = \"acid\" | \"pink\" | \"ultra\" | \"ink\" | \"paper\" | \"tang\";\nexport type FeralButtonShape = \"default\" | \"square\" | \"pill\";\nexport type FeralButtonSize = \"sm\" | \"md\" | \"lg\";\n\ntype ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {\n  tone?: FeralButtonTone;\n  shape?: FeralButtonShape;\n  size?: FeralButtonSize;\n  tilt?: \"left\" | \"right\" | \"none\";\n};\n\nexport const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\n  ({ className, tone = \"acid\", shape = \"default\", size = \"md\", tilt = \"none\", style, ...props }, ref) => {\n    const tiltStyle: React.CSSProperties = {\n      ...style,\n      ...(tilt === \"left\" ? { \"--feral-tilt\": \"-1.5deg\" } as React.CSSProperties : {}),\n      ...(tilt === \"right\" ? { \"--feral-tilt\": \"1.5deg\" } as React.CSSProperties : {}),\n    };\n\n    return (\n      <button\n        ref={ref}\n        className={cn(\"feral-button feral-press feral-focus-ring\", className)}\n        data-tone={tone}\n        data-shape={shape}\n        data-size={size}\n        style={tiltStyle}\n        {...props}\n      />\n    );\n  },\n);\nButton.displayName = \"Button\";\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

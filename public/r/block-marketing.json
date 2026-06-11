@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-marketing",
+  "title": "Marketing Block",
+  "type": "registry:block",
+  "description": "feral/ui Marketing block source. Generated locally; templates still need fresh-app install receipts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/marketing.tsx",
+      "type": "registry:block",
+      "content": "import { Badge, Button, Card, CardContent, CardHeader, CardTitle, StatCard } from \"../components/ui\";\n\nexport function MarketingHeroBlock() {\n  return (\n    <section className=\"block block-hero\">\n      <div>\n        <Badge tone=\"pink\">Marketing block</Badge>\n        <h2>Launch pages that look like they have a pulse.</h2>\n        <p>Hero copy, CTA cluster, stat cards, and one deliberately loud proof surface. Useful enough for production, feral enough to upset a template marketplace.</p>\n        <div className=\"block-actions\"><Button tone=\"ink\">Start building</Button><Button tone=\"paper\">View code</Button></div>\n      </div>\n      <div className=\"block-card-stack\">\n        <StatCard title=\"Components\" value=\"48+\" delta=\"basis\" tone=\"acid\" />\n        <Card tone=\"pink\"><CardHeader><CardTitle>No beige lobby music.</CardTitle></CardHeader><CardContent>Design system discipline with comedy elbows.</CardContent></Card>\n      </div>\n    </section>\n  );\n}\n\nexport function PricingBlock() {\n  const tiers = [\n    [\"Starter Goblin\", \"$0\", \"Source repo, docs, and emotionally supervised chaos.\"],\n    [\"Pro Menace\", \"$19\", \"Blocks, templates, registry later, fewer apologies.\"],\n    [\"Enterprise Circus\", \"Call\", \"For teams with procurement and unresolved design trauma.\"],\n  ];\n  return (\n    <section className=\"block block-pricing\">\n      {tiers.map(([name, price, description], index) => (\n        <Card key={name} tone={index === 1 ? \"pink\" : index === 2 ? \"ultra\" : \"paper\"} radius={index === 2 ? \"none\" : \"default\"}>\n          <CardHeader><CardTitle>{name}</CardTitle></CardHeader>\n          <CardContent><div className=\"block-price\">{price}</div><p>{description}</p><Button tone={index === 1 ? \"acid\" : \"paper\"}>Choose poorly</Button></CardContent>\n        </Card>\n      ))}\n    </section>\n  );\n}\n"
+    },
+    {
+      "path": "src/blocks/index.ts",
+      "type": "registry:block",
+      "content": "export * from \"./marketing\";\nexport * from \"./auth\";\nexport * from \"./dashboard\";\nexport * from \"./docs\";\nexport * from \"./content\";\n"
+    }
+  ]
+}

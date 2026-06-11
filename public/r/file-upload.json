@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-upload",
+  "title": "File Upload",
+  "type": "registry:ui",
+  "description": "feral/ui File Upload component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/file-upload.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Upload } from \"lucide-react\";\nimport { cn } from \"../../lib/cn\";\n\nexport const FileUpload = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement> & { label?: string; help?: string }>(\n  ({ className, label = \"Drop files here\", help = \"Native input, feral outfit. No fake drag engine yet.\", id, ...props }, ref) => {\n    const inputId = id ?? React.useId();\n    return (\n      <label className={cn(\"feral-file-upload\", className)} htmlFor={inputId}>\n        <Upload size={22} aria-hidden=\"true\" />\n        <strong>{label}</strong>\n        <span>{help}</span>\n        <input ref={ref} id={inputId} type=\"file\" {...props} />\n      </label>\n    );\n  },\n);\nFileUpload.displayName = \"FileUpload\";\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

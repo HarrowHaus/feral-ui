@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "title": "Copy Button",
+  "type": "registry:ui",
+  "description": "feral/ui Copy Button component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/copy-button.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Button } from \"./button\";\n\ntype CopyButtonProps = Omit<React.ComponentProps<typeof Button>, \"onClick\"> & {\n  value: string;\n  copiedLabel?: string;\n};\n\nexport function CopyButton({ value, children = \"Copy\", copiedLabel = \"Copied\", ...props }: CopyButtonProps) {\n  const [copied, setCopied] = React.useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(value);\n      setCopied(true);\n      window.setTimeout(() => setCopied(false), 1400);\n    } catch {\n      setCopied(false);\n    }\n  }\n\n  return (\n    <Button type=\"button\" onClick={copy} aria-live=\"polite\" {...props}>\n      {copied ? copiedLabel : children}\n    </Button>\n  );\n}\n"
+    }
+  ]
+}

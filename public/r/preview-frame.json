@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-frame",
+  "title": "Preview Frame",
+  "type": "registry:ui",
+  "description": "feral/ui Preview Frame component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/preview-frame.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function PreviewFrame({ className, title, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { title?: string }) {\n  return (\n    <section className={cn(\"feral-preview-frame\", className)} aria-label={title ?? \"Component preview\"} {...props}>\n      {title ? <div className=\"feral-preview-title\">{title}</div> : null}\n      <div className=\"feral-preview-stage\">{children}</div>\n    </section>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

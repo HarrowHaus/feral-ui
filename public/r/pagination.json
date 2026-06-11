@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "title": "Pagination",
+  "type": "registry:ui",
+  "description": "feral/ui Pagination component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/pagination.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function Pagination({ pages = 5, active = 3, className }: { pages?: number; active?: number; className?: string }) {\n  return (\n    <nav className={cn(\"feral-pagination\", className)} aria-label=\"Pagination\">\n      <button className=\"feral-page-button feral-focus-ring\" type=\"button\" aria-label=\"Previous page\">‹</button>\n      {Array.from({ length: pages }).map((_, index) => (\n        <button key={index} className=\"feral-page-button feral-focus-ring\" type=\"button\" data-active={index + 1 === active} aria-current={index + 1 === active ? \"page\" : undefined}>\n          {index + 1}\n        </button>\n      ))}\n      <button className=\"feral-page-button feral-focus-ring\" type=\"button\" aria-label=\"Next page\">›</button>\n    </nav>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

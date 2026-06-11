@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter",
+  "title": "Meter",
+  "type": "registry:ui",
+  "description": "feral/ui Meter component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/meter.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function Meter({ className, value = 0, max = 100, label, tone = \"acid\", ...props }: React.HTMLAttributes<HTMLDivElement> & { value?: number; max?: number; label?: string; tone?: \"acid\" | \"pink\" | \"ultra\" | \"tang\" | \"cyan\" }) {\n  const pct = Math.max(0, Math.min(100, (value / max) * 100));\n  return (\n    <div className={cn(\"feral-meter\", className)} data-tone={tone} {...props}>\n      {label ? <div className=\"feral-meter-label\"><span>{label}</span><span>{Math.round(pct)}%</span></div> : null}\n      <div className=\"feral-meter-track\" role=\"meter\" aria-valuemin={0} aria-valuemax={max} aria-valuenow={value} aria-label={label}>\n        <span className=\"feral-meter-fill\" style={{ width: `${pct}%` }} />\n      </div>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

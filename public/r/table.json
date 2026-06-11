@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "title": "Table",
+  "type": "registry:ui",
+  "description": "feral/ui Table component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/table.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nfunction Table({ className, ...props }: React.TableHTMLAttributes<HTMLTableElement>) {\n  return <div className=\"feral-table-wrap\"><table className={cn(\"feral-table\", className)} {...props} /></div>;\n}\nfunction TableHeader({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <thead className={cn(\"feral-table-header\", className)} {...props} />;\n}\nfunction TableBody({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <tbody className={cn(\"feral-table-body\", className)} {...props} />;\n}\nfunction TableFooter({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <tfoot className={cn(\"feral-table-footer\", className)} {...props} />;\n}\nfunction TableRow({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) {\n  return <tr className={cn(\"feral-table-row\", className)} {...props} />;\n}\nfunction TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {\n  return <th className={cn(\"feral-table-head\", className)} {...props} />;\n}\nfunction TableCell({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {\n  return <td className={cn(\"feral-table-cell\", className)} {...props} />;\n}\nfunction TableCaption({ className, ...props }: React.HTMLAttributes<HTMLTableCaptionElement>) {\n  return <caption className={cn(\"feral-table-caption\", className)} {...props} />;\n}\n\nexport { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

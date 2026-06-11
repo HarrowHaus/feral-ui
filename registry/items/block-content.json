@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-content",
+  "title": "Content Block",
+  "type": "registry:block",
+  "description": "feral/ui Content block source. Generated locally; templates still need fresh-app install receipts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/content.tsx",
+      "type": "registry:block",
+      "content": "import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, EmptyState, Separator } from \"../components/ui\";\n\nexport function BlogIndexBlock() {\n  const posts = [\"Controlled variance is not random\", \"How to write jokes without lying\", \"The registry becomes real after the receipts\"];\n  return (\n    <section className=\"block block-blog\">\n      <div><Badge tone=\"ultra\">Journal block</Badge><h2>Dispatches from the CSS animal shelter.</h2></div>\n      <div className=\"block-blog-list\">\n        {posts.map((post, index) => <Card key={post} tone={index === 1 ? \"acid\" : \"paper\"}><CardHeader><CardTitle>{post}</CardTitle><CardDescription>June {11 + index}, 2026 · 4 min read</CardDescription></CardHeader><CardContent><Button tone=\"paper\">Read</Button></CardContent></Card>)}\n      </div>\n    </section>\n  );\n}\n\nexport function ChangelogBlock() {\n  return (\n    <Card className=\"block-changelog\" tone=\"paper\">\n      <CardHeader><Badge tone=\"pink\">Changelog</Badge><CardTitle>v0.3: the goblin got a clipboard.</CardTitle></CardHeader>\n      <CardContent>\n        <p>Added docs shell, blocks, templates, parity components, and an honest path toward registry distribution.</p>\n        <Separator />\n        <p><strong>Known crime:</strong> this is still a local source package until registry item files are generated and tested.</p>\n      </CardContent>\n    </Card>\n  );\n}\n\nexport function EmptyStateBlock() {\n  return <EmptyState title=\"No beige cards found\" description=\"The system searched the premises and only found loud, accountable interface objects.\" />;\n}\n"
+    },
+    {
+      "path": "src/blocks/index.ts",
+      "type": "registry:block",
+      "content": "export * from \"./marketing\";\nexport * from \"./auth\";\nexport * from \"./dashboard\";\nexport * from \"./docs\";\nexport * from \"./content\";\n"
+    }
+  ]
+}

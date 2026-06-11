@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "title": "Stepper",
+  "type": "registry:ui",
+  "description": "feral/ui Stepper component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/stepper.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type StepperStep = { label: string; description?: string; state?: \"complete\" | \"current\" | \"upcoming\" };\n\nexport function Stepper({ steps, className, ...props }: React.HTMLAttributes<HTMLOListElement> & { steps: StepperStep[] }) {\n  return (\n    <ol className={cn(\"feral-stepper\", className)} {...props}>\n      {steps.map((step, index) => (\n        <li key={`${step.label}-${index}`} className=\"feral-stepper-step\" data-state={step.state ?? \"upcoming\"}>\n          <span className=\"feral-stepper-index\">{index + 1}</span>\n          <span><strong>{step.label}</strong>{step.description ? <em>{step.description}</em> : null}</span>\n        </li>\n      ))}\n    </ol>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "title": "Field",
+  "type": "registry:ui",
+  "description": "feral/ui Field component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/field.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function Field({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-field\", className)} {...props} />;\n}\n\nexport const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(({ className, ...props }, ref) => {\n  return <label ref={ref} className={cn(\"feral-label\", className)} {...props} />;\n});\nLabel.displayName = \"Label\";\n\nexport const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(({ className, ...props }, ref) => {\n  return <input ref={ref} className={cn(\"feral-input feral-focus-ring\", className)} {...props} />;\n});\nInput.displayName = \"Input\";\n\nexport const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttributes<HTMLTextAreaElement>>(({ className, ...props }, ref) => {\n  return <textarea ref={ref} className={cn(\"feral-textarea feral-focus-ring\", className)} {...props} />;\n});\nTextarea.displayName = \"Textarea\";\n\nexport const Select = React.forwardRef<HTMLSelectElement, React.SelectHTMLAttributes<HTMLSelectElement>>(({ className, children, ...props }, ref) => {\n  return <select ref={ref} className={cn(\"feral-select feral-focus-ring\", className)} {...props}>{children}</select>;\n});\nSelect.displayName = \"Select\";\n\nexport function FieldHelp({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {\n  return <p className={cn(\"feral-field-help\", className)} {...props} />;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

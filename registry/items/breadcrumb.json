@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "title": "Breadcrumb",
+  "type": "registry:ui",
+  "description": "feral/ui Breadcrumb component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/breadcrumb.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function Breadcrumb({ className, ...props }: React.HTMLAttributes<HTMLElement>) {\n  return <nav aria-label=\"Breadcrumb\" className={cn(\"feral-breadcrumb\", className)} {...props} />;\n}\n\nexport function BreadcrumbList({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) {\n  return <ol className={cn(\"feral-breadcrumb-list\", className)} {...props} />;\n}\n\nexport function BreadcrumbItem({ className, ...props }: React.LiHTMLAttributes<HTMLLIElement>) {\n  return <li className={cn(\"feral-breadcrumb-item\", className)} {...props} />;\n}\n\nexport function BreadcrumbLink({ className, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {\n  return <a className={cn(\"feral-breadcrumb-link\", className)} {...props} />;\n}\n\nexport function BreadcrumbPage({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {\n  return <span aria-current=\"page\" className={cn(\"feral-breadcrumb-page\", className)} {...props} />;\n}\n\nexport function BreadcrumbSeparator({ className, children = \"→\", ...props }: React.HTMLAttributes<HTMLSpanElement>) {\n  return <span aria-hidden=\"true\" className={cn(\"feral-breadcrumb-separator\", className)} {...props}>{children}</span>;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

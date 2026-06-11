@@ -1,0 +1,367 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "feral-ui-local",
+  "homepage": "https://example.invalid/feral-ui-local",
+  "items": [
+    {
+      "name": "feral-style",
+      "type": "registry:style",
+      "path": "public/r/feral-style.json"
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "path": "public/r/accordion.json"
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "path": "public/r/alert-dialog.json"
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "path": "public/r/alert.json"
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "path": "public/r/aspect-ratio.json"
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "path": "public/r/avatar-group.json"
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "path": "public/r/avatar.json"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "path": "public/r/badge.json"
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "path": "public/r/banner.json"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "path": "public/r/breadcrumb.json"
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "path": "public/r/button-group.json"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "path": "public/r/button.json"
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "path": "public/r/calendar.json"
+    },
+    {
+      "name": "callout",
+      "type": "registry:ui",
+      "path": "public/r/callout.json"
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "path": "public/r/card.json"
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "path": "public/r/carousel.json"
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "path": "public/r/chart.json"
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "path": "public/r/checkbox.json"
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "path": "public/r/code-block.json"
+    },
+    {
+      "name": "code-tabs",
+      "type": "registry:ui",
+      "path": "public/r/code-tabs.json"
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "path": "public/r/combobox.json"
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "path": "public/r/command.json"
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "path": "public/r/context-menu.json"
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "path": "public/r/copy-button.json"
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "path": "public/r/data-table.json"
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "path": "public/r/date-picker.json"
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "path": "public/r/dialog.json"
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "path": "public/r/dropdown-menu.json"
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "path": "public/r/empty-state.json"
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "path": "public/r/field.json"
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "path": "public/r/file-upload.json"
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "path": "public/r/form.json"
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "path": "public/r/hover-card.json"
+    },
+    {
+      "name": "image-card",
+      "type": "registry:ui",
+      "path": "public/r/image-card.json"
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "path": "public/r/input-group.json"
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "path": "public/r/kbd.json"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "path": "public/r/marquee.json"
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "path": "public/r/menubar.json"
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "path": "public/r/meter.json"
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "path": "public/r/navigation-menu.json"
+    },
+    {
+      "name": "ornaments",
+      "type": "registry:ui",
+      "path": "public/r/ornaments.json"
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "path": "public/r/otp-input.json"
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "path": "public/r/pagination.json"
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "path": "public/r/popover.json"
+    },
+    {
+      "name": "preview-frame",
+      "type": "registry:ui",
+      "path": "public/r/preview-frame.json"
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "path": "public/r/progress.json"
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "path": "public/r/radio.json"
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "path": "public/r/resizable.json"
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "path": "public/r/scroll-area.json"
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "path": "public/r/separator.json"
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "path": "public/r/sheet.json"
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "path": "public/r/sidebar.json"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "path": "public/r/skeleton.json"
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "path": "public/r/slider.json"
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "path": "public/r/sonner.json"
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "path": "public/r/spinner.json"
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "path": "public/r/stat-card.json"
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "path": "public/r/stepper.json"
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "path": "public/r/switch.json"
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "path": "public/r/table.json"
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "path": "public/r/tabs.json"
+    },
+    {
+      "name": "theme-selector",
+      "type": "registry:ui",
+      "path": "public/r/theme-selector.json"
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "path": "public/r/timeline.json"
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "path": "public/r/toggle-group.json"
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "path": "public/r/toggle.json"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "path": "public/r/tooltip.json"
+    },
+    {
+      "name": "block-auth",
+      "type": "registry:block",
+      "path": "public/r/block-auth.json"
+    },
+    {
+      "name": "block-content",
+      "type": "registry:block",
+      "path": "public/r/block-content.json"
+    },
+    {
+      "name": "block-dashboard",
+      "type": "registry:block",
+      "path": "public/r/block-dashboard.json"
+    },
+    {
+      "name": "block-docs",
+      "type": "registry:block",
+      "path": "public/r/block-docs.json"
+    },
+    {
+      "name": "block-marketing",
+      "type": "registry:block",
+      "path": "public/r/block-marketing.json"
+    },
+    {
+      "name": "template-catalog",
+      "type": "registry:page",
+      "path": "public/r/template-catalog.json"
+    }
+  ]
+}

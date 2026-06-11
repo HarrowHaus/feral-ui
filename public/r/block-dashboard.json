@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-dashboard",
+  "title": "Dashboard Block",
+  "type": "registry:block",
+  "description": "feral/ui Dashboard block source. Generated locally; templates still need fresh-app install receipts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/dashboard.tsx",
+      "type": "registry:block",
+      "content": "import { Badge, BarChart, Button, Card, CardContent, CardHeader, CardTitle, DataTable, Progress, Sidebar, SidebarLayout, SidebarLink, SidebarMain, StatCard } from \"../components/ui\";\n\nconst rows = [\n  { project: \"Docs shell\", status: \"Built\", owner: \"feral\" },\n  { project: \"Registry\", status: \"Parked\", owner: \"receipts\" },\n  { project: \"Templates\", status: \"Growing\", owner: \"goblin\" },\n];\n\nexport function DashboardShellBlock() {\n  return (\n    <SidebarLayout>\n      <Sidebar>\n        <strong>feral/ui</strong>\n        <SidebarLink href=\"#\" active>Overview</SidebarLink>\n        <SidebarLink href=\"#\">Components</SidebarLink>\n        <SidebarLink href=\"#\">Blocks</SidebarLink>\n        <SidebarLink href=\"#\">Settings</SidebarLink>\n      </Sidebar>\n      <SidebarMain>\n        <div className=\"block-dashboard-head\"><div><Badge tone=\"acid\">Dashboard block</Badge><h2>Control room for the chaos.</h2></div><Button tone=\"pink\">Ship it</Button></div>\n        <div className=\"block-dashboard-stats\"><StatCard title=\"Coverage\" value=\"72%\" delta=\"+18\" tone=\"acid\" /><StatCard title=\"Regrets\" value=\"0\" delta=\"audited\" /><StatCard title=\"Variance\" value=\"High\" delta=\"tokenized\" tone=\"pink\" /></div>\n        <Card><CardHeader><CardTitle>Build telemetry</CardTitle></CardHeader><CardContent><BarChart data={[{label:\"UI\",value:48,tone:\"acid\"},{label:\"Blocks\",value:14,tone:\"pink\"},{label:\"Docs\",value:18,tone:\"ultra\"}]} /></CardContent></Card>\n        <Progress value={72} />\n        <DataTable data={rows} columns={[{key:\"project\",header:\"Project\"},{key:\"status\",header:\"Status\"},{key:\"owner\",header:\"Owner\"}]} />\n      </SidebarMain>\n    </SidebarLayout>\n  );\n}\n"
+    },
+    {
+      "path": "src/blocks/index.ts",
+      "type": "registry:block",
+      "content": "export * from \"./marketing\";\nexport * from \"./auth\";\nexport * from \"./dashboard\";\nexport * from \"./docs\";\nexport * from \"./content\";\n"
+    }
+  ]
+}

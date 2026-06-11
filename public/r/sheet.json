@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Sheet",
+  "type": "registry:ui",
+  "description": "feral/ui Sheet component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [
+    "@radix-ui/react-dialog"
+  ],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as DialogPrimitive from \"@radix-ui/react-dialog\";\nimport { X } from \"lucide-react\";\nimport { cn } from \"../../lib/cn\";\n\nconst Sheet = DialogPrimitive.Root;\nconst SheetTrigger = DialogPrimitive.Trigger;\nconst SheetClose = DialogPrimitive.Close;\nconst SheetPortal = DialogPrimitive.Portal;\n\nconst SheetOverlay = React.forwardRef<\n  React.ElementRef<typeof DialogPrimitive.Overlay>,\n  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>\n>(({ className, ...props }, ref) => (\n  <DialogPrimitive.Overlay ref={ref} className={cn(\"feral-dialog-overlay\", className)} {...props} />\n));\nSheetOverlay.displayName = \"SheetOverlay\";\n\ntype SheetContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {\n  side?: \"top\" | \"right\" | \"bottom\" | \"left\";\n};\n\nconst SheetContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, SheetContentProps>(\n  ({ side = \"right\", className, children, ...props }, ref) => (\n    <SheetPortal>\n      <SheetOverlay />\n      <DialogPrimitive.Content ref={ref} className={cn(\"feral-sheet-content feral-press\", className)} data-side={side} {...props}>\n        {children}\n        <DialogPrimitive.Close className=\"feral-dialog-x feral-focus-ring\" aria-label=\"Close sheet\">\n          <X size={18} aria-hidden=\"true\" />\n        </DialogPrimitive.Close>\n      </DialogPrimitive.Content>\n    </SheetPortal>\n  ),\n);\nSheetContent.displayName = \"SheetContent\";\n\nfunction SheetHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-dialog-header\", className)} {...props} />;\n}\n\nfunction SheetFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-dialog-footer\", className)} {...props} />;\n}\n\nconst SheetTitle = DialogPrimitive.Title;\nconst SheetDescription = DialogPrimitive.Description;\n\nexport { Sheet, SheetTrigger, SheetClose, SheetPortal, SheetOverlay, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription };\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

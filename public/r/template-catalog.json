@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "template-catalog",
+  "title": "Template Catalog",
+  "type": "registry:page",
+  "description": "feral/ui template catalog basis. Previewable in dogfood app; public install after smoke tests.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/templates/template-catalog.tsx",
+      "type": "registry:page",
+      "content": "import { DashboardShellBlock, DocsLayoutBlock, MarketingHeroBlock, PricingBlock, BlogIndexBlock, ChangelogBlock, LoginBlock } from \"../blocks\";\n\nexport const templateCatalog = [\n  { name: \"SaaS Landing\", status: \"basis\", description: \"Hero + pricing + CTA surfaces.\", component: <><MarketingHeroBlock /><PricingBlock /></> },\n  { name: \"Dashboard App\", status: \"basis\", description: \"Sidebar shell, stats, chart, table.\", component: <DashboardShellBlock /> },\n  { name: \"Docs Site\", status: \"basis\", description: \"Sidebar docs page with preview/code split.\", component: <DocsLayoutBlock /> },\n  { name: \"Blog / Changelog\", status: \"basis\", description: \"Article index and changelog card.\", component: <><BlogIndexBlock /><ChangelogBlock /></> },\n  { name: \"Auth\", status: \"basis\", description: \"Login card and form controls.\", component: <LoginBlock /> },\n];\n"
+    }
+  ]
+}

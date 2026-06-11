@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "type": "registry:ui",
+  "description": "feral/ui Switch component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/switch.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport const Switch = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(({ className, type: _type, ...props }, ref) => {\n  return (\n    <span className={cn(\"feral-switch\", className)}>\n      <input ref={ref} type=\"checkbox\" role=\"switch\" {...props} />\n      <span className=\"feral-switch-track\" aria-hidden=\"true\" />\n      <span className=\"feral-switch-thumb\" aria-hidden=\"true\" />\n    </span>\n  );\n});\nSwitch.displayName = \"Switch\";\n\nexport function SwitchRow({ className, ...props }: React.LabelHTMLAttributes<HTMLLabelElement>) {\n  return <label className={cn(\"feral-switch-row\", className)} {...props} />;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

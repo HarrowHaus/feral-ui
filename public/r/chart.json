@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart",
+  "title": "Chart",
+  "type": "registry:ui",
+  "description": "feral/ui Chart component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/chart.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type ChartDatum = { label: string; value: number; tone?: \"acid\" | \"pink\" | \"ultra\" | \"tang\" | \"cyan\" };\n\nexport function BarChart({ data, max, className }: { data: ChartDatum[]; max?: number; className?: string }) {\n  const top = max ?? Math.max(...data.map((item) => item.value), 1);\n  return (\n    <div className={cn(\"feral-chart\", className)} role=\"img\" aria-label=\"Bar chart\">\n      {data.map((item) => (\n        <div className=\"feral-chart-row\" key={item.label}>\n          <span>{item.label}</span>\n          <div className=\"feral-chart-track\"><div className=\"feral-chart-bar\" data-tone={item.tone ?? \"acid\"} style={{ width: `${Math.max(4, Math.round((item.value / top) * 100))}%` }} /></div>\n          <strong>{item.value}</strong>\n        </div>\n      ))}\n    </div>\n  );\n}\n\nexport function Sparkline({ data, className }: { data: number[]; className?: string }) {\n  const max = Math.max(...data, 1);\n  return (\n    <div className={cn(\"feral-sparkline\", className)} aria-hidden=\"true\">\n      {data.map((value, index) => <span key={index} style={{ height: `${Math.max(12, (value / max) * 100)}%` }} />)}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

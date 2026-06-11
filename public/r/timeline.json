@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline",
+  "title": "Timeline",
+  "type": "registry:ui",
+  "description": "feral/ui Timeline component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/timeline.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type TimelineItemData = { time: string; title: string; description?: string; tone?: \"acid\" | \"pink\" | \"ultra\" | \"tang\" };\n\nexport function Timeline({ items, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { items: TimelineItemData[] }) {\n  return (\n    <div className={cn(\"feral-timeline\", className)} {...props}>\n      {items.map((item) => (\n        <article key={`${item.time}-${item.title}`} className=\"feral-timeline-item\" data-tone={item.tone ?? \"acid\"}>\n          <time>{item.time}</time>\n          <div><h4>{item.title}</h4>{item.description ? <p>{item.description}</p> : null}</div>\n        </article>\n      ))}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

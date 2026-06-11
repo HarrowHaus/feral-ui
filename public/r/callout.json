@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "callout",
+  "title": "Callout",
+  "type": "registry:ui",
+  "description": "feral/ui Callout component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/callout.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type CalloutTone = \"acid\" | \"pink\" | \"ultra\" | \"paper\" | \"tang\" | \"danger\";\n\nexport function Callout({ className, tone = \"acid\", ...props }: React.HTMLAttributes<HTMLDivElement> & { tone?: CalloutTone }) {\n  return <div className={cn(\"feral-callout\", className)} data-tone={tone} {...props} />;\n}\n\nexport function CalloutTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {\n  return <h4 className={cn(\"feral-callout-title\", className)} {...props} />;\n}\n\nexport function CalloutDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {\n  return <p className={cn(\"feral-callout-description\", className)} {...props} />;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "title": "Date Picker",
+  "type": "registry:ui",
+  "description": "feral/ui Date Picker component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "button",
+    "calendar",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/date-picker.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Calendar as CalendarIcon } from \"lucide-react\";\nimport { Button } from \"./button\";\nimport { Calendar, type DateRange } from \"./calendar\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"./popover\";\n\nfunction formatDate(date?: Date) {\n  return date ? date.toLocaleDateString(undefined, { month: \"short\", day: \"numeric\", year: \"numeric\" }) : \"\";\n}\n\nexport function DatePicker({\n  value: controlledValue,\n  onChange,\n  label = \"Pick date\",\n  disabled,\n}: {\n  value?: Date;\n  onChange?: (date: Date) => void;\n  label?: string;\n  disabled?: (date: Date) => boolean;\n}) {\n  const [internal, setInternal] = React.useState<Date | undefined>(controlledValue);\n  const [open, setOpen] = React.useState(false);\n  const value = controlledValue ?? internal;\n  const text = value ? formatDate(value) : label;\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <Button type=\"button\" tone=\"paper\" aria-label={value ? `Selected date ${text}` : label}><CalendarIcon size={16} aria-hidden=\"true\" /> {text}</Button>\n      </PopoverTrigger>\n      <PopoverContent>\n        <Calendar value={value} defaultMonth={value} disabled={disabled} onSelect={(date) => { setInternal(date); onChange?.(date); setOpen(false); }} />\n      </PopoverContent>\n    </Popover>\n  );\n}\n\nexport function DateRangePicker({\n  value,\n  onChange,\n  label = \"Pick date range\",\n  disabled,\n}: {\n  value?: DateRange;\n  onChange?: (range: DateRange) => void;\n  label?: string;\n  disabled?: (date: Date) => boolean;\n}) {\n  const [internal, setInternal] = React.useState<DateRange | undefined>(value);\n  const range = value ?? internal;\n  const text = range?.from && range?.to ? `${formatDate(range.from)} → ${formatDate(range.to)}` : range?.from ? `${formatDate(range.from)} → pick end` : label;\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button type=\"button\" tone=\"paper\" aria-label={text}><CalendarIcon size={16} aria-hidden=\"true\" /> {text}</Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"feral-date-range-popover\">\n        <Calendar mode=\"range\" range={range} defaultMonth={range?.from} disabled={disabled} onRangeChange={(next) => { setInternal(next); onChange?.(next); }} />\n        <p className=\"feral-date-range-note\">Range picker. Two clicks. Minimal drama. Calendar goblin restrained.</p>\n      </PopoverContent>\n    </Popover>\n  );\n}\n"
+    }
+  ]
+}

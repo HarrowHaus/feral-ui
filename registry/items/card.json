@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "type": "registry:ui",
+  "description": "feral/ui Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/card.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\ntype CardProps = React.HTMLAttributes<HTMLDivElement> & {\n  tone?: \"paper\" | \"acid\" | \"pink\" | \"ultra\" | \"tang\";\n  radius?: \"default\" | \"none\" | \"pill\";\n  press?: boolean;\n  tilt?: \"left\" | \"right\" | \"none\";\n};\n\nexport function Card({ className, tone = \"paper\", radius = \"default\", press = true, tilt = \"none\", style, ...props }: CardProps) {\n  const tiltStyle: React.CSSProperties = {\n    ...style,\n    ...(tilt === \"left\" ? { \"--feral-tilt\": \"-1.5deg\" } as React.CSSProperties : {}),\n    ...(tilt === \"right\" ? { \"--feral-tilt\": \"1.5deg\" } as React.CSSProperties : {}),\n  };\n  return <div className={cn(\"feral-card\", press && \"feral-press\", className)} data-tone={tone} data-radius={radius} style={tiltStyle} {...props} />;\n}\n\nexport function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-card-header\", className)} {...props} />;\n}\n\nexport function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {\n  return <h3 className={cn(\"feral-card-title\", className)} {...props} />;\n}\n\nexport function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {\n  return <p className={cn(\"feral-card-description\", className)} {...props} />;\n}\n\nexport function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-card-content\", className)} {...props} />;\n}\n\nexport function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-card-footer\", className)} {...props} />;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

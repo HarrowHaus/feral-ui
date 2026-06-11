@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-auth",
+  "title": "Auth Block",
+  "type": "registry:block",
+  "description": "feral/ui Auth block source. Generated locally; templates still need fresh-app install receipts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/auth.tsx",
+      "type": "registry:block",
+      "content": "import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, CheckboxRow, Field, Input, Label } from \"../components/ui\";\n\nexport function LoginBlock() {\n  return (\n    <Card className=\"block-auth\" tone=\"paper\" tilt=\"left\" radius=\"none\">\n      <CardHeader><CardTitle>Sign in</CardTitle><CardDescription>Securely enter the tiny circus.</CardDescription></CardHeader>\n      <CardContent className=\"site-stack\">\n        <Field><Label htmlFor=\"block-email\">Email</Label><Input id=\"block-email\" placeholder=\"you@example.com\" /></Field>\n        <Field><Label htmlFor=\"block-password\">Password</Label><Input id=\"block-password\" type=\"password\" /></Field>\n        <CheckboxRow><Checkbox defaultChecked /> Remember this device, the brave little toaster.</CheckboxRow>\n      </CardContent>\n      <CardFooter><Button tone=\"ink\">Sign in</Button><Button tone=\"paper\">SSO</Button></CardFooter>\n    </Card>\n  );\n}\n"
+    },
+    {
+      "path": "src/blocks/index.ts",
+      "type": "registry:block",
+      "content": "export * from \"./marketing\";\nexport * from \"./auth\";\nexport * from \"./dashboard\";\nexport * from \"./docs\";\nexport * from \"./content\";\n"
+    }
+  ]
+}

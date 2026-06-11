@@ -1,0 +1,295 @@
+{
+  "name": "feral-ui-kit",
+  "version": "0.4.0",
+  "truth": "Local source basis with generated local registry JSON. Not a published shadcn registry yet.",
+  "verified": [
+    "npm install",
+    "npm run build",
+    "npm run registry:build",
+    "npm run smoke:registry"
+  ],
+  "counts": {
+    "component_files": 61,
+    "block_files": 5,
+    "registry_json_files": 63
+  },
+  "components": [
+    {
+      "file": "accordion.tsx",
+      "status": "built"
+    },
+    {
+      "file": "alert-dialog.tsx",
+      "status": "built"
+    },
+    {
+      "file": "alert.tsx",
+      "status": "built"
+    },
+    {
+      "file": "aspect-ratio.tsx",
+      "status": "built"
+    },
+    {
+      "file": "avatar-group.tsx",
+      "status": "built"
+    },
+    {
+      "file": "avatar.tsx",
+      "status": "built"
+    },
+    {
+      "file": "badge.tsx",
+      "status": "built"
+    },
+    {
+      "file": "banner.tsx",
+      "status": "built"
+    },
+    {
+      "file": "breadcrumb.tsx",
+      "status": "built"
+    },
+    {
+      "file": "button-group.tsx",
+      "status": "built"
+    },
+    {
+      "file": "button.tsx",
+      "status": "built"
+    },
+    {
+      "file": "calendar.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "callout.tsx",
+      "status": "built"
+    },
+    {
+      "file": "card.tsx",
+      "status": "built"
+    },
+    {
+      "file": "carousel.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "chart.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "checkbox.tsx",
+      "status": "built"
+    },
+    {
+      "file": "code-block.tsx",
+      "status": "built"
+    },
+    {
+      "file": "combobox.tsx",
+      "status": "built"
+    },
+    {
+      "file": "command.tsx",
+      "status": "built"
+    },
+    {
+      "file": "context-menu.tsx",
+      "status": "built"
+    },
+    {
+      "file": "data-table.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "date-picker.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "dialog.tsx",
+      "status": "built"
+    },
+    {
+      "file": "dropdown-menu.tsx",
+      "status": "built"
+    },
+    {
+      "file": "empty-state.tsx",
+      "status": "built"
+    },
+    {
+      "file": "field.tsx",
+      "status": "built"
+    },
+    {
+      "file": "file-upload.tsx",
+      "status": "built"
+    },
+    {
+      "file": "form.tsx",
+      "status": "built"
+    },
+    {
+      "file": "hover-card.tsx",
+      "status": "built"
+    },
+    {
+      "file": "image-card.tsx",
+      "status": "built"
+    },
+    {
+      "file": "input-group.tsx",
+      "status": "built"
+    },
+    {
+      "file": "kbd.tsx",
+      "status": "built"
+    },
+    {
+      "file": "marquee.tsx",
+      "status": "built"
+    },
+    {
+      "file": "menubar.tsx",
+      "status": "built"
+    },
+    {
+      "file": "meter.tsx",
+      "status": "built"
+    },
+    {
+      "file": "navigation-menu.tsx",
+      "status": "built"
+    },
+    {
+      "file": "otp-input.tsx",
+      "status": "built"
+    },
+    {
+      "file": "pagination.tsx",
+      "status": "built"
+    },
+    {
+      "file": "popover.tsx",
+      "status": "built"
+    },
+    {
+      "file": "progress.tsx",
+      "status": "built"
+    },
+    {
+      "file": "radio.tsx",
+      "status": "built"
+    },
+    {
+      "file": "resizable.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "scroll-area.tsx",
+      "status": "built"
+    },
+    {
+      "file": "separator.tsx",
+      "status": "built"
+    },
+    {
+      "file": "sheet.tsx",
+      "status": "built"
+    },
+    {
+      "file": "sidebar.tsx",
+      "status": "built"
+    },
+    {
+      "file": "skeleton.tsx",
+      "status": "built"
+    },
+    {
+      "file": "slider.tsx",
+      "status": "built"
+    },
+    {
+      "file": "sonner.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "spinner.tsx",
+      "status": "built"
+    },
+    {
+      "file": "stat-card.tsx",
+      "status": "built"
+    },
+    {
+      "file": "stepper.tsx",
+      "status": "built"
+    },
+    {
+      "file": "switch.tsx",
+      "status": "built"
+    },
+    {
+      "file": "table.tsx",
+      "status": "built"
+    },
+    {
+      "file": "tabs.tsx",
+      "status": "built"
+    },
+    {
+      "file": "theme-selector.tsx",
+      "status": "built"
+    },
+    {
+      "file": "timeline.tsx",
+      "status": "built"
+    },
+    {
+      "file": "toggle-group.tsx",
+      "status": "built"
+    },
+    {
+      "file": "toggle.tsx",
+      "status": "built"
+    },
+    {
+      "file": "tooltip.tsx",
+      "status": "built"
+    }
+  ],
+  "blocks": [
+    {
+      "file": "auth.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "content.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "dashboard.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "docs.tsx",
+      "status": "basis"
+    },
+    {
+      "file": "marketing.tsx",
+      "status": "basis"
+    }
+  ],
+  "registry": {
+    "index": "registry/registry.json",
+    "items": "registry/items/*.json",
+    "public": "public/r/*.json",
+    "truth": "structurally valid locally; fresh-app install still required"
+  },
+  "docs": [
+    "docs/BUILD-LOG-v0.4.md",
+    "docs/COMPETITIVE-REASSESSMENT-v0.4.md",
+    "docs/NEXT-PHASES.md"
+  ]
+}

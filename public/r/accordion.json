@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "title": "Accordion",
+  "type": "registry:ui",
+  "description": "feral/ui Accordion component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/accordion.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type AccordionItem = {\n  title: React.ReactNode;\n  content: React.ReactNode;\n  defaultOpen?: boolean;\n};\n\nexport function Accordion({ className, items }: { className?: string; items: AccordionItem[] }) {\n  return (\n    <div className={cn(\"feral-accordion\", className)}>\n      {items.map((item, index) => (\n        <details key={index} open={item.defaultOpen} className=\"feral-press\">\n          <summary>{item.title}</summary>\n          <div className=\"feral-accordion-panel\">{item.content}</div>\n        </details>\n      ))}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

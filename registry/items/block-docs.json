@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-docs",
+  "title": "Docs Block",
+  "type": "registry:block",
+  "description": "feral/ui Docs block source. Generated locally; templates still need fresh-app install receipts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/docs.tsx",
+      "type": "registry:block",
+      "content": "import { Badge, Card, CardContent, CardHeader, CardTitle, ScrollArea, Sidebar, SidebarLayout, SidebarLink, SidebarMain } from \"../components/ui\";\n\nexport function DocsLayoutBlock() {\n  return (\n    <SidebarLayout>\n      <Sidebar>\n        <strong>Docs</strong>\n        <SidebarLink href=\"#\" active>Button</SidebarLink>\n        <SidebarLink href=\"#\">Dialog</SidebarLink>\n        <SidebarLink href=\"#\">Table</SidebarLink>\n        <SidebarLink href=\"#\">Blocks</SidebarLink>\n      </Sidebar>\n      <SidebarMain>\n        <Badge tone=\"paper\">Docs block</Badge>\n        <h2>Button</h2>\n        <p>Buttons are pressure objects. They should feel stamped, not gently suggested by a committee wearing quarter-zips.</p>\n        <Card tone=\"acid\" radius=\"none\"><CardHeader><CardTitle>Preview</CardTitle></CardHeader><CardContent><button className=\"feral-button feral-press\" data-tone=\"pink\">Button</button></CardContent></Card>\n        <ScrollArea style={{ height: 160 }}><pre className=\"site-code\">{`<Button tone=\"pink\">Button</Button>`}</pre></ScrollArea>\n      </SidebarMain>\n    </SidebarLayout>\n  );\n}\n"
+    },
+    {
+      "path": "src/blocks/index.ts",
+      "type": "registry:block",
+      "content": "export * from \"./marketing\";\nexport * from \"./auth\";\nexport * from \"./dashboard\";\nexport * from \"./docs\";\nexport * from \"./content\";\n"
+    }
+  ]
+}

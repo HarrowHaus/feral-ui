@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-card",
+  "title": "Image Card",
+  "type": "registry:ui",
+  "description": "feral/ui Image Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/image-card.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport function ImageCard({ className, title, description, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { title: string; description?: string }) {\n  return (\n    <figure className={cn(\"feral-image-card feral-press\", className)} {...props}>\n      <div className=\"feral-image-card-media\">{children}</div>\n      <figcaption><strong>{title}</strong>{description ? <span>{description}</span> : null}</figcaption>\n    </figure>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

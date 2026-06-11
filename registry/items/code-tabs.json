@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-tabs",
+  "title": "Code Tabs",
+  "type": "registry:ui",
+  "description": "feral/ui Code Tabs component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "button",
+    "code-block",
+    "copy-button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/code-tabs.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\nimport { Button } from \"./button\";\nimport { CodeBlock } from \"./code-block\";\nimport { CopyButton } from \"./copy-button\";\n\nexport type CodeTab = {\n  id: string;\n  label: string;\n  code: string;\n};\n\nexport function CodeTabs({ tabs, className }: { tabs: CodeTab[]; className?: string }) {\n  const [activeId, setActiveId] = React.useState(tabs[0]?.id ?? \"\");\n  const active = tabs.find((tab) => tab.id === activeId) ?? tabs[0];\n\n  return (\n    <div className={cn(\"feral-code-tabs\", className)}>\n      <div className=\"feral-code-tabs-bar\" role=\"tablist\" aria-label=\"Code tabs\">\n        <div className=\"feral-code-tabs-buttons\">\n          {tabs.map((tab) => (\n            <Button\n              key={tab.id}\n              type=\"button\"\n              size=\"sm\"\n              tone={tab.id === active.id ? \"pink\" : \"paper\"}\n              role=\"tab\"\n              aria-selected={tab.id === active.id}\n              onClick={() => setActiveId(tab.id)}\n            >\n              {tab.label}\n            </Button>\n          ))}\n        </div>\n        <CopyButton value={active.code} size=\"sm\" tone=\"acid\" />\n      </div>\n      <CodeBlock>{active.code}</CodeBlock>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

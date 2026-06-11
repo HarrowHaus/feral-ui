@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-menu",
+  "title": "Navigation Menu",
+  "type": "registry:ui",
+  "description": "feral/ui Navigation Menu component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [
+    "@radix-ui/react-navigation-menu"
+  ],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/navigation-menu.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as NavigationMenuPrimitive from \"@radix-ui/react-navigation-menu\";\nimport { cn } from \"../../lib/cn\";\n\nconst NavigationMenu = React.forwardRef<\n  React.ElementRef<typeof NavigationMenuPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>\n>(({ className, children, ...props }, ref) => (\n  <NavigationMenuPrimitive.Root ref={ref} className={cn(\"feral-navigation-menu\", className)} {...props}>{children}<NavigationMenuViewport /></NavigationMenuPrimitive.Root>\n));\nNavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;\nconst NavigationMenuList = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.List>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>>(({ className, ...props }, ref) => <NavigationMenuPrimitive.List ref={ref} className={cn(\"feral-navigation-list\", className)} {...props} />);\nNavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;\nconst NavigationMenuItem = NavigationMenuPrimitive.Item;\nconst NavigationMenuTrigger = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Trigger>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>>(({ className, ...props }, ref) => <NavigationMenuPrimitive.Trigger ref={ref} className={cn(\"feral-navigation-trigger\", className)} {...props} />);\nNavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;\nconst NavigationMenuContent = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Content>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>>(({ className, ...props }, ref) => <NavigationMenuPrimitive.Content ref={ref} className={cn(\"feral-navigation-content\", className)} {...props} />);\nNavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;\nconst NavigationMenuLink = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Link>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>>(({ className, ...props }, ref) => <NavigationMenuPrimitive.Link ref={ref} className={cn(\"feral-navigation-link\", className)} {...props} />);\nNavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;\nconst NavigationMenuViewport = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Viewport>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>>(({ className, ...props }, ref) => <div className=\"feral-navigation-viewport-wrap\"><NavigationMenuPrimitive.Viewport ref={ref} className={cn(\"feral-navigation-viewport\", className)} {...props} /></div>);\nNavigationMenuViewport.displayName = NavigationMenuPrimitive.Viewport.displayName;\nconst NavigationMenuIndicator = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Indicator>, React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>>(({ className, ...props }, ref) => <NavigationMenuPrimitive.Indicator ref={ref} className={cn(\"feral-navigation-indicator\", className)} {...props} />);\nNavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;\n\nexport { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport };\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

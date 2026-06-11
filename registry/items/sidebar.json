@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "title": "Sidebar",
+  "type": "registry:ui",
+  "description": "feral/ui Sidebar component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Menu } from \"lucide-react\";\nimport { cn } from \"../../lib/cn\";\nimport { Button } from \"./button\";\n\ntype SidebarContextValue = {\n  collapsed: boolean;\n  mobileOpen: boolean;\n  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;\n  setMobileOpen: React.Dispatch<React.SetStateAction<boolean>>;\n};\n\nconst SidebarContext = React.createContext<SidebarContextValue | null>(null);\n\nfunction useSidebar() {\n  return React.useContext(SidebarContext);\n}\n\nexport function SidebarLayout({ className, defaultCollapsed = false, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { defaultCollapsed?: boolean }) {\n  const [collapsed, setCollapsed] = React.useState(defaultCollapsed);\n  const [mobileOpen, setMobileOpen] = React.useState(false);\n  const value = React.useMemo(() => ({ collapsed, mobileOpen, setCollapsed, setMobileOpen }), [collapsed, mobileOpen]);\n  return <SidebarContext.Provider value={value}><div className={cn(\"feral-sidebar-layout\", className)} data-collapsed={collapsed || undefined} data-mobile-open={mobileOpen || undefined} {...props}>{children}</div></SidebarContext.Provider>;\n}\n\nexport function SidebarToggle({ className, children = \"Menu\" }: { className?: string; children?: React.ReactNode }) {\n  const context = useSidebar();\n  return <Button type=\"button\" size=\"sm\" tone=\"paper\" className={cn(\"feral-sidebar-toggle\", className)} aria-expanded={context?.mobileOpen} onClick={() => context?.setMobileOpen((open) => !open)}><Menu size={16} /> {children}</Button>;\n}\n\nexport function SidebarCollapseButton({ className, children = \"Collapse\" }: { className?: string; children?: React.ReactNode }) {\n  const context = useSidebar();\n  return <Button type=\"button\" size=\"sm\" tone=\"paper\" className={className} aria-pressed={context?.collapsed} onClick={() => context?.setCollapsed((collapsed) => !collapsed)}>{children}</Button>;\n}\n\nexport function Sidebar({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) {\n  return <aside className={cn(\"feral-sidebar\", className)} {...props}>{children}</aside>;\n}\n\nexport function SidebarSection({ className, title, children }: { className?: string; title?: string; children: React.ReactNode }) {\n  return <section className={cn(\"feral-sidebar-section\", className)}>{title ? <h3>{title}</h3> : null}{children}</section>;\n}\n\nexport function SidebarFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"feral-sidebar-footer\", className)} {...props} />;\n}\n\nexport function SidebarMain({ className, ...props }: React.HTMLAttributes<HTMLElement>) {\n  return <main className={cn(\"feral-sidebar-main\", className)} {...props} />;\n}\n\nexport function SidebarLink({ className, active, icon, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { active?: boolean; icon?: React.ReactNode }) {\n  return <a className={cn(\"feral-sidebar-link\", className)} data-active={active || undefined} aria-current={active ? \"page\" : undefined} {...props}>{icon ? <span className=\"feral-sidebar-link-icon\">{icon}</span> : null}<span className=\"feral-sidebar-link-label\">{children}</span></a>;\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

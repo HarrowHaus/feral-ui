@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "title": "Empty State",
+  "type": "registry:ui",
+  "description": "feral/ui Empty State component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/empty-state.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Ghost } from \"lucide-react\";\nimport { cn } from \"../../lib/cn\";\nimport { Button } from \"./button\";\n\nexport function EmptyState({ className, title, description, action }: { className?: string; title: string; description: string; action?: React.ReactNode }) {\n  return (\n    <div className={cn(\"feral-empty-state\", className)}>\n      <Ghost size={34} aria-hidden=\"true\" />\n      <h3>{title}</h3>\n      <p>{description}</p>\n      {action ?? <Button tone=\"paper\" type=\"button\">Do something suspiciously useful</Button>}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

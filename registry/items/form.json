@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "title": "Form",
+  "type": "registry:ui",
+  "description": "feral/ui Form component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/form.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Alert, AlertDescription, AlertIcon, AlertTitle } from \"./alert\";\nimport { cn } from \"../../lib/cn\";\n\nexport function FormSection({ className, ...props }: React.HTMLAttributes<HTMLFieldSetElement>) {\n  return <fieldset className={cn(\"feral-form-section\", className)} {...props} />;\n}\nexport function FormLegend({ className, ...props }: React.HTMLAttributes<HTMLLegendElement>) {\n  return <legend className={cn(\"feral-form-legend\", className)} {...props} />;\n}\nexport function ErrorSummary({ title = \"Fix this little disaster\", errors }: { title?: string; errors: string[] }) {\n  return (\n    <Alert tone=\"pink\" role=\"alert\">\n      <AlertIcon>!</AlertIcon>\n      <div>\n        <AlertTitle>{title}</AlertTitle>\n        <AlertDescription>\n          <ul className=\"feral-error-list\">{errors.map((error) => <li key={error}>{error}</li>)}</ul>\n        </AlertDescription>\n      </div>\n    </Alert>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

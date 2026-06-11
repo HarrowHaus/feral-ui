@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-card",
+  "title": "Stat Card",
+  "type": "registry:ui",
+  "description": "feral/ui Stat Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style",
+    "card",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/stat-card.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from \"./card\";\nimport { Badge } from \"./badge\";\n\nexport function StatCard({ title, value, delta, tone = \"paper\" }: { title: string; value: string; delta?: string; tone?: \"paper\" | \"acid\" | \"pink\" | \"ultra\" | \"tang\" }) {\n  return (\n    <Card tone={tone} radius={tone === \"acid\" || tone === \"ultra\" ? \"none\" : \"default\"}>\n      <CardHeader>\n        <CardDescription>{title}</CardDescription>\n        <CardTitle style={{ fontSize: 34 }}>{value}</CardTitle>\n      </CardHeader>\n      {delta ? <CardContent><Badge tone={tone === \"pink\" ? \"acid\" : \"pink\"}>{delta}</Badge></CardContent> : null}\n    </Card>\n  );\n}\n"
+    }
+  ]
+}

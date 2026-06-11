@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "title": "Tabs",
+  "type": "registry:ui",
+  "description": "feral/ui Tabs component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/tabs.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nexport type TabItem = {\n  id: string;\n  label: React.ReactNode;\n  content: React.ReactNode;\n};\n\nexport function Tabs({ items, defaultValue, className }: { items: TabItem[]; defaultValue?: string; className?: string }) {\n  const [value, setValue] = React.useState(defaultValue ?? items[0]?.id);\n  const active = items.find((item) => item.id === value) ?? items[0];\n\n  return (\n    <div className={cn(\"feral-tabs feral-press\", className)}>\n      <div className=\"feral-tab-list\" role=\"tablist\" aria-label=\"Feral tabs\">\n        {items.map((item) => (\n          <button\n            key={item.id}\n            className=\"feral-tab feral-focus-ring\"\n            role=\"tab\"\n            aria-selected={item.id === active.id}\n            aria-controls={`panel-${item.id}`}\n            id={`tab-${item.id}`}\n            type=\"button\"\n            onClick={() => setValue(item.id)}\n          >\n            {item.label}\n          </button>\n        ))}\n      </div>\n      <div className=\"feral-tab-panel\" role=\"tabpanel\" id={`panel-${active.id}`} aria-labelledby={`tab-${active.id}`}>\n        {active.content}\n      </div>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

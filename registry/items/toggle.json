@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "title": "Toggle",
+  "type": "registry:ui",
+  "description": "feral/ui Toggle component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [
+    "@radix-ui/react-toggle"
+  ],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/toggle.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as TogglePrimitive from \"@radix-ui/react-toggle\";\nimport { cn } from \"../../lib/cn\";\n\nconst Toggle = React.forwardRef<\n  React.ElementRef<typeof TogglePrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> & { tone?: \"acid\" | \"pink\" | \"paper\" | \"ultra\" }\n>(({ className, tone = \"paper\", ...props }, ref) => (\n  <TogglePrimitive.Root ref={ref} className={cn(\"feral-toggle\", className)} data-tone={tone} {...props} />\n));\nToggle.displayName = TogglePrimitive.Root.displayName;\n\nexport { Toggle };\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

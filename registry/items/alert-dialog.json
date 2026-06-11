@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "title": "Alert Dialog",
+  "type": "registry:ui",
+  "description": "feral/ui Alert Dialog component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [
+    "@radix-ui/react-alert-dialog"
+  ],
+  "registryDependencies": [
+    "feral-style",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/alert-dialog.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as AlertDialogPrimitive from \"@radix-ui/react-alert-dialog\";\nimport { cn } from \"../../lib/cn\";\nimport { Button } from \"./button\";\n\nconst AlertDialog = AlertDialogPrimitive.Root;\nconst AlertDialogTrigger = AlertDialogPrimitive.Trigger;\nconst AlertDialogPortal = AlertDialogPrimitive.Portal;\nconst AlertDialogOverlay = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>\n>(({ className, ...props }, ref) => <AlertDialogPrimitive.Overlay ref={ref} className={cn(\"feral-dialog-overlay\", className)} {...props} />);\nAlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;\n\nconst AlertDialogContent = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>\n>(({ className, ...props }, ref) => (\n  <AlertDialogPortal>\n    <AlertDialogOverlay />\n    <AlertDialogPrimitive.Content ref={ref} className={cn(\"feral-dialog-content feral-alert-dialog-content\", className)} {...props} />\n  </AlertDialogPortal>\n));\nAlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;\n\nconst AlertDialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div className={cn(\"feral-dialog-header\", className)} {...props} />;\nconst AlertDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div className={cn(\"feral-dialog-footer\", className)} {...props} />;\nconst AlertDialogTitle = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Title>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>\n>(({ className, ...props }, ref) => <AlertDialogPrimitive.Title ref={ref} className={cn(\"feral-dialog-title\", className)} {...props} />);\nAlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;\nconst AlertDialogDescription = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Description>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>\n>(({ className, ...props }, ref) => <AlertDialogPrimitive.Description ref={ref} className={cn(\"feral-dialog-description\", className)} {...props} />);\nAlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName;\nconst AlertDialogAction = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Action>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>\n>(({ className, ...props }, ref) => <AlertDialogPrimitive.Action ref={ref} asChild><Button tone=\"pink\" className={className} {...props} /></AlertDialogPrimitive.Action>);\nAlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;\nconst AlertDialogCancel = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>\n>(({ className, ...props }, ref) => <AlertDialogPrimitive.Cancel ref={ref} asChild><Button tone=\"paper\" className={className} {...props} /></AlertDialogPrimitive.Cancel>);\nAlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;\n\nexport { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel };\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

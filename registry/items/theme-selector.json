@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-selector",
+  "title": "Theme Selector",
+  "type": "registry:ui",
+  "description": "feral/ui Theme Selector component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "dependencies": [],
+  "registryDependencies": [
+    "feral-style"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/theme-selector.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\nconst themes = [\"acid\", \"pink\", \"ultra\", \"tang\", \"cyan\"] as const;\nexport type FeralThemeAccent = typeof themes[number];\n\nexport function ThemeSelector({ value = \"acid\", onValueChange, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { value?: FeralThemeAccent; onValueChange?: (value: FeralThemeAccent) => void }) {\n  return (\n    <div className={cn(\"feral-theme-selector\", className)} role=\"radiogroup\" aria-label=\"Accent theme\" {...props}>\n      {themes.map((theme) => (\n        <button key={theme} type=\"button\" role=\"radio\" aria-checked={value === theme} className=\"feral-theme-swatch feral-focus-ring\" data-tone={theme} onClick={() => onValueChange?.(theme)}>\n          <span>{theme}</span>\n        </button>\n      ))}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "src/lib/cn.ts",
+      "type": "registry:lib",
+      "content": "export function cn(...classes: Array<string | false | null | undefined>) {\n  return classes.filter(Boolean).join(\" \");\n}\n"
+    }
+  ]
+}

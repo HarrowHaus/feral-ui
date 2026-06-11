@@ -1,14 +1,17 @@
 {
-  "name": "feral-ui",
-  "version": "0.6.1",
+  "name": "feral-ui-kit",
+  "version": "0.7.0",
   "private": true,
-  "description": "Controlled-variance React preview site and pre-release component library basis.",
+  "description": "Controlled-variance React/Radix components with hardened calendar, date range picker, toast provider, carousel controls, sidebar behavior, routed docs, templates, style lab, ornaments, and registry receipts.",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "registry:build": "node scripts/build-registry.mjs",
+    "smoke:registry": "node scripts/smoke-registry.mjs",
+    "smoke:fresh-app": "node scripts/smoke-fresh-app.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -16,11 +19,27 @@
     "typescript": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest"
+    "lucide-react": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-popover": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "@radix-ui/react-hover-card": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-progress": "latest",
+    "@radix-ui/react-slider": "latest",
+    "@radix-ui/react-menubar": "latest",
+    "@radix-ui/react-navigation-menu": "latest",
+    "cmdk": "latest",
+    "@radix-ui/react-alert-dialog": "latest",
+    "@radix-ui/react-avatar": "latest",
+    "@radix-ui/react-context-menu": "latest",
+    "@radix-ui/react-scroll-area": "latest",
+    "@radix-ui/react-separator": "latest",
+    "@radix-ui/react-toggle": "latest",
+    "@radix-ui/react-toggle-group": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "@types/node": "latest"
+    "@types/react-dom": "latest"
   }
 }
