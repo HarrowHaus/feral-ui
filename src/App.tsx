@@ -184,6 +184,7 @@ import {
   TooltipTrigger,
 } from "./components/ui";
 import { componentCatalog } from "./docs/component-catalog";
+import { ComponentShowcase, componentContent } from "./docs/component-showcase";
 import { templateCatalog } from "./templates/template-catalog";
 import { DocsProductShell } from "./features/docs-shell";
 import { StyleLab } from "./features/style-lab";
@@ -660,14 +661,15 @@ function ComponentsIndexPage() {
 
 function ComponentRoutePage({ slug }: { slug: string }) {
   const item = componentCatalog.find((entry) => entry.slug === slug) ?? componentCatalog[0];
+  const content = componentContent(item);
   return (
     <RoutedShell>
-      <RouteHero eyebrow={item.layer} title={item.name} description={item.notes}><div className="route-hero-actions"><Badge tone={item.status === "built" ? "acid" : "tang"}>{item.status}</Badge><Badge tone="paper">{item.file}</Badge></div></RouteHero>
+      <RouteHero eyebrow={item.layer} title={item.name} description={content.description}><div className="route-hero-actions"><Badge tone={item.status === "built" ? "acid" : "tang"}>{item.status}</Badge><Badge tone="paper">{item.file}</Badge></div></RouteHero>
       <div className="route-two-col">
-        <PreviewFrame title={`${item.name} preview`}><DocsPreview name={item.name} /></PreviewFrame>
-        <div className="site-stack"><Callout tone="ultra"><CalloutTitle>Accessibility receipt</CalloutTitle><CalloutDescription>{item.accessibility}</CalloutDescription></Callout><Callout tone="acid"><CalloutTitle>Dependencies</CalloutTitle><CalloutDescription>{item.dependencies?.length ? item.dependencies.join(", ") : "No external dependency declared by this source item."}</CalloutDescription></Callout></div>
+        <PreviewFrame title={`${item.name} preview`}><ComponentShowcase slug={item.slug} /></PreviewFrame>
+        <div className="site-stack"><Callout tone="ultra"><CalloutTitle>Accessibility receipt</CalloutTitle><CalloutDescription>{content.accessibility}</CalloutDescription></Callout><Callout tone="acid"><CalloutTitle>Dependencies</CalloutTitle><CalloutDescription>{item.dependencies?.length ? item.dependencies.join(", ") : "No external dependency declared by this source item."}</CalloutDescription></Callout></div>
       </div>
-      <CodeTabs tabs={[{ id: "usage", label: "Usage", code: item.snippet }, { id: "source", label: "Source path", code: item.file }, { id: "registry", label: "Local registry", code: `public/r/${item.slug}.json\nregistry/items/${item.slug}.json` }]} />
+      <CodeTabs tabs={[{ id: "usage", label: "Usage", code: content.usage }, { id: "source", label: "Source path", code: item.file }, { id: "registry", label: "Local registry", code: `public/r/${item.slug}.json\nregistry/items/${item.slug}.json` }]} />
     </RoutedShell>
   );
 }
