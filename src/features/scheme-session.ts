@@ -1,11 +1,8 @@
-import { clearFeralTheme } from "./theme-session";
-
 export type FeralScheme = "light" | "dark";
 
 const KEY = "feral-ui-scheme";
-const SELECTOR = 'button[aria-label="Theme toggle"]';
 
-function stored(): FeralScheme {
+export function readFeralScheme(): FeralScheme {
   try {
     return localStorage.getItem(KEY) === "dark" ? "dark" : "light";
   } catch {
@@ -19,37 +16,20 @@ export function applyFeralScheme(scheme: FeralScheme) {
   try {
     localStorage.setItem(KEY, scheme);
   } catch {
+    // storage can fail in private/browser-restricted contexts
+  }
+}
+
+export function clearFeralScheme() {
+  document.documentElement.dataset.feralScheme = "light";
+  document.documentElement.style.colorScheme = "light";
+  try {
+    localStorage.removeItem(KEY);
+  } catch {
     // ignore storage failures
   }
-  syncButtons(scheme);
-}
-
-export function toggleFeralScheme() {
-  const next = document.documentElement.dataset.feralScheme === "dark" ? "light" : "dark";
-  clearFeralTheme();
-  applyFeralScheme(next);
-}
-
-function syncButtons(scheme = stored()) {
-  document.querySelectorAll<HTMLButtonElement>(SELECTOR).forEach((button) => {
-    button.setAttribute("aria-pressed", String(scheme === "dark"));
-    button.textContent = scheme === "dark" ? "Lights on" : "Lights out";
-  });
-}
-
-function init() {
-  applyFeralScheme(stored());
-  document.addEventListener("click", (event) => {
-    const target = event.target as Element | null;
-    const button = target?.closest?.(SELECTOR);
-    if (!button) return;
-    event.preventDefault();
-    toggleFeralScheme();
-  });
-  window.setTimeout(() => syncButtons(), 0);
 }
 
 if (typeof window !== "undefined") {
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
-  else init();
+  applyFeralScheme(readFeralScheme());
 }
