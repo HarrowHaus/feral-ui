@@ -90,28 +90,77 @@
 }
 
 @media (max-width: 760px) {
-  .site-menu-button::after {
-    display: none;
+  .site-nav {
+    overflow: visible !important;
+    padding-right: 104px !important;
+  }
+
+  .site-nav-right {
+    position: fixed !important;
+    top: calc(env(safe-area-inset-top, 0px) + 74px);
+    right: 10px;
+    z-index: 999;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    width: auto !important;
+    max-width: calc(100vw - 20px);
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    pointer-events: auto;
+  }
+
+  .site-nav-right .feral-badge,
+  .site-nav-right > .site-search:nth-child(1),
+  .site-nav-right > .site-search:nth-child(2) {
+    display: none !important;
   }
 
   .site-nav-right > .site-search[aria-label="Theme toggle"] {
     display: inline-flex !important;
-    width: 44px;
-    min-width: 44px;
-    height: 42px;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    min-width: 46px;
+    height: 44px;
     padding: 0 !important;
+    border: 3px solid var(--feral-ink) !important;
+    border-radius: 999px !important;
+    background: var(--feral-paper) !important;
+    box-shadow: 4px 4px 0 var(--feral-ink) !important;
+    color: var(--feral-ink) !important;
     font-size: 0;
     overflow: hidden;
   }
 
   .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
     content: "☾";
-    font-size: 19px;
+    font-size: 21px;
     line-height: 1;
   }
 
   :root[data-feral-scheme="dark"] .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
     content: "☀";
+  }
+
+  .site-menu-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    height: 44px;
+    border: 3px solid var(--feral-ink) !important;
+    border-radius: 12px !important;
+    background: var(--feral-acid) !important;
+    color: var(--feral-ink) !important;
+    box-shadow: 4px 4px 0 var(--feral-ink) !important;
+    padding: 0 10px !important;
+    font-weight: 900 !important;
+  }
+
+  .site-menu-button::after {
+    display: none;
   }
 
   .playground-shell::before {
