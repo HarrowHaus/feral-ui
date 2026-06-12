@@ -3,7 +3,7 @@
   "name": "sonner",
   "title": "Sonner",
   "type": "registry:ui",
-  "description": "feral/ui Sonner component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Tiny interface pigeons that arrive, yell, and leave.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

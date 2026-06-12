@@ -3,7 +3,7 @@
   "name": "hover-card",
   "title": "Hover Card",
   "type": "registry:ui",
-  "description": "feral/ui Hover Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Lurks until you hover. Then it is charming.",
   "dependencies": [
     "@radix-ui/react-hover-card"
   ],

@@ -3,7 +3,7 @@
   "name": "calendar",
   "title": "Calendar",
   "type": "registry:ui",
-  "description": "feral/ui Calendar component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Knows what day it is, unlike the marquee.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

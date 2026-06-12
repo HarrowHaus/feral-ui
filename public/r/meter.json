@@ -3,7 +3,7 @@
   "name": "meter",
   "title": "Meter",
   "type": "registry:ui",
-  "description": "feral/ui Meter component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Measures things. Judges silently.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

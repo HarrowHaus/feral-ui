@@ -3,7 +3,7 @@
   "name": "navigation-menu",
   "title": "Navigation Menu",
   "type": "registry:ui",
-  "description": "feral/ui Navigation Menu component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Big navigation with tiny hallway energy.",
   "dependencies": [
     "@radix-ui/react-navigation-menu"
   ],

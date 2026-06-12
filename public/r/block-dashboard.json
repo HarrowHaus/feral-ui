@@ -3,7 +3,7 @@
   "name": "block-dashboard",
   "title": "Dashboard Block",
   "type": "registry:block",
-  "description": "feral/ui Dashboard block source. Generated locally; templates still need fresh-app install receipts.",
+  "description": "Dashboard blocks for queues, stats, charts, and mild operational weather.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

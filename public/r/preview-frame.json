@@ -3,7 +3,7 @@
   "name": "preview-frame",
   "title": "Preview Frame",
   "type": "registry:ui",
-  "description": "feral/ui Preview Frame component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Keeps demos behind glass.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

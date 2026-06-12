@@ -3,7 +3,7 @@
   "name": "combobox",
   "title": "Combobox",
   "type": "registry:ui",
-  "description": "feral/ui Combobox component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A dropdown that went to grad school.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

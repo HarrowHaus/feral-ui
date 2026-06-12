@@ -3,7 +3,7 @@
   "name": "alert-dialog",
   "title": "Alert Dialog",
   "type": "registry:ui",
-  "description": "feral/ui Alert Dialog component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Stops you before you do the thing. Someone has to.",
   "dependencies": [
     "@radix-ui/react-alert-dialog"
   ],

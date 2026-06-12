@@ -3,7 +3,7 @@
   "name": "stepper",
   "title": "Stepper",
   "type": "registry:ui",
-  "description": "feral/ui Stepper component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "One step at a time, like the therapist said.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

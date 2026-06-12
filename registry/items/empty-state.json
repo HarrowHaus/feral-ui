@@ -3,7 +3,7 @@
   "name": "empty-state",
   "title": "Empty State",
   "type": "registry:ui",
-  "description": "feral/ui Empty State component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Professional nothing.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

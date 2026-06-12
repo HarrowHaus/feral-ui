@@ -3,7 +3,7 @@
   "name": "date-picker",
   "title": "Date Picker",
   "type": "registry:ui",
-  "description": "feral/ui Date Picker component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Picks dates. Judges calendars silently.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

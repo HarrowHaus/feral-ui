@@ -3,7 +3,7 @@
   "name": "otp-input",
   "title": "Otp Input",
   "type": "registry:ui",
-  "description": "feral/ui Otp Input component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Six boxes. One tiny security ritual.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

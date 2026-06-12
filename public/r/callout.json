@@ -3,7 +3,7 @@
   "name": "callout",
   "title": "Callout",
   "type": "registry:ui",
-  "description": "feral/ui Callout component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Interrupts politely. Refuses to be invisible.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

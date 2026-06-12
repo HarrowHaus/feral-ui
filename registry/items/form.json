@@ -3,7 +3,7 @@
   "name": "form",
   "title": "Form",
   "type": "registry:ui",
-  "description": "feral/ui Form component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Groups inputs before they form a union.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

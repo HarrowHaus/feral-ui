@@ -3,7 +3,7 @@
   "name": "dialog",
   "title": "Dialog",
   "type": "registry:ui",
-  "description": "feral/ui Dialog component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Traps focus like it is paid to. Radix money.",
   "dependencies": [
     "@radix-ui/react-dialog"
   ],

@@ -3,7 +3,7 @@
   "name": "spinner",
   "title": "Spinner",
   "type": "registry:ui",
-  "description": "feral/ui Spinner component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Rotates so you do not have to.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

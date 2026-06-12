@@ -3,7 +3,7 @@
   "name": "progress",
   "title": "Progress",
   "type": "registry:ui",
-  "description": "feral/ui Progress component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Moves rightward. Morale improves briefly.",
   "dependencies": [
     "@radix-ui/react-progress"
   ],

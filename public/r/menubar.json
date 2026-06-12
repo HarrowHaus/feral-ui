@@ -3,7 +3,7 @@
   "name": "menubar",
   "title": "Menubar",
   "type": "registry:ui",
-  "description": "feral/ui Menubar component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Menus for apps that own a blazer.",
   "dependencies": [
     "@radix-ui/react-menubar"
   ],

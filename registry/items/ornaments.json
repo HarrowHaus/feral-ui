@@ -3,7 +3,7 @@
   "name": "ornaments",
   "title": "Ornaments",
   "type": "registry:ui",
-  "description": "feral/ui Ornaments component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "The sticker sheet escaped containment, so we made it a product.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

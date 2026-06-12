@@ -3,7 +3,7 @@
   "name": "separator",
   "title": "Separator",
   "type": "registry:ui",
-  "description": "feral/ui Separator component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A line. It separates. We pay it anyway.",
   "dependencies": [
     "@radix-ui/react-separator"
   ],

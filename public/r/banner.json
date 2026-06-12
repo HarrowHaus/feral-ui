@@ -3,7 +3,7 @@
   "name": "banner",
   "title": "Banner",
   "type": "registry:ui",
-  "description": "feral/ui Banner component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A page-wide shout without becoming a hostage note.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

@@ -3,7 +3,7 @@
   "name": "resizable",
   "title": "Resizable",
   "type": "registry:ui",
-  "description": "feral/ui Resizable component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Panels you can drag until someone complains.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

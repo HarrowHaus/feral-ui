@@ -3,7 +3,7 @@
   "name": "breadcrumb",
   "title": "Breadcrumb",
   "type": "registry:ui",
-  "description": "feral/ui Breadcrumb component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Leaves a trail out. You will want it.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

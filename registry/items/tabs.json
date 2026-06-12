@@ -3,7 +3,7 @@
   "name": "tabs",
   "title": "Tabs",
   "type": "registry:ui",
-  "description": "feral/ui Tabs component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Multiple personalities, one panel at a time.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

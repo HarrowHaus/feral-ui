@@ -3,7 +3,7 @@
   "name": "block-content",
   "title": "Content Block",
   "type": "registry:block",
-  "description": "feral/ui Content block source. Generated locally; templates still need fresh-app install receipts.",
+  "description": "Article, changelog, and content blocks that keep the goblin footnoted.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

@@ -3,7 +3,7 @@
   "name": "card",
   "title": "Card",
   "type": "registry:ui",
-  "description": "feral/ui Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A box that lifts when touched. Do not feed after midnight.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

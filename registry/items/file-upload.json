@@ -3,7 +3,7 @@
   "name": "file-upload",
   "title": "File Upload",
   "type": "registry:ui",
-  "description": "feral/ui File Upload component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Accepts files. Side-eyes the filenames.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

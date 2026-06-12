@@ -3,7 +3,7 @@
   "name": "sidebar",
   "title": "Sidebar",
   "type": "registry:ui",
-  "description": "feral/ui Sidebar component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Holds the whole app's coat.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

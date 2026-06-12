@@ -3,7 +3,7 @@
   "name": "kbd",
   "title": "Kbd",
   "type": "registry:ui",
-  "description": "feral/ui Kbd component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Tiny keycap cosplay.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

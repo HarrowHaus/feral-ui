@@ -3,7 +3,7 @@
   "name": "switch",
   "title": "Switch",
   "type": "registry:ui",
-  "description": "feral/ui Switch component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Flips. Commits. No takebacks until you flip it back.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

@@ -3,7 +3,7 @@
   "name": "code-tabs",
   "title": "Code Tabs",
   "type": "registry:ui",
-  "description": "feral/ui Code Tabs component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Multiple snippets. One cage.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

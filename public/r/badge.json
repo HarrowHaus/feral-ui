@@ -3,7 +3,7 @@
   "name": "badge",
   "title": "Badge",
   "type": "registry:ui",
-  "description": "feral/ui Badge component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A small loud sticker with a job.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

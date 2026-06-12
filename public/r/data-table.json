@@ -3,7 +3,7 @@
   "name": "data-table",
   "title": "Data Table",
   "type": "registry:ui",
-  "description": "feral/ui Data Table component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Sorts, filters, paginates, selects rows, holds grudges.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

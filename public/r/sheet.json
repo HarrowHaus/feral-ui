@@ -3,7 +3,7 @@
   "name": "sheet",
   "title": "Sheet",
   "type": "registry:ui",
-  "description": "feral/ui Sheet component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A side panel entering with opinions.",
   "dependencies": [
     "@radix-ui/react-dialog"
   ],

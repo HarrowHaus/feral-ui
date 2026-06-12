@@ -3,7 +3,7 @@
   "name": "slider",
   "title": "Slider",
   "type": "registry:ui",
-  "description": "feral/ui Slider component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Drag it. It remembers.",
   "dependencies": [
     "@radix-ui/react-slider"
   ],

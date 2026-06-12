@@ -3,7 +3,7 @@
   "name": "context-menu",
   "title": "Context Menu",
   "type": "registry:ui",
-  "description": "feral/ui Context Menu component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Right-click summons it. Mind what you summon.",
   "dependencies": [
     "@radix-ui/react-context-menu"
   ],

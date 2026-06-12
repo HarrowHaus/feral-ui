@@ -3,7 +3,7 @@
   "name": "block-marketing",
   "title": "Marketing Block",
   "type": "registry:block",
-  "description": "feral/ui Marketing block source. Generated locally; templates still need fresh-app install receipts.",
+  "description": "Marketing blocks for pages that refuse to beige themselves quietly.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

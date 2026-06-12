@@ -3,7 +3,7 @@
   "name": "popover",
   "title": "Popover",
   "type": "registry:ui",
-  "description": "feral/ui Popover component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Pops over. Escape sends it home.",
   "dependencies": [
     "@radix-ui/react-popover"
   ],

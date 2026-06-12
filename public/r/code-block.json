@@ -3,7 +3,7 @@
   "name": "code-block",
   "title": "Code Block",
   "type": "registry:ui",
-  "description": "feral/ui Code Block component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Code in a box. The box has opinions.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

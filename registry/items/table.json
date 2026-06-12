@@ -3,7 +3,7 @@
   "name": "table",
   "title": "Table",
   "type": "registry:ui",
-  "description": "feral/ui Table component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Rows and columns, currently behaving.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

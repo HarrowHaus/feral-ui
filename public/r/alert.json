@@ -3,7 +3,7 @@
   "name": "alert",
   "title": "Alert",
   "type": "registry:ui",
-  "description": "feral/ui Alert component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Yells politely. Usually about something you ignored.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

@@ -3,7 +3,7 @@
   "name": "button",
   "title": "Button",
   "type": "registry:ui",
-  "description": "feral/ui Button component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Clicks hard. Apologizes never.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

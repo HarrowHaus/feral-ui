@@ -3,7 +3,7 @@
   "name": "toggle-group",
   "title": "Toggle Group",
   "type": "registry:ui",
-  "description": "feral/ui Toggle Group component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Tiny switches travelling in a pack.",
   "dependencies": [
     "@radix-ui/react-toggle-group"
   ],

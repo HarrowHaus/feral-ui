@@ -3,7 +3,7 @@
   "name": "dropdown-menu",
   "title": "Dropdown Menu",
   "type": "registry:ui",
-  "description": "feral/ui Dropdown Menu component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Opens downward, keyboard-navigable. Unhinged, not rude.",
   "dependencies": [
     "@radix-ui/react-dropdown-menu"
   ],

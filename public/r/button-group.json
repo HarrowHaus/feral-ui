@@ -3,7 +3,7 @@
   "name": "button-group",
   "title": "Button Group",
   "type": "registry:ui",
-  "description": "feral/ui Button Group component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A button family. Fewer crumbs on the floor.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

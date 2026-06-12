@@ -3,7 +3,7 @@
   "name": "image-card",
   "title": "Image Card",
   "type": "registry:ui",
-  "description": "feral/ui Image Card component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Media with a frame and a small ego.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

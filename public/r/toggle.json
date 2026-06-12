@@ -3,7 +3,7 @@
   "name": "toggle",
   "title": "Toggle",
   "type": "registry:ui",
-  "description": "feral/ui Toggle component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Pressed or not. Emotionally unavailable.",
   "dependencies": [
     "@radix-ui/react-toggle"
   ],

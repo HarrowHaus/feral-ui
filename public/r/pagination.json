@@ -3,7 +3,7 @@
   "name": "pagination",
   "title": "Pagination",
   "type": "registry:ui",
-  "description": "feral/ui Pagination component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Turns one long list into supervised chunks.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

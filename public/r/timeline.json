@@ -3,7 +3,7 @@
   "name": "timeline",
   "title": "Timeline",
   "type": "registry:ui",
-  "description": "feral/ui Timeline component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Events in order. Time stays linear. Nothing else does.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

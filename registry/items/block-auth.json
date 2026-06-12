@@ -3,7 +3,7 @@
   "name": "block-auth",
   "title": "Auth Block",
   "type": "registry:block",
-  "description": "feral/ui Auth block source. Generated locally; templates still need fresh-app install receipts.",
+  "description": "Login, signup, and OTP blocks for forms with bite marks.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

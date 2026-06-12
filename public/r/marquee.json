@@ -3,7 +3,7 @@
   "name": "marquee",
   "title": "Marquee",
   "type": "registry:ui",
-  "description": "feral/ui Marquee component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Scrolls forever. We stopped asking why.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

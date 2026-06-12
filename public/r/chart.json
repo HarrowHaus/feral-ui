@@ -3,7 +3,7 @@
   "name": "chart",
   "title": "Chart",
   "type": "registry:ui",
-  "description": "feral/ui Chart component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Turns numbers into loud little bars.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

@@ -3,7 +3,7 @@
   "name": "avatar-group",
   "title": "Avatar Group",
   "type": "registry:ui",
-  "description": "feral/ui Avatar Group component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A tiny pile of people. Blame distribution included.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

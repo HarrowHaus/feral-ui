@@ -3,7 +3,7 @@
   "name": "checkbox",
   "title": "Checkbox",
   "type": "registry:ui",
-  "description": "feral/ui Checkbox component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Checked or unchecked. No feelings about it either way.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

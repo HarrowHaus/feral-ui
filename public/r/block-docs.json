@@ -3,7 +3,7 @@
   "name": "block-docs",
   "title": "Docs Block",
   "type": "registry:block",
-  "description": "feral/ui Docs block source. Generated locally; templates still need fresh-app install receipts.",
+  "description": "Docs blocks with sidebars, code, callouts, and adult supervision.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

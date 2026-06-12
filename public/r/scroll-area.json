@@ -3,7 +3,7 @@
   "name": "scroll-area",
   "title": "Scroll Area",
   "type": "registry:ui",
-  "description": "feral/ui Scroll Area component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A window with manners.",
   "dependencies": [
     "@radix-ui/react-scroll-area"
   ],

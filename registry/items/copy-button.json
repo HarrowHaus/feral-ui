@@ -3,7 +3,7 @@
   "name": "copy-button",
   "title": "Copy Button",
   "type": "registry:ui",
-  "description": "feral/ui Copy Button component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Copies text before users invent a new bug.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

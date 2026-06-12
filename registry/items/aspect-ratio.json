@@ -3,7 +3,7 @@
   "name": "aspect-ratio",
   "title": "Aspect Ratio",
   "type": "registry:ui",
-  "description": "feral/ui Aspect Ratio component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Keeps media shaped while the layout does jazz hands.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

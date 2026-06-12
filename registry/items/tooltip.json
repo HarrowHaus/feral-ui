@@ -3,7 +3,7 @@
   "name": "tooltip",
   "title": "Tooltip",
   "type": "registry:ui",
-  "description": "feral/ui Tooltip component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Whispers on hover. Knows things.",
   "dependencies": [
     "@radix-ui/react-tooltip"
   ],

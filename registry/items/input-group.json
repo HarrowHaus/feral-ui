@@ -3,7 +3,7 @@
   "name": "input-group",
   "title": "Input Group",
   "type": "registry:ui",
-  "description": "feral/ui Input Group component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "A lonely input got accessories.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

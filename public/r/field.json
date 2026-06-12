@@ -3,7 +3,7 @@
   "name": "field",
   "title": "Field",
   "type": "registry:ui",
-  "description": "feral/ui Field component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Label, help, error. A form with adult supervision.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

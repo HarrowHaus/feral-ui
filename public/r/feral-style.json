@@ -3,7 +3,7 @@
   "name": "feral-style",
   "title": "Feral Style",
   "type": "registry:style",
-  "description": "Controlled-variance CSS token grammar and component classes.",
+  "description": "The habitat file: tokens, borders, pressure, focus rings, and creature chrome.",
   "files": [
     {
       "path": "src/styles/feral.css",

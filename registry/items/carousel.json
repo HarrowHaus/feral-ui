@@ -3,7 +3,7 @@
   "name": "carousel",
   "title": "Carousel",
   "type": "registry:ui",
-  "description": "feral/ui Carousel component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "Slides sideways because forward was too normal.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style",

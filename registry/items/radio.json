@@ -3,7 +3,7 @@
   "name": "radio",
   "title": "Radio",
   "type": "registry:ui",
-  "description": "feral/ui Radio component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "One choice survives. The others cope.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"

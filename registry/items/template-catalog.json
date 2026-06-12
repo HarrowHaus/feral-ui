@@ -3,7 +3,7 @@
   "name": "template-catalog",
   "title": "Template Catalog",
   "type": "registry:page",
-  "description": "feral/ui template catalog basis. Previewable in dogfood app; public install after smoke tests.",
+  "description": "Eight live template habitats. Pick one, then take the creature home.",
   "dependencies": [],
   "registryDependencies": [
     "feral-style"
@@ -12,7 +12,7 @@
     {
       "path": "src/templates/template-catalog.tsx",
       "type": "registry:page",
-      "content": "import { DashboardShellBlock, DocsLayoutBlock, MarketingHeroBlock, PricingBlock, BlogIndexBlock, ChangelogBlock, LoginBlock } from \"../blocks\";\n\nexport const templateCatalog = [\n  { name: \"SaaS Landing\", status: \"basis\", description: \"Hero + pricing + CTA surfaces.\", component: <><MarketingHeroBlock /><PricingBlock /></> },\n  { name: \"Dashboard App\", status: \"basis\", description: \"Sidebar shell, stats, chart, table.\", component: <DashboardShellBlock /> },\n  { name: \"Docs Site\", status: \"basis\", description: \"Sidebar docs page with preview/code split.\", component: <DocsLayoutBlock /> },\n  { name: \"Blog / Changelog\", status: \"basis\", description: \"Article index and changelog card.\", component: <><BlogIndexBlock /><ChangelogBlock /></> },\n  { name: \"Auth\", status: \"basis\", description: \"Login card and form controls.\", component: <LoginBlock /> },\n];\n"
+      "content": "import {\n  AgencyTemplatePreview,\n  AiChatTemplatePreview,\n  BlogTemplatePreview,\n  ChangelogTemplatePreview,\n  DashboardTemplatePreview,\n  DocsTemplatePreview,\n  EcommerceTemplatePreview,\n  SaasTemplatePreview,\n} from \"./template-previews\";\n\nexport const templateCatalog = [\n  {\n    name: \"SaaS Landing\",\n    status: \"expanded\",\n    description: \"Invoice-ops landing page with hero, proof cards, features, and a month-end panic reducer.\",\n    component: <SaasTemplatePreview />,\n  },\n  {\n    name: \"Dashboard App\",\n    status: \"expanded\",\n    description: \"Ops console with sidebar, metrics, table, and a queue that has clearly seen things.\",\n    component: <DashboardTemplatePreview />,\n  },\n  {\n    name: \"Docs Site\",\n    status: \"expanded\",\n    description: \"Component documentation layout with left nav, page body, TOC, preview, and usage copy.\",\n    component: <DocsTemplatePreview />,\n  },\n  {\n    name: \"Blog / Magazine\",\n    status: \"expanded\",\n    description: \"Editorial homepage for field notes, launch posts, and useful yelling in article form.\",\n    component: <BlogTemplatePreview />,\n  },\n  {\n    name: \"Ecommerce\",\n    status: \"expanded\",\n    description: \"Product grid, cart summary, and shop surfaces for merch with questionable emotional stability.\",\n    component: <EcommerceTemplatePreview />,\n  },\n  {\n    name: \"Agency / Portfolio\",\n    status: \"expanded\",\n    description: \"Studio page with service framing, selected work, and a contact CTA that does not whisper.\",\n    component: <AgencyTemplatePreview />,\n  },\n  {\n    name: \"AI Chat App\",\n    status: \"expanded\",\n    description: \"Threaded AI workspace with prompt input, chat log, and source-aware product tone.\",\n    component: <AiChatTemplatePreview />,\n  },\n  {\n    name: \"Changelog\",\n    status: \"expanded\",\n    description: \"Release notes that tell users what changed without embalming the sentence first.\",\n    component: <ChangelogTemplatePreview />,\n  },\n];\n"
     }
   ]
 }

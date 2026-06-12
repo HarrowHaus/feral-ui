@@ -3,7 +3,7 @@
   "name": "command",
   "title": "Command",
   "type": "registry:ui",
-  "description": "feral/ui Command component. Generated locally; install-test before publishing, cowardly and correctly.",
+  "description": "⌘K and it fetches. Good palette. Best palette.",
   "dependencies": [
     "cmdk"
   ],

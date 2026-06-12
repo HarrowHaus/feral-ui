@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "feral-ui-local",
-  "homepage": "https://example.invalid/feral-ui-local",
+  "homepage": "https://harrowhaus.github.io/feral-ui/",
   "items": [
     {
       "name": "feral-style",
