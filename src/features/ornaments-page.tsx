@@ -13,6 +13,7 @@ import {
   type FeralOrnamentTone,
 } from "../components/ui";
 import * as OrnamentExports from "../components/ui/ornaments";
+import { SpecimenToast } from "./specimen-toast";
 
 type OrnamentComponent = React.ComponentType<{ tone?: FeralOrnamentTone; size?: FeralOrnamentSize; label?: string; children?: React.ReactNode }>;
 
@@ -37,7 +38,7 @@ export function OrnamentsRoute() {
   function copy(name: string) {
     const jsx = `<${name} tone="${tone}" size="${size}" />`;
     void navigator.clipboard?.writeText(jsx);
-    setCopied(name);
+    setCopied(jsx);
     window.setTimeout(() => setCopied(null), 1400);
   }
 
@@ -58,7 +59,7 @@ export function OrnamentsRoute() {
         </CardContent>
       </Card>
 
-      {copied ? <div className="feral-toast-stack"><div className="feral-toast feral-ornament-acid"><strong>Specimen bagged.</strong><span>{`<${copied} />`}</span></div></div> : null}
+      <SpecimenToast value={copied} />
 
       <div className="route-grid ornament-grid">
         {feralOrnamentCatalog.map((name, index) => {
