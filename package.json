@@ -2,7 +2,7 @@
   "name": "feral-ui-kit",
   "version": "0.7.0",
   "private": true,
-  "description": "Controlled-variance React/Radix components with hardened calendar, date range picker, toast provider, carousel controls, sidebar behavior, routed docs, templates, style lab, ornaments, and registry receipts.",
+  "description": "Controlled-variance React/Radix components with routed docs, live templates, Style Lab, ornaments, and a hosted registry basis.",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -11,7 +11,8 @@
     "check": "tsc --noEmit",
     "registry:build": "node scripts/build-registry.mjs",
     "smoke:registry": "node scripts/smoke-registry.mjs",
-    "smoke:fresh-app": "node scripts/smoke-fresh-app.mjs"
+    "smoke:fresh-app": "node scripts/smoke-fresh-app.mjs",
+    "smoke:hosted-registry": "node scripts/smoke-hosted-registry.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
