@@ -1,0 +1,50 @@
+.ornament-grid {
+  align-items: stretch;
+}
+
+.ornament-specimen {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  border: 4px dashed var(--feral-ink);
+  background:
+    radial-gradient(rgba(10, 10, 10, .12) 1px, transparent 1px),
+    var(--feral-paper);
+  background-size: 14px 14px;
+  overflow: hidden;
+}
+
+.ornament-specimen .feral-stamp {
+  transform: rotate(-5deg);
+}
+
+.site-sheet-link {
+  display: block;
+  padding: 12px 14px;
+  border: 3px solid var(--feral-ink);
+  background: var(--feral-paper);
+  box-shadow: 4px 4px 0 var(--feral-ink);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.site-menu-button {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .site-nav-links {
+    display: none;
+  }
+
+  .site-menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 3px solid var(--feral-ink);
+    background: var(--feral-paper);
+    box-shadow: 4px 4px 0 var(--feral-ink);
+    padding: 8px 10px;
+    font-weight: 900;
+  }
+}
