@@ -1,0 +1,105 @@
+.site-nav-right > .site-search,
+.site-menu-button,
+.playground-shell,
+.ornament-specimen {
+  position: relative;
+}
+
+.site-nav-right > .site-search::after,
+.site-menu-button::after,
+.playground-shell::before,
+.ornament-specimen::after {
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100vw - 24px);
+  border: 2px solid var(--feral-ink);
+  border-radius: 999px;
+  background: var(--feral-paper);
+  color: var(--feral-ink);
+  box-shadow: 3px 3px 0 var(--feral-ink);
+  padding: 4px 7px;
+  font: 900 10px/1 var(--feral-font-monoish);
+  white-space: nowrap;
+}
+
+.site-nav-right > .site-search:nth-child(1)::after {
+  content: "<Command/>";
+  right: -8px;
+  bottom: -22px;
+}
+
+.site-nav-right > .site-search:nth-child(2)::after {
+  content: "repo";
+  right: -8px;
+  bottom: -22px;
+}
+
+.site-nav-right > .site-search:nth-child(3)::after {
+  content: "<ThemeSelector/> soon";
+  right: -8px;
+  bottom: -22px;
+}
+
+.site-menu-button::after {
+  content: "<Sheet/>";
+  right: -6px;
+  bottom: -22px;
+}
+
+.playground-shell::before {
+  content: "live specimen";
+  top: -10px;
+  right: 12px;
+  background: var(--feral-acid);
+}
+
+.ornament-specimen::after {
+  content: "asset specimen";
+  top: 8px;
+  left: 8px;
+  background: var(--feral-paper);
+}
+
+.specimen-toast-stack {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 80;
+  max-width: min(380px, calc(100vw - 36px));
+}
+
+.specimen-toast {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.specimen-toast span {
+  display: block;
+  margin-top: 4px;
+  font: 800 11px/1.25 var(--feral-font-monoish);
+}
+
+@media (max-width: 980px) {
+  .site-nav-right > .site-search::after {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-menu-button::after {
+    display: none;
+  }
+
+  .playground-shell::before {
+    right: 8px;
+  }
+
+  .ornament-specimen::after {
+    transform: scale(.88);
+    transform-origin: top left;
+  }
+}
