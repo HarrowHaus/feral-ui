@@ -1,0 +1,63 @@
+.playground-shell {
+  display: grid;
+  gap: 18px;
+}
+
+.playground-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, .9fr) minmax(260px, 1.2fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.playground-controls {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.playground-control-group {
+  display: grid;
+  gap: 8px;
+}
+
+.playground-control-group > span {
+  font: 900 12px/1 var(--feral-font-monoish);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.playground-control-group > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.playground-specimen {
+  min-width: 0;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  border: 4px dashed var(--feral-ink);
+  background:
+    radial-gradient(rgba(10, 10, 10, .12) 1px, transparent 1px),
+    var(--feral-paper);
+  background-size: 14px 14px;
+  overflow: hidden;
+}
+
+.playground-specimen > .feral-card {
+  width: min(100%, 360px);
+}
+
+@media (max-width: 760px) {
+  .playground-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .playground-specimen {
+    min-height: 180px;
+    padding: 16px;
+  }
+}
