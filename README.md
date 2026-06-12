@@ -1,61 +1,75 @@
-# feral/ui kit v0.5
+# feral/ui
 
-Controlled Variance UI for React: loud visuals, named mutation axes, Radix/cmdk behavior where it matters, generated local registry item files, route-backed docs shell seed, Style Lab, Ornament Pack, and no fake install-command séance.
+Components raised by wolves. Housebroken by Radix. Leashed by tokens. Released into your codebase.
+
+feral/ui is a React component kit for landing pages, dashboards, docs, forms, shops, blogs, and apps that need more personality than a compliance webinar.
+
+## Install a component
+
+```bash
+npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/button.json
+```
+
+More creatures:
+
+```bash
+npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/card.json
+npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/dialog.json
+npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/data-table.json
+```
+
+## Preview
+
+```txt
+https://harrowhaus.github.io/feral-ui/
+```
 
 ## Run locally
 
 ```bash
-npm install
+npm install --registry=https://registry.npmjs.org --no-audit --no-fund
 npm run dev -- --host 0.0.0.0
 ```
 
-## Build + registry checks
+## Build checks
 
 ```bash
-npm run build
 npm run registry:build
+npm run build
 npm run smoke:registry
 npm run smoke:fresh-app
+npm run smoke:hosted-registry
 ```
 
-The v0.5 package has been build-verified, registry-smoke-verified, and fresh-app-materialization-smoke-verified locally.
+## What is included
 
-## What this is
-
-A serious local source basis for a shadcn-style component library and dogfood website. The dogfood app imports the same components, blocks, template catalog, docs primitives, and Style Lab it demonstrates.
-
-v0.5 adds:
-
-- route-backed docs/product shell seed
-- component docs page pattern
-- preview/code split primitives
-- copy button
-- Style Lab with presets, sliders, color controls, live preview, and CSS output
-- Ornament Pack seed
-- generated UI, block, and template registry records
-- fresh-app materialization smoke script
-
-## What this is not yet
-
-A published npm package or hosted shadcn registry. Generated files under `public/r` and `registry/items` are local structural registry receipts. Public install commands become allowed only after remote registry install tests pass.
+- React/Vite dogfood site
+- hosted shadcn registry output under `/r`
+- component source under `src/components/ui`
+- route-backed docs shell
+- live template previews
+- reusable blocks
+- Style Lab
+- ornament pack
+- component voice one-liners
+- MIT license
 
 ## Source map
 
 - `src/components/ui` — UI components, docs primitives, ornaments, and Radix adapters
-- `src/features/docs-shell.tsx` — route-backed docs shell seed
-- `src/features/style-lab.tsx` — Style Lab seed
-- `src/blocks` — reusable page blocks
+- `src/docs/component-voice.json` — single source for public component one-liners
 - `src/docs/component-catalog.ts` — docs-page data basis
-- `src/templates/template-catalog.tsx` — live template preview basis
+- `src/features/style-lab.tsx` — Style Lab
+- `src/templates/template-catalog.tsx` — live template preview catalog
+- `src/blocks` — reusable page blocks
 - `src/styles/feral.css` — token grammar and component CSS
-- `scripts/build-registry.mjs` — local registry item generator
-- `scripts/smoke-registry.mjs` — structural registry smoke test
-- `scripts/smoke-fresh-app.mjs` — materializes registry files into `.smoke/fresh-app`
-- `registry/registry.json` — generated registry index
-- `public/r/*.json` — generated registry item files for local serving
-- `docs/BUILD-LOG-v0.5.md` — latest build log
-- `docs/PHASE-BLUEPRINT-v0.5.md` — next competitive execution graph
+- `scripts/build-registry.mjs` — registry item generator
+- `scripts/smoke-hosted-registry.mjs` — hosted install smoke test
+- `docs/VOICE-LAW-v2.md` — public voice law
+- `docs/AUDIT-EXECUTION-GRAPH.md` — build gate graph
 
 ## Voice law
 
-Tongue-in-cheek is allowed. Fake proof is not. The goblin gets jokes. The docs need receipts. If the words say “Radix,” “registry,” “accessible,” or “install,” the code has to show up wearing pants.
+Useful component library with a goblin in the margins. Not a manifesto with a component demo attached.
+
+MIT licensed. Raised under duress. No animals were beiged in the making of this library.
