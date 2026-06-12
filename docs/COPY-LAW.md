@@ -2,15 +2,29 @@
 
 ## Public copy rule
 
-Do not lead with our internal design theory.
+Do not lead with internal design theory.
 
-Users do not arrive asking for axis taxonomy. They arrive asking what they can build, copy, preview, install, customize, or steal responsibly.
+Users do not arrive asking for axis taxonomy. They arrive asking what they can build, copy, preview, install, customize, or adapt.
+
+## Product voice
+
+The voice should feel like a useful component library with a goblin in the margins, not like a manifesto with a component demo attached.
+
+Use humor as seasoning:
+
+- self-deprecating
+- dry
+- specific to the page or product scenario
+- playful without explaining the joke
+- blunt when setup status matters
+
+Do not turn every section into a courtroom defense of the source code.
 
 ## Preferred copy shape
 
 Write sections like a product site:
 
-- what this page helps the user do
+- what this page helps the user build
 - what is included
 - what the preview demonstrates
 - what can be copied or customized
@@ -21,12 +35,13 @@ Write sections like a product site:
 - manifesto-first copy
 - explaining every visual choice
 - talking about internal design axes before showing value
+- repeating receipt / truth / state / proof language as normal marketing copy
 - claiming distribution features before they are tested
 - vague startup words like seamless, unlock, empower, elevate, frictionless
 
-## Allowed voice
+Receipt language is allowed only in install, registry, testing, and release-readiness sections. It should not be the personality of the whole site.
 
-The voice can be rude, dry, specific, and self-aware.
+## Allowed voice
 
 Good:
 
@@ -34,13 +49,21 @@ Good:
 
 Good:
 
-> Copy the component. Keep the source. Make the button louder or calmer without summoning a theme priest.
+> Copy the component. Make the button louder or calmer without summoning a theme priest.
+
+Good:
+
+> Empty states for when the database has nothing to say and still wants attention.
 
 Bad:
 
 > This section demonstrates controlled variance across ink, pressure, radius, signal, and density.
 
-That may be true, but it belongs in styling docs, not the front of the product.
+Bad:
+
+> Component generated from local inventory with receipts and source truth.
+
+That may be build-relevant, but it belongs in implementation notes, not the front of the product.
 
 ## Template copy rule
 
