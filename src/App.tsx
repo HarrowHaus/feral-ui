@@ -49,11 +49,13 @@ import {
 } from "./components/ui";
 import { componentCatalog } from "./docs/component-catalog";
 import { ComponentShowcase, componentContent } from "./docs/component-showcase";
+import { ComponentPlayground } from "./features/component-playground";
 import { OrnamentsRoute } from "./features/ornaments-page";
 import { StyleLab } from "./features/style-lab";
 import { templateCatalog } from "./templates/template-catalog";
 
 const VERSION = `v${pkg.version}`;
+const playgroundSlugs = new Set(["button", "badge", "card"]);
 const navItems = [
   { label: "Docs", href: "#/docs" },
   { label: "Components", href: "#/components" },
@@ -187,55 +189,16 @@ function Footer() {
 }
 
 function HomePage() {
-  return (
-    <>
-      <Hero />
-      <ComponentCollage />
-      <Doctrine />
-      <BehaviorTeaser />
-      <StyleLabTeaser />
-      <TemplateTeaser />
-      <FieldReports />
-      <FAQ />
-      <CTA />
-    </>
-  );
+  return <><Hero /><ComponentCollage /><Doctrine /><BehaviorTeaser /><StyleLabTeaser /><TemplateTeaser /><FieldReports /><FAQ /><CTA /></>;
 }
 
 function Hero() {
-  return (
-    <section className="site-hero">
-      <div className="site-eyebrow"><Badge tone="pink">{VERSION} — 66 loose</Badge><Badge tone="paper">Controlled variance UI</Badge></div>
-      <h1>Components raised<br />by <span className="site-highlight pink">wolves.</span></h1>
-      <p>Housebroken by Radix. Leashed by tokens. Released into your codebase.</p>
-      <div className="site-hero-actions">
-        <Button tone="ink" size="lg" onClick={() => navigate("/components")}>Open the cages</Button>
-        <Button tone="pink" size="lg" tilt="left" onClick={() => navigate("/templates")}>See the damage</Button>
-        <Button tone="paper" size="lg" onClick={() => navigate("/docs/installation")}>Install one</Button>
-      </div>
-    </section>
-  );
+  return <section className="site-hero"><div className="site-eyebrow"><Badge tone="pink">{VERSION} — 66 loose</Badge><Badge tone="paper">Controlled variance UI</Badge></div><h1>Components raised<br />by <span className="site-highlight pink">wolves.</span></h1><p>Housebroken by Radix. Leashed by tokens. Released into your codebase.</p><div className="site-hero-actions"><Button tone="ink" size="lg" onClick={() => navigate("/components")}>Open the cages</Button><Button tone="pink" size="lg" tilt="left" onClick={() => navigate("/templates")}>See the damage</Button><Button tone="paper" size="lg" onClick={() => navigate("/docs/installation")}>Install one</Button></div></section>;
 }
 
 function ComponentCollage() {
-  const rows = [
-    { component: "Button", state: "LOOSE", mode: "press physics" },
-    { component: "Dialog", state: "LOOSE", mode: "Radix" },
-    { component: "Calendar", state: "IN THE ENCLOSURE", mode: "date math" },
-  ];
-  return (
-    <section className="site-collage" aria-label="Component collage">
-      <Card tilt="left" radius="none"><CardHeader><CardTitle>Login to your account</CardTitle><CardDescription>Calmer than it looks. Still wearing the traffic cone.</CardDescription></CardHeader><CardContent className="site-stack"><Field><Label htmlFor="email">Email</Label><Input id="email" type="email" placeholder="you@feral.dev" /></Field><Field><Label htmlFor="password">Password</Label><Input id="password" type="password" placeholder="••••••••" /><FieldHelp>Password managers welcome. We are loud, not foolish.</FieldHelp></Field></CardContent><CardFooter><Button tone="acid">Login</Button><Button tone="paper">Google</Button></CardFooter></Card>
-      <Alert tone="ultra"><AlertIcon>⚡</AlertIcon><div><AlertTitle>Saved.</AlertTitle><AlertDescription>The beige committee has been notified and is coping poorly.</AlertDescription></div></Alert>
-      <Accordion items={[{ title: "Is it accessible?", content: "Yes. The chaos is strictly visual. Keyboards are sacred ground.", defaultOpen: true }, { title: "Why does it tilt?", content: "It heard something." }]} />
-      <Card tone="acid" radius="none"><CardHeader><CardTitle>OTP code</CardTitle><CardDescription>Six boxes. One tiny security ritual.</CardDescription></CardHeader><CardContent><OtpInput length={6} label="Demo OTP code" /></CardContent></Card>
-      <Tabs items={[{ id: "law", label: "Law", content: "One broken rule per creature." }, { id: "leash", label: "Leash", content: "Every axis is a token." }, { id: "beige", label: "Beige", content: "Beige is a choice. So is this." }]} />
-      <Card tone="pink"><CardContent className="site-stack"><SwitchRow><Switch defaultChecked /> Feral mode</SwitchRow><SwitchRow><Switch /> Domesticated</SwitchRow></CardContent></Card>
-      <Card tone="ultra" radius="none"><CardHeader><CardTitle>Data table</CardTitle><CardDescription>Sorts, filters, paginates, selects rows, holds grudges.</CardDescription></CardHeader><CardContent><DataTable data={rows} columns={[{ key: "component", header: "Component" }, { key: "state", header: "State" }, { key: "mode", header: "Mode" }]} /></CardContent></Card>
-      <Card tone="tang"><CardHeader><CardTitle>Combobox</CardTitle><CardDescription>A dropdown that went to grad school.</CardDescription></CardHeader><CardContent><Combobox options={[{ value: "acid", label: "Acid" }, { value: "pink", label: "Pink" }, { value: "ultra", label: "Ultra" }]} /></CardContent></Card>
-      <Card><CardContent><Pagination /></CardContent></Card>
-    </section>
-  );
+  const rows = [{ component: "Button", state: "LOOSE", mode: "press physics" }, { component: "Dialog", state: "LOOSE", mode: "Radix" }, { component: "Calendar", state: "IN THE ENCLOSURE", mode: "date math" }];
+  return <section className="site-collage" aria-label="Component collage"><Card tilt="left" radius="none"><CardHeader><CardTitle>Login to your account</CardTitle><CardDescription>Calmer than it looks. Still wearing the traffic cone.</CardDescription></CardHeader><CardContent className="site-stack"><Field><Label htmlFor="email">Email</Label><Input id="email" type="email" placeholder="you@feral.dev" /></Field><Field><Label htmlFor="password">Password</Label><Input id="password" type="password" placeholder="••••••••" /><FieldHelp>Password managers welcome. We are loud, not foolish.</FieldHelp></Field></CardContent><CardFooter><Button tone="acid">Login</Button><Button tone="paper">Google</Button></CardFooter></Card><Alert tone="ultra"><AlertIcon>⚡</AlertIcon><div><AlertTitle>Saved.</AlertTitle><AlertDescription>The beige committee has been notified and is coping poorly.</AlertDescription></div></Alert><Accordion items={[{ title: "Is it accessible?", content: "Yes. The chaos is strictly visual. Keyboards are sacred ground.", defaultOpen: true }, { title: "Why does it tilt?", content: "It heard something." }]} /><Card tone="acid" radius="none"><CardHeader><CardTitle>OTP code</CardTitle><CardDescription>Six boxes. One tiny security ritual.</CardDescription></CardHeader><CardContent><OtpInput length={6} label="Demo OTP code" /></CardContent></Card><Tabs items={[{ id: "law", label: "Law", content: "One broken rule per creature." }, { id: "leash", label: "Leash", content: "Every axis is a token." }, { id: "beige", label: "Beige", content: "Beige is a choice. So is this." }]} /><Card tone="pink"><CardContent className="site-stack"><SwitchRow><Switch defaultChecked /> Feral mode</SwitchRow><SwitchRow><Switch /> Domesticated</SwitchRow></CardContent></Card><Card tone="ultra" radius="none"><CardHeader><CardTitle>Data table</CardTitle><CardDescription>Sorts, filters, paginates, selects rows, holds grudges.</CardDescription></CardHeader><CardContent><DataTable data={rows} columns={[{ key: "component", header: "Component" }, { key: "state", header: "State" }, { key: "mode", header: "Mode" }]} /></CardContent></Card><Card tone="tang"><CardHeader><CardTitle>Combobox</CardTitle><CardDescription>A dropdown that went to grad school.</CardDescription></CardHeader><CardContent><Combobox options={[{ value: "acid", label: "Acid" }, { value: "pink", label: "Pink" }, { value: "ultra", label: "Ultra" }]} /></CardContent></Card><Card><CardContent><Pagination /></CardContent></Card></section>;
 }
 
 function Doctrine() {
@@ -284,7 +247,8 @@ function ComponentDetail({ slug }: { slug: string }) {
   const index = componentCatalog.findIndex((entry) => entry.slug === slug);
   const prev = componentCatalog[index - 1];
   const next = componentCatalog[index + 1];
-  return <RoutePage eyebrow={item.layer} title={item.name} description={content.description}><div className="route-two-col"><Card><CardHeader><Badge tone={item.status === "built" ? "acid" : "tang"}>{statusLabel(item.status)}</Badge><CardTitle>Specimen</CardTitle><CardDescription>{item.file}</CardDescription></CardHeader><CardContent><ComponentShowcase slug={item.slug} /></CardContent></Card><CodeTabs tabs={[{ id: "usage", label: "Usage", code: content.usage }, { id: "install", label: "Install", code: `npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/${item.slug}.json` }, { id: "a11y", label: "Behavior", code: content.accessibility }]} /></div><div className="route-pager">{prev ? <Button tone="paper" onClick={() => navigate(`/components/${prev.slug}`)}>← {prev.name}</Button> : <span />}{next ? <Button tone="paper" onClick={() => navigate(`/components/${next.slug}`)}>{next.name} →</Button> : <span />}</div></RoutePage>;
+  const specimen = playgroundSlugs.has(item.slug) ? <ComponentPlayground slug={item.slug} /> : <ComponentShowcase slug={item.slug} />;
+  return <RoutePage eyebrow={item.layer} title={item.name} description={content.description}><div className={playgroundSlugs.has(item.slug) ? "site-stack" : "route-two-col"}><Card><CardHeader><Badge tone={item.status === "built" ? "acid" : "tang"}>{statusLabel(item.status)}</Badge><CardTitle>{playgroundSlugs.has(item.slug) ? "Live specimen" : "Specimen"}</CardTitle><CardDescription>{item.file}</CardDescription></CardHeader><CardContent>{specimen}</CardContent></Card><CodeTabs tabs={[{ id: "usage", label: "Usage", code: content.usage }, { id: "install", label: "Install", code: `npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/${item.slug}.json` }, { id: "a11y", label: "Behavior", code: content.accessibility }]} /></div><div className="route-pager">{prev ? <Button tone="paper" onClick={() => navigate(`/components/${prev.slug}`)}>← {prev.name}</Button> : <span />}{next ? <Button tone="paper" onClick={() => navigate(`/components/${next.slug}`)}>{next.name} →</Button> : <span />}</div></RoutePage>;
 }
 
 function DocsPage({ slug }: { slug?: string }) {
