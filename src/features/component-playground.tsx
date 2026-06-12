@@ -16,6 +16,7 @@ import {
   type FeralButtonSize,
   type FeralButtonTone,
 } from "../components/ui";
+import { SpecimenToast } from "./specimen-toast";
 
 type PlaygroundProps = { slug: string };
 type CardTone = "paper" | "acid" | "pink" | "ultra" | "tang";
@@ -39,11 +40,11 @@ function escapeText(value: string) {
 }
 
 function PlaygroundShell({ title, description, children, code }: { title: string; description: string; children: React.ReactNode; code: string }) {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = React.useState<string | null>(null);
   function copy() {
     void navigator.clipboard?.writeText(code);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1200);
+    setCopied(code);
+    window.setTimeout(() => setCopied(null), 1400);
   }
 
   return (
@@ -60,6 +61,7 @@ function PlaygroundShell({ title, description, children, code }: { title: string
         <div className="playground-code-head"><strong>Live JSX</strong><Button type="button" tone="acid" size="sm" onClick={copy}>{copied ? "Bagged" : "Copy"}</Button></div>
         <CodeBlock>{code}</CodeBlock>
       </div>
+      <SpecimenToast value={copied} />
     </div>
   );
 }
