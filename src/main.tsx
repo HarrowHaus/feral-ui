@@ -10,6 +10,7 @@ import "./styles/ornaments-page.css";
 import "./styles/component-playground.css";
 import "./styles/self-labels.css";
 import "./styles/mobile-nav-fix.css";
+import "./styles/night-role-repair.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
