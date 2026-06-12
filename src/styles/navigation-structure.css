@@ -1,0 +1,127 @@
+.mobile-control-rail {
+  display: none;
+}
+
+.theme-selector {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 3px solid var(--feral-ink);
+  background: var(--feral-paper);
+  color: var(--feral-ink);
+  box-shadow: 4px 4px 0 var(--feral-ink);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font: 900 12px/1 var(--feral-font-monoish);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.theme-selector-symbol {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.theme-selector-icon {
+  width: 46px;
+  min-width: 46px;
+  height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  font-size: 0;
+}
+
+.theme-selector-icon .theme-selector-symbol {
+  font-size: 21px;
+}
+
+.site-nav-desktop-controls .site-menu-button {
+  display: none !important;
+}
+
+@media (max-width: 1100px) {
+  .site-nav {
+    position: relative;
+    overflow: visible !important;
+    padding-right: 120px !important;
+  }
+
+  .site-nav-links,
+  .site-nav-desktop-controls {
+    display: none !important;
+  }
+
+  .mobile-control-rail {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    z-index: 10;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(-50%);
+  }
+
+  .mobile-control-rail .site-menu-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 74px;
+    height: 44px;
+    border: 3px solid var(--feral-ink) !important;
+    border-radius: 12px !important;
+    background: var(--feral-acid) !important;
+    color: var(--feral-ink) !important;
+    box-shadow: 4px 4px 0 var(--feral-ink) !important;
+    padding: 0 10px !important;
+    font-weight: 900 !important;
+  }
+
+  .mobile-control-rail .site-menu-button::after,
+  .mobile-control-rail .theme-selector::after,
+  .mobile-control-rail .theme-selector::before {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav {
+    padding-right: 112px !important;
+  }
+
+  .site-mark {
+    font-size: clamp(22px, 8vw, 34px);
+  }
+
+  .mobile-control-rail {
+    right: 8px;
+    gap: 6px;
+  }
+
+  .theme-selector-icon {
+    width: 42px;
+    min-width: 42px;
+    height: 40px;
+  }
+
+  .mobile-control-rail .site-menu-button {
+    min-width: 64px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+:root[data-feral-scheme="dark"] .theme-selector {
+  background: #080a12;
+  color: var(--feral-ink);
+  border-color: var(--feral-ink);
+}
+
+:root[data-feral-scheme="dark"] .theme-selector[aria-pressed="true"] {
+  background: #fff0d2;
+  color: #080a12;
+  border-color: #080a12;
+}
