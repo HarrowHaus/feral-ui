@@ -3,7 +3,7 @@ import { clearFeralTheme } from "./theme-session";
 export type FeralScheme = "light" | "dark";
 
 const KEY = "feral-ui-scheme";
-const SELECTOR = "button[data-scheme-toggle]";
+const SELECTOR = 'button[aria-label="Theme toggle"]';
 
 function stored(): FeralScheme {
   return localStorage.getItem(KEY) === "dark" ? "dark" : "light";
