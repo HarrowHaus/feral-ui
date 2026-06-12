@@ -1,0 +1,44 @@
+:root[data-feral-scheme="dark"] {
+  color-scheme: dark;
+  --feral-ink: #f8f1e6;
+  --feral-cream: #0b0b12;
+  --feral-bone: #17131c;
+  --feral-paper: #15131d;
+  --feral-muted: #c9bda8;
+  --feral-pink: #ff3aa7;
+  --feral-acid: #baff00;
+  --feral-ultra: #6d5cff;
+  --feral-verm: #ff4b2f;
+  --feral-cyan: #24e7ff;
+  --feral-tang: #ff9b22;
+  --feral-focus: var(--feral-acid);
+}
+
+:root[data-feral-scheme="dark"] body {
+  background-color: var(--feral-cream);
+  background-image: radial-gradient(rgba(248, 241, 230, .22) .75px, transparent .75px);
+}
+
+:root[data-feral-scheme="dark"] .feral-card[data-tone="paper"],
+:root[data-feral-scheme="dark"] .feral-input,
+:root[data-feral-scheme="dark"] .feral-select,
+:root[data-feral-scheme="dark"] .feral-textarea,
+:root[data-feral-scheme="dark"] .site-search,
+:root[data-feral-scheme="dark"] .site-menu-button,
+:root[data-feral-scheme="dark"] .site-sheet-link,
+:root[data-feral-scheme="dark"] .ornament-specimen,
+:root[data-feral-scheme="dark"] .playground-specimen {
+  background-color: var(--feral-paper);
+  color: var(--feral-ink);
+}
+
+:root[data-feral-scheme="dark"] .site-code,
+:root[data-feral-scheme="dark"] pre {
+  background: #050509;
+  color: var(--feral-acid);
+}
+
+:root[data-feral-scheme="dark"] .site-nav button[aria-pressed="true"] {
+  background: var(--feral-ultra);
+  color: white;
+}
