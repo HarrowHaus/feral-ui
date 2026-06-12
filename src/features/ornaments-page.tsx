@@ -17,7 +17,7 @@ import * as OrnamentExports from "../components/ui/ornaments";
 type OrnamentComponent = React.ComponentType<{ tone?: FeralOrnamentTone; size?: FeralOrnamentSize; label?: string; children?: React.ReactNode }>;
 
 const ornamentMap = OrnamentExports as unknown as Record<string, OrnamentComponent>;
-const tones: FeralOrnamentTone[] = ["acid", "pink", "ultra", "cyan", "tang", "verm", "paper"];
+const tones: Array<"acid" | "pink" | "ultra" | "tang" | "paper"> = ["acid", "pink", "ultra", "tang", "paper"];
 const sizes: FeralOrnamentSize[] = ["sm", "md", "lg", "xl"];
 
 const notes: Record<string, string> = {
@@ -50,7 +50,7 @@ export function OrnamentsRoute() {
         </CardHeader>
         <CardContent className="site-stack">
           <div className="site-mini-grid">
-            {tones.map((item) => <Button key={item} tone={item === "verm" ? "pink" : item} onClick={() => setTone(item)}>{item}</Button>)}
+            {tones.map((item) => <Button key={item} tone={item} onClick={() => setTone(item)}>{item}</Button>)}
           </div>
           <div className="site-mini-grid">
             {sizes.map((item) => <Button key={item} tone={size === item ? "pink" : "paper"} onClick={() => setSize(item)}>{item.toUpperCase()}</Button>)}
