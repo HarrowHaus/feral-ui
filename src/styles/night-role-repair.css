@@ -1,0 +1,198 @@
+/* Final night-mode role repair.
+   Goal: keep the blacklight habitat, but prevent impossible foreground/background inheritance. */
+
+:root[data-feral-scheme="dark"] .site-nav,
+:root[data-feral-scheme="dark"] .site-nav a,
+:root[data-feral-scheme="dark"] .site-nav button,
+:root[data-feral-scheme="dark"] .site-mark {
+  color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] .site-nav a:hover,
+:root[data-feral-scheme="dark"] .site-nav button:hover {
+  background: #080a12 !important;
+  color: var(--feral-acid) !important;
+}
+
+:root[data-feral-scheme="dark"] .site-nav .site-search,
+:root[data-feral-scheme="dark"] .site-nav-right > .site-search[aria-label="Theme toggle"] {
+  background: #080a12 !important;
+  color: var(--feral-ink) !important;
+  border-color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] .site-nav .site-search svg,
+:root[data-feral-scheme="dark"] .site-nav-right > .site-search[aria-label="Theme toggle"] svg {
+  color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] .site-nav .feral-badge[data-tone="paper"] {
+  background: #fff0d2 !important;
+  color: #080a12 !important;
+  border-color: #080a12 !important;
+}
+
+/* Bright cards must stay bright at night. They are signage, not panels. */
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] {
+  background: var(--feral-acid) !important;
+  color: #080a12 !important;
+  border-color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] {
+  background: var(--feral-tang) !important;
+  color: #080a12 !important;
+  border-color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-card-title,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-card-content,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-card-description,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] p,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] span,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-card-title,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-card-content,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-card-description,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] p,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] span {
+  color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-input,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-select,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-textarea,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-input,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-select,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="tang"] .feral-textarea {
+  background: #fff0d2 !important;
+  color: #080a12 !important;
+  border-color: #080a12 !important;
+}
+
+/* Dark panels keep the night habitat, with readable warm text. */
+:root[data-feral-scheme="dark"] .feral-card[data-tone="paper"],
+:root[data-feral-scheme="dark"] .feral-card[data-tone="pink"],
+:root[data-feral-scheme="dark"] .feral-card[data-tone="ultra"] {
+  background: var(--feral-paper) !important;
+  color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-card[data-tone="paper"] .feral-card-description,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="pink"] .feral-card-description,
+:root[data-feral-scheme="dark"] .feral-card[data-tone="ultra"] .feral-card-description {
+  color: var(--feral-muted) !important;
+}
+
+/* Component internals that were inheriting wrong roles. */
+:root[data-feral-scheme="dark"] .feral-tabs {
+  background: var(--feral-paper) !important;
+  color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-tab-list {
+  background: #fff0d2 !important;
+  border-color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-tab {
+  color: #080a12 !important;
+  border-color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-tab-panel {
+  color: var(--feral-muted) !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-switch-row {
+  color: inherit !important;
+}
+
+:root[data-feral-scheme="dark"] .feral-table-wrap,
+:root[data-feral-scheme="dark"] .feral-table,
+:root[data-feral-scheme="dark"] table {
+  color: var(--feral-ink) !important;
+}
+
+:root[data-feral-scheme="dark"] th {
+  color: #080a12 !important;
+}
+
+:root[data-feral-scheme="dark"] td {
+  color: var(--feral-ink) !important;
+}
+
+/* Phone + desktop-mode-on-phone: collapse earlier. */
+@media (max-width: 1100px) {
+  .site-nav {
+    overflow: visible !important;
+    padding-right: 112px !important;
+  }
+
+  .site-nav-links {
+    display: none !important;
+  }
+
+  .site-nav-right {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 999 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    max-width: calc(100vw - 20px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .site-nav-right .feral-badge,
+  .site-nav-right > .site-search:nth-child(1),
+  .site-nav-right > .site-search:nth-child(2) {
+    display: none !important;
+  }
+
+  .site-nav-right > .site-search[aria-label="Theme toggle"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 46px !important;
+    min-width: 46px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border: 3px solid var(--feral-ink) !important;
+    border-radius: 999px !important;
+    background: #080a12 !important;
+    color: var(--feral-ink) !important;
+    box-shadow: 4px 4px 0 var(--feral-ink) !important;
+    font-size: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
+    content: "☾";
+    font-size: 21px;
+    line-height: 1;
+  }
+
+  :root[data-feral-scheme="dark"] .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
+    content: "☀";
+  }
+
+  .site-menu-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 74px !important;
+    height: 44px !important;
+    border: 3px solid #080a12 !important;
+    border-radius: 12px !important;
+    background: var(--feral-acid) !important;
+    color: #080a12 !important;
+    box-shadow: 4px 4px 0 #080a12 !important;
+    padding: 0 10px !important;
+    font-weight: 900 !important;
+  }
+}
