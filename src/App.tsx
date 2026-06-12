@@ -193,17 +193,17 @@ function Nav() {
   return (
     <header className="site-nav">
       <a className="site-mark" href="#top" aria-label="feral/ui home"><span className="site-mark-dot" /> feral/ui</a>
-      <a href="#doctrine">Doctrine</a>
+      <a href="#doctrine">Build</a>
       <a href="#components">Components</a>
       <a href="#docs">Docs</a>
       <a href="#blocks">Blocks</a>
       <a href="#templates">Templates</a>
-      <a href="#route-docs">Routed Docs</a>
+      <a href="#route-docs">Guides</a>
       <a href="#style-lab">Style Lab</a>
-      <a href="#blueprint">Blueprint</a>
+      <a href="#blueprint">Roadmap</a>
       <span className="site-nav-right">
-        <span className="site-search"><Search size={13} /> Search soon, clown later</span>
-        <Badge tone="paper">v0.5 local</Badge>
+        <span className="site-search"><Search size={13} /> Search soon. Panic now.</span>
+        <Badge tone="paper">preview build</Badge>
       </span>
     </header>
   );
@@ -213,16 +213,16 @@ function Hero() {
   return (
     <section className="site-hero" id="top">
       <div className="site-eyebrow"><Badge tone="pink">Controlled variance UI</Badge><Badge tone="paper">No fake registry cosplay</Badge></div>
-      <h1>Build interfaces<br />with <span className="site-highlight pink">teeth</span><br />and <span className="site-highlight acid">rules</span> and <span className="site-highlight cyan">receipts.</span></h1>
+      <h1>Build pages<br />that do not<br /><span className="site-highlight pink">look sedated.</span></h1>
       <p>
-        feral/ui is a React/Radix source library for loud interfaces that still behave like adults. Border widths mutate. Shadows colorize. Radii argue in public. The semantic tree keeps a tie on.
+        A React component kit for landing pages, dashboards, docs, forms, shops, blogs, and apps that need more personality than a compliance webinar.
       </p>
       <div className="site-hero-actions">
-        <Button tone="ink" size="lg">Read doctrine</Button>
-        <Button tone="pink" size="lg" tilt="left">Browse source</Button>
-        <Button tone="paper" size="lg">Copy files, no séance</Button>
+        <Button tone="ink" size="lg">See what it builds</Button>
+        <Button tone="pink" size="lg" tilt="left">Browse components</Button>
+        <Button tone="paper" size="lg">Copy the source</Button>
       </div>
-      <div className="site-note">Truth label: this package is a local, build-tested source basis with generated registry materialization smoke tests. Remote registry and npm distribution still wait for hosted install receipts. The goblin may joke; the install story may not lie.</div>
+      <div className="site-note">Pre-release truth label: the source is real, the preview is real, and the hosted install story is not getting a fake mustache until it passes clean-app tests.</div>
     </section>
   );
 }
@@ -252,7 +252,7 @@ function ComponentCollage() {
 
       <Card tone="acid" radius="none"><CardHeader><CardTitle>OTP code</CardTitle><CardDescription>Every box gets a costume. The group still gets a label.</CardDescription></CardHeader><CardContent><OtpInput length={6} label="Demo OTP code" /></CardContent></Card>
 
-      <Tabs items={[{ id: "law", label: "Law", content: "Ink, pressure, focus rings, and semantic discipline are non-negotiable." }, { id: "crime", label: "Crime", content: "Radii clash. Patterns trespass. Shadows get louder than product strategy." }, { id: "alibi", label: "Alibi", content: "Every visual offense maps back to a token." }]} />
+      <Tabs items={[{ id: "law", label: "Law", content: "Landing pages, pressure, focus rings, and semantic discipline are non-negotiable." }, { id: "crime", label: "Crime", content: "Radii clash. Patterns trespass. Shadows get louder than product strategy." }, { id: "alibi", label: "Alibi", content: "Every visual offense maps back to a token." }]} />
 
       <Card tone="pink"><CardContent className="site-stack"><SwitchRow><Switch defaultChecked /> Feral mode</SwitchRow><SwitchRow><Switch /> Domesticated</SwitchRow></CardContent></Card>
 
@@ -262,7 +262,7 @@ function ComponentCollage() {
 
       <Card><CardContent><Pagination /></CardContent></Card>
 
-      <Card tone="ultra" radius="none"><CardHeader><CardTitle>Data table</CardTitle><CardDescription>Receipts in little bordered cells.</CardDescription></CardHeader><CardContent><DataTable data={rows} columns={[{ key: "component", header: "Component" }, { key: "state", header: "State" }, { key: "receipt", header: "Receipt" }]} /></CardContent></Card>
+      <Card tone="ultra" radius="none"><CardHeader><CardTitle>Data table</CardTitle><CardDescription>Apps and forms in little bordered cells.</CardDescription></CardHeader><CardContent><DataTable data={rows} columns={[{ key: "component", header: "Component" }, { key: "state", header: "State" }, { key: "receipt", header: "Receipt" }]} /></CardContent></Card>
 
       <Card tone="tang"><CardHeader><CardTitle>Combobox</CardTitle><CardDescription>Popover plus command. Tiny menu goblin.</CardDescription></CardHeader><CardContent><Combobox options={[{ value: "acid", label: "Acid" }, { value: "pink", label: "Pink" }, { value: "ultra", label: "Ultra" }]} /></CardContent></Card>
 
@@ -274,13 +274,13 @@ function ComponentCollage() {
 function Doctrine() {
   return (
     <section className="site-section" id="doctrine">
-      <h2>Doctrine: feral, not random.</h2>
-      <p className="site-section-intro">The whole product rests on a tight contradiction: maximal visual conflict, minimum behavioral nonsense. It should look like it escaped, then pass keyboard testing.</p>
+      <h2>What you can build without looking like everyone else.</h2>
+      <p className="site-section-intro">Use it for product pages, internal tools, docs, dashboards, forms, and marketing surfaces that need to be memorable without becoming a usability crime scene.</p>
       <div className="site-grid">
-        <Card tone="acid" radius="none"><CardHeader><CardTitle>Ink</CardTitle><CardDescription>The border is the bouncer.</CardDescription></CardHeader><CardContent>Every surface can mutate, but structure stays readable.</CardContent></Card>
-        <Card tone="pink"><CardHeader><CardTitle>Pressure</CardTitle><CardDescription>Clickable things depress.</CardDescription></CardHeader><CardContent>The universal press motion is the handshake. It says: yes, this object is alive and probably over-caffeinated.</CardContent></Card>
-        <Card tone="ultra" radius="none"><CardHeader><CardTitle>Collision</CardTitle><CardDescription>Square, soft, pill: all invited, none supervised.</CardDescription></CardHeader><CardContent>Shape variance is allowed only where component role stays obvious.</CardContent></Card>
-        <Card tone="tang"><CardHeader><CardTitle>Receipts</CardTitle><CardDescription>No trust-me-bro components.</CardDescription></CardHeader><CardContent>If the docs claim Radix, keyboard behavior, or accessibility, the source has to back it up.</CardContent></Card>
+        <Card tone="acid" radius="none"><CardHeader><CardTitle>Landing pages</CardTitle><CardDescription>Hero sections, pricing, FAQs, testimonials, and CTAs with enough presence to survive a crowded tab bar.</CardDescription></CardHeader><CardContent>Build the front door of a product without sanding off every interesting corner.</CardContent></Card>
+        <Card tone="pink"><CardHeader><CardTitle>Dashboards</CardTitle><CardDescription>Stats, queues, filters, tables, panels, and charts for teams that need to see the mess before it grows teeth.</CardDescription></CardHeader><CardContent>Useful for admin screens, customer portals, ops boards, and anywhere data needs a little backbone.</CardContent></Card>
+        <Card tone="ultra" radius="none"><CardHeader><CardTitle>Docs and guides</CardTitle><CardDescription>Component pages, code examples, callouts, sidebars, changelogs, and searchable documentation.</CardDescription></CardHeader><CardContent>Keep the docs readable. Let the callouts yell. Everyone wins except beige.</CardContent></Card>
+        <Card tone="tang"><CardHeader><CardTitle>Apps and forms</CardTitle><CardDescription>Inputs, dialogs, date pickers, tables, command menus, toasts, sidebars, and stateful app surfaces.</CardDescription></CardHeader><CardContent>The jokes live in the copy. The interaction layer still has to pay rent.</CardContent></Card>
       </div>
     </section>
   );
@@ -290,10 +290,10 @@ function BehaviorLab() {
   return (
     <TooltipProvider>
       <section className="site-section" id="behavior">
-        <h2>Behavior lab: where the goblin meets Radix.</h2>
-        <p className="site-section-intro">Dialogs, sheets, context menus, hover cards, menus, and tooltips are backed by primitives instead of improvised div theater.</p>
+        <h2>Interactive components that do the annoying parts correctly.</h2>
+        <p className="site-section-intro">Dialogs, sheets, menus, hover cards, tooltips, command search, and popovers are included so your app can move without falling down the stairs.</p>
         <div className="site-kitchen">
-          <Card tone="acid" radius="none"><CardHeader><CardTitle>Overlay and menu lab</CardTitle><CardDescription>Keyboard and focus behavior underneath. Cartoon brass knuckles outside.</CardDescription></CardHeader><CardContent><div className="site-mini-grid">
+          <Card tone="acid" radius="none"><CardHeader><CardTitle>Overlays, menus, and panels</CardTitle><CardDescription>The behavior layer stays boring on purpose. The wrapper gets to wear the loud jacket.</CardDescription></CardHeader><CardContent><div className="site-mini-grid">
             <Dialog><DialogTrigger asChild><Button tone="pink">Dialog</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Modal with receipts</DialogTitle><DialogDescription>Radix Dialog under a feral shell. Focus trap: not held together with gum.</DialogDescription></DialogHeader><DialogFooter><DialogClose asChild><Button tone="ink">Close</Button></DialogClose></DialogFooter></DialogContent></Dialog>
             <Sheet><SheetTrigger asChild><Button tone="ultra">Sheet</Button></SheetTrigger><SheetContent><SheetHeader><SheetTitle>Side panel</SheetTitle><SheetDescription>Settings, filters, carts, and other drawers where product managers put guilt.</SheetDescription></SheetHeader><SheetFooter><Button tone="acid">Save</Button></SheetFooter></SheetContent></Sheet>
             <Popover><PopoverTrigger asChild><Button tone="paper">Popover</Button></PopoverTrigger><PopoverContent><strong>Popover panel.</strong><p>Small contextual goblin. Useful, against all odds.</p></PopoverContent></Popover>
@@ -317,8 +317,8 @@ function FormsAndData() {
   const [date, setDate] = React.useState<Date | undefined>();
   return (
     <section className="site-section" id="forms-data">
-      <h2>Forms, data, charts, and other unglamorous receipts.</h2>
-      <p className="site-section-intro">A library rival cannot stop at buttons. It needs the boring surfaces too, dressed like they got kicked out of a spreadsheet convention.</p>
+      <h2>App screens need more than buttons.</h2>
+      <p className="site-section-intro">Forms, uploads, validation, date picking, tables, charts, and content panels are the parts people actually ship after the homepage gets applause.</p>
       <div className="site-grid">
         <Card><CardHeader><CardTitle>Input group + date picker</CardTitle></CardHeader><CardContent className="site-stack"><InputGroup><InputAddon>@</InputAddon><Input placeholder="handle" /></InputGroup><DatePicker value={date} onChange={setDate} />
           <DateRangePicker /></CardContent></Card>
@@ -334,8 +334,8 @@ function ComponentDocs() {
   const [active, setActive] = React.useState(componentCatalog[0]);
   return (
     <section className="site-section" id="docs">
-      <h2>Component docs shell.</h2>
-      <p className="site-section-intro">Preview/code split panels are now part of the dogfood app. Next pass turns this data into route-backed docs pages and registry item generators.</p>
+      <h2>Component pages with previews and source notes.</h2>
+      <p className="site-section-intro">Browse components by name, preview the behavior, check the source path, and see what is ready versus what still needs a stronger coffee.</p>
       <div className="docs-frame">
         <nav className="docs-sidebar" aria-label="Component documentation">
           {componentCatalog.map((item) => <Button key={item.name} type="button" tone={item.name === active.name ? "pink" : "paper"} className="template-button" onClick={() => setActive(item)}>{item.name}</Button>)}
@@ -370,7 +370,7 @@ function DocsPreview({ name }: { name: string }) {
   if (name === "Callout") return <Callout tone="ultra"><CalloutTitle>Receipt rule</CalloutTitle><CalloutDescription>Show the source or sit down.</CalloutDescription></Callout>;
   if (name === "Code Block") return <CodeBlock>{`npm run build`}</CodeBlock>;
   if (name === "Kbd") return <Kbd>⌘K</Kbd>;
-  if (name === "Meter") return <Meter label="Pressure" value={72} />;
+  if (name === "Meter") return <Meter label="Dashboards" value={72} />;
   if (name === "Stepper") return <Stepper steps={[{ label: "Tokenize", state: "complete" }, { label: "Preview", state: "current" }, { label: "Ship", state: "upcoming" }]} />;
   if (name === "Timeline") return <Timeline items={[{ time: "v0.2", title: "Radix layer" }, { time: "v0.4", title: "Registry scripts", tone: "pink" }]} />;
   if (name === "Theme Selector") return <ThemeSelector value="acid" />;
@@ -383,8 +383,8 @@ function DocsPreview({ name }: { name: string }) {
 function Blocks() {
   return (
     <section className="site-section" id="blocks">
-      <h2>Reusable blocks: whole surfaces, not buttons in jail.</h2>
-      <p className="site-section-intro">These are actual React block files under <code>src/blocks</code>. They are the bridge from component library to template library.</p>
+      <h2>Blocks for real page sections.</h2>
+      <p className="site-section-intro">Hero sections, pricing cards, auth panels, dashboards, docs layouts, blogs, changelogs, and empty states. The component zoo has learned architecture.</p>
       <MarketingHeroBlock />
       <PricingBlock />
       <div className="site-grid"><LoginBlock /><EmptyStateBlock /></div>
@@ -399,8 +399,8 @@ function TemplateBrowser() {
   const [active, setActive] = React.useState(templateCatalog[0]);
   return (
     <section className="site-section" id="templates">
-      <h2>Template browser.</h2>
-      <p className="site-section-intro">The site now has a live preview loader for whole templates. This is the dogfood mechanic that keeps the library honest: if a template cannot be built from the source, the library is cosplaying.</p>
+      <h2>Templates you can judge with your eyes.</h2>
+      <p className="site-section-intro">Pick a template and see a full surface, not a tiny placeholder dressed as a product. SaaS, dashboards, docs, blogs, shops, agencies, AI apps, and changelogs all get their own room.</p>
       <div className="template-browser">
         <div className="template-list">{templateCatalog.map((template) => <Button key={template.name} type="button" tone={template.name === active.name ? "pink" : "paper"} className="template-button" onClick={() => setActive(template)}>{template.name}</Button>)}</div>
         <div className="template-stage"><Card><CardHeader><Badge tone="acid">{active.status}</Badge><CardTitle>{active.name}</CardTitle><CardDescription>{active.description}</CardDescription></CardHeader><CardContent>{active.component}</CardContent></Card></div>
@@ -412,7 +412,7 @@ function TemplateBrowser() {
 function KitchenSink() {
   return (
     <section className="site-section" id="more">
-      <h2>Remaining surfaces with source behind them.</h2>
+      <h2>More pieces included.</h2>
       <div className="site-grid">
         <Card><CardHeader><CardTitle>Avatar</CardTitle></CardHeader><CardContent style={{ display: "flex", gap: 12 }}><Avatar><AvatarFallback>FU</AvatarFallback></Avatar><Avatar tone="pink"><AvatarFallback>UI</AvatarFallback></Avatar><Avatar tone="ultra"><AvatarFallback>V3</AvatarFallback></Avatar></CardContent></Card>
         <Card tone="acid" radius="none"><CardHeader><CardTitle>Carousel</CardTitle></CardHeader><CardContent><Carousel><CarouselTrack><CarouselItem>Slide one, legally a card.</CarouselItem><CarouselItem>Slide two, emotionally a warning.</CarouselItem><CarouselItem>Slide three, visually a tax audit.</CarouselItem></CarouselTrack><CarouselControls /><CarouselDots /></Carousel></CardContent></Card>
@@ -430,8 +430,8 @@ function ProductizationLab() {
   const [accent, setAccent] = React.useState<"acid" | "pink" | "ultra" | "tang" | "cyan">("acid");
   return (
     <section className="site-section" id="productization">
-      <h2>Productization lab: where the funny hat gets a clipboard.</h2>
-      <p className="site-section-intro">This pass adds the missing public-product muscles: registry generator scripts, style lab, route-worthy docs pieces, and the copy voice lock. The goblin may remain legally unserious; the distribution system may not.</p>
+      <h2>Customize the kit without opening a portal.</h2>
+      <p className="site-section-intro">Tune the look, copy the source, inspect the registry work, and keep the funny parts in the UI instead of the install process.</p>
       <Banner tone="pink"><span>v0.4 truth label: local source + generated registry item files + smoke validation script.</span><Kbd>⌘K</Kbd></Banner>
       <div className="site-metric-strip" aria-label="v0.4 metrics">
         <div className="site-metric"><b>60+</b><span>source exports/components</span></div>
@@ -440,7 +440,7 @@ function ProductizationLab() {
         <div className="site-metric"><b>2</b><span>registry scripts</span></div>
       </div>
       <div className="site-product-panel">
-        <Card tone="acid" radius="none"><CardHeader><CardTitle>Style lab</CardTitle><CardDescription>Make variance visible without making it mystical. Mysticism is for brand decks and people who say “synergy” without blinking.</CardDescription></CardHeader><CardContent className="site-stack"><ThemeSelector value={accent} onValueChange={setAccent} /><Meter label="Pressure shadow" value={72} tone={accent} /><Meter label="Pattern trespass" value={44} tone="pink" /><Stepper steps={[{ label: "Tokenize", description: "Name the axis", state: "complete" }, { label: "Preview", description: "Dogfood it", state: "current" }, { label: "Registry", description: "Generate, test, then brag", state: "upcoming" }]} /></CardContent></Card>
+        <Card tone="acid" radius="none"><CardHeader><CardTitle>Style lab</CardTitle><CardDescription>Make variance visible without making it mystical. Mysticism is for brand decks and people who say “synergy” without blinking.</CardDescription></CardHeader><CardContent className="site-stack"><ThemeSelector value={accent} onValueChange={setAccent} /><Meter label="Dashboards shadow" value={72} tone={accent} /><Meter label="Pattern trespass" value={44} tone="pink" /><Stepper steps={[{ label: "Tokenize", description: "Name the axis", state: "complete" }, { label: "Preview", description: "Dogfood it", state: "current" }, { label: "Registry", description: "Generate, test, then brag", state: "upcoming" }]} /></CardContent></Card>
         <Card><CardHeader><CardTitle>Docs atoms</CardTitle><CardDescription>Small pieces needed for real documentation pages.</CardDescription></CardHeader><CardContent className="site-stack"><Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#">Docs</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href="#">Components</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Button</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb><Callout tone="ultra"><CalloutTitle>Receipt rule</CalloutTitle><CalloutDescription>If a page says keyboard support, it points to the primitive or test. No “trust me, bro” aria cosplay.</CalloutDescription></Callout><CodeBlock>{`pnpm registry:build\npnpm smoke:registry`}</CodeBlock></CardContent></Card>
       </div>
     </section>
@@ -450,8 +450,8 @@ function ProductizationLab() {
 function NthComponents() {
   return (
     <section className="site-section" id="nth-components">
-      <h2>Nth-degree surface expansion.</h2>
-      <p className="site-section-intro">The rivals win by depth: not just inputs, but docs atoms, content atoms, icons, builders, templates, and proof surfaces. v0.4 adds the pieces that make the kit feel like an ecosystem instead of a tattooed button farm.</p>
+      <h2>Small components that make the big pages work.</h2>
+      <p className="site-section-intro">Keyboard hints, callouts, timelines, meters, image cards, avatar groups, code blocks, and loading states. Not glamorous. Very necessary. Like socks.</p>
       <div className="site-grid">
         <Card tone="paper"><CardHeader><CardTitle>Button group</CardTitle></CardHeader><CardContent><ButtonGroup><Button tone="acid">Copy</Button><Button tone="paper">Fork</Button><Button tone="pink">Riot</Button></ButtonGroup></CardContent></Card>
         <Card tone="acid" radius="none"><CardHeader><CardTitle>Avatar group</CardTitle></CardHeader><CardContent><AvatarGroup><Avatar><AvatarFallback>FU</AvatarFallback></Avatar><Avatar tone="pink"><AvatarFallback>UI</AvatarFallback></Avatar><Avatar tone="ultra"><AvatarFallback>V4</AvatarFallback></Avatar></AvatarGroup></CardContent></Card>
@@ -472,8 +472,8 @@ function CompetitiveAudit() {
   ];
   return (
     <section className="site-section" id="audit-compare">
-      <h2>Competitive audit baked into the site.</h2>
-      <p className="site-section-intro">This section is intentionally inside the dogfood app because the site itself has to remember what it is fighting. Otherwise it becomes another loud homepage wearing a fake mustache.</p>
+      <h2>Why this exists.</h2>
+      <p className="site-section-intro">Most UI kits are either very useful and very plain, or very loud and not useful enough. This is the attempt to be both useful and impossible to confuse for a payroll portal.</p>
       <Table className="audit-table"><TableHeader><TableRow><TableHead>Rival</TableHead><TableHead>Their actual edge</TableHead><TableHead>Opening</TableHead><TableHead>feral/ui response</TableHead></TableRow></TableHeader><TableBody>{rows.map((row) => <TableRow key={row.rival}><TableCell>{row.rival}</TableCell><TableCell>{row.strength}</TableCell><TableCell>{row.gap}</TableCell><TableCell>{row.feral}</TableCell></TableRow>)}</TableBody></Table>
     </section>
   );
@@ -482,10 +482,10 @@ function CompetitiveAudit() {
 function Matrix() {
   return (
     <section className="site-section" id="matrix">
-      <h2>Inventory matrix.</h2>
+      <h2>What is included.</h2>
       <div style={{ overflowX: "auto", marginTop: 24 }}>
         <Table><TableHeader><TableRow><TableHead>Layer</TableHead><TableHead>Now in source</TableHead><TableHead>Still not pretending</TableHead></TableRow></TableHeader><TableBody>
-          <TableRow><TableCell>Tokens</TableCell><TableCell>Ink, pressure, radius, color, pattern, tilt, density.</TableCell><TableCell>Theme generator and visual regression snapshots.</TableCell></TableRow>
+          <TableRow><TableCell>Tokens</TableCell><TableCell>Landing pages, pressure, radius, color, pattern, tilt, density.</TableCell><TableCell>Theme generator and visual regression snapshots.</TableCell></TableRow>
           <TableRow><TableCell>Components</TableCell><TableCell>48+ source exports including Radix overlays, command, context menu, calendar/date picker basis, data table, chart basis, sidebar, carousel, scroll area, avatar, toggles.</TableCell><TableCell>Production-grade calendar, sortable data table, chart adapter, true resizable drag handles.</TableCell></TableRow>
           <TableRow><TableCell>Blocks</TableCell><TableCell>Marketing, pricing, auth, dashboard, docs, blog, changelog, empty state.</TableCell><TableCell>More industry templates and code extraction pages.</TableCell></TableRow>
           <TableRow><TableCell>Distribution</TableCell><TableCell>Local source repo, registry inventory docs.</TableCell><TableCell>Actual shadcn registry item JSON generated from stable source files.</TableCell></TableRow>
@@ -498,8 +498,8 @@ function Matrix() {
 function Blueprint() {
   return (
     <section className="site-section" id="blueprint">
-      <h2>Next execution blueprint.</h2>
-      <p className="site-section-intro">After this package, the work becomes less “invent components” and more “turn inventory into a publishable system.” The goblin gets a release checklist and hates it, which is how we know it is good.</p>
+      <h2>Roadmap.</h2>
+      <p className="site-section-intro">Next comes deeper templates, better docs pages, cleaner registry output, and enough testing that the public preview can stop wearing a helmet indoors.</p>
       <div className="site-grid">
         <Card tone="acid" radius="none"><CardHeader><CardTitle>Registry generator</CardTitle></CardHeader><CardContent>Generate real shadcn registry item files from source, validate paths/dependencies, and only then expose install commands.</CardContent></Card>
         <Card tone="pink"><CardHeader><CardTitle>Docs routing</CardTitle></CardHeader><CardContent>Promote the docs shell into route-backed pages: overview, installation truth, styling, components, blocks, templates, changelog.</CardContent></Card>
@@ -513,8 +513,8 @@ function Blueprint() {
 function Repo() {
   return (
     <section className="site-section" id="repo">
-      <h2>Current repo command.</h2>
-      <p className="site-section-intro">No imaginary package. No fake CDN. Run the local dogfood app and inspect the source.</p>
+      <h2>Run it locally.</h2>
+      <p className="site-section-intro">Clone it, install it, run it, and inspect the source. The package can be funny. The setup should not be.</p>
       <code className="site-code">npm install{"\n"}npm run dev -- --host 0.0.0.0</code>
       <div className="site-grid"><Card tone="acid" radius="none"><CardHeader><CardTitle>Source truth</CardTitle></CardHeader><CardContent>Components live in <strong>src/components/ui</strong>. Blocks live in <strong>src/blocks</strong>.</CardContent></Card><Card><CardHeader><CardTitle>Dogfood truth</CardTitle></CardHeader><CardContent>The website imports the same components it demonstrates. Broken preview means broken library. Beautifully humiliating.</CardContent></Card><Card tone="pink"><CardHeader><CardTitle>Registry truth</CardTitle></CardHeader><CardContent>Still parked. It becomes marketing only when generated files install cleanly.</CardContent></Card></div>
     </section>
@@ -562,7 +562,7 @@ const siteRoutes: SiteRoute[] = [
   { href: "#/templates", label: "Templates", tone: "ultra" },
   { href: "#/style-lab", label: "Style Lab", tone: "acid" },
   { href: "#/ornaments", label: "Ornaments", tone: "pink" },
-  { href: "#/docs/accessibility", label: "Receipts", tone: "paper" },
+  { href: "#/docs/accessibility", label: "Apps and forms", tone: "paper" },
 ];
 
 const docsRoutes = [
@@ -627,7 +627,7 @@ function DocsIndex() {
 function docsDescription(slug: string) {
   const map: Record<string, string> = {
     installation: "No fake CLI spells. Local commands, registry truth, fresh-app smoke receipts.",
-    styling: "Ink, pressure, radius collision, pattern, tilt, density, and color tokens.",
+    styling: "Landing pages, pressure, radius collision, pattern, tilt, density, and color tokens.",
     theming: "Use the Style Lab output, CSS variables, and controlled presets.",
     accessibility: "The interface looks bitten by a radioactive sticker sheet. The semantics are boring on purpose.",
     "controlled-variance": "The category thesis: chaos is allowed only when the axis is named.",
@@ -643,7 +643,7 @@ function RouteGrid({ items }: { items: { href: string; title: string; descriptio
 function DocPage({ slug }: { slug: string }) {
   if (slug === "accessibility") return <AccessibilityPage />;
   if (slug === "theming") return <RoutedShell><RouteHero eyebrow="Theming" title="The goblin is on a leash." description="Use Style Lab presets or CSS variables. The style is not random; it has a spreadsheet wearing a fake nose." /><StyleLab /></RoutedShell>;
-  if (slug === "styling") return <RoutedShell><RouteHero eyebrow="Styling" title="Controlled variance tokens." description="Ink, pressure, collision, signal, pattern, tilt, density. Randomness is just laziness with confetti." /><TokenReceiptPanel /></RoutedShell>;
+  if (slug === "styling") return <RoutedShell><RouteHero eyebrow="Styling" title="Controlled variance tokens." description="Landing pages, pressure, collision, signal, pattern, tilt, density. Randomness is just laziness with confetti." /><TokenReceiptPanel /></RoutedShell>;
   if (slug === "controlled-variance") return <RoutedShell><RouteHero eyebrow="Doctrine" title="Feral, not random." description="Every visual offense must map to a declared axis. If it cannot name its axis, it goes to the shame bucket." /><Doctrine /></RoutedShell>;
   if (slug === "changelog") return <RoutedShell><RouteHero eyebrow="Changelog" title="Release notes with receipts." description="Less vibe smoke, more exact surfaces shipped." /><ChangelogBlock /><CodeBlock>{`v0.6\n- hash-routed docs/pages\n- 65 generated component docs entries\n- DataTable hardening\n- Style Lab theme generator\n- 40+ ornament exports\n- 8 template routes`}</CodeBlock></RoutedShell>;
   return <RoutedShell><RouteHero eyebrow="Installation truth" title="No fake install theater." description="The local source and registry materialization tests exist. Public hosted shadcn commands appear only when hosted fresh-app install passes." /><div className="route-two-col"><CodeTabs tabs={[{ id: "local", label: "Local", code: `npm install\nnpm run registry:build\nnpm run smoke:registry\nnpm run smoke:fresh-app\nnpm run build` }, { id: "termux", label: "Termux", code: `pkg update -y\npkg install -y nodejs unzip\nunzip feral-ui-kit-v0.6.zip\ncd feral-ui-kit\nnpm install\nnpm run dev -- --host 0.0.0.0` }]} /><Callout tone="danger"><CalloutTitle>Receipt rule</CalloutTitle><CalloutDescription>Docs may be rude. Install commands may not hallucinate. The CLI goblin does not get creative writing privileges.</CalloutDescription></Callout></div></RoutedShell>;
@@ -705,7 +705,7 @@ function TemplateAgency() {
   return <section className="block block-hero"><div><Badge tone="ultra">Agency</Badge><h2>We make interfaces that enter the room before your brand strategist does.</h2><p>Case studies, service cards, and CTA. The pitch deck is screaming, but the grid is aligned.</p><div className="block-actions"><Button tone="pink">View cases</Button><Button tone="paper">Hire the menace</Button></div></div><div className="block-card-stack"><StatCard title="Cases" value="12" delta="loud" tone="pink" /><StatCard title="Beige removed" value="98%" delta="verified" tone="acid" /></div></section>;
 }
 function TemplateAiChat() {
-  return <SidebarLayout className="template-ai"><SidebarToggle /><Sidebar><SidebarSection title="AI"><SidebarLink active href="#">Chat</SidebarLink><SidebarLink href="#">Prompts</SidebarLink><SidebarLink href="#">Receipts</SidebarLink></SidebarSection><SidebarFooter><SidebarCollapseButton>Collapse</SidebarCollapseButton></SidebarFooter></Sidebar><SidebarMain><Card><CardHeader><CardTitle>AI Chat</CardTitle><CardDescription>Prompt chips, response cards, command search, and less corporate fog.</CardDescription></CardHeader><CardContent className="site-stack"><Command><CommandInput placeholder="Ask the goblin to format JSON..." /><CommandList><CommandGroup heading="Prompts"><CommandItem>Audit this component</CommandItem><CommandItem>Generate variants</CommandItem></CommandGroup></CommandList></Command><Alert tone="acid"><AlertIcon>✓</AlertIcon><div><AlertTitle>Response ready</AlertTitle><AlertDescription>The answer has citations, receipts, and only minor bite marks.</AlertDescription></div></Alert></CardContent></Card></SidebarMain></SidebarLayout>;
+  return <SidebarLayout className="template-ai"><SidebarToggle /><Sidebar><SidebarSection title="AI"><SidebarLink active href="#">Chat</SidebarLink><SidebarLink href="#">Prompts</SidebarLink><SidebarLink href="#">Apps and forms</SidebarLink></SidebarSection><SidebarFooter><SidebarCollapseButton>Collapse</SidebarCollapseButton></SidebarFooter></Sidebar><SidebarMain><Card><CardHeader><CardTitle>AI Chat</CardTitle><CardDescription>Prompt chips, response cards, command search, and less corporate fog.</CardDescription></CardHeader><CardContent className="site-stack"><Command><CommandInput placeholder="Ask the goblin to format JSON..." /><CommandList><CommandGroup heading="Prompts"><CommandItem>Audit this component</CommandItem><CommandItem>Generate variants</CommandItem></CommandGroup></CommandList></Command><Alert tone="acid"><AlertIcon>✓</AlertIcon><div><AlertTitle>Response ready</AlertTitle><AlertDescription>The answer has citations, receipts, and only minor bite marks.</AlertDescription></div></Alert></CardContent></Card></SidebarMain></SidebarLayout>;
 }
 
 function OrnamentsPage() {
