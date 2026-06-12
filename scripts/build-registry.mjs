@@ -6,8 +6,14 @@ const uiDir = join(root, 'src/components/ui');
 const blockDir = join(root, 'src/blocks');
 const outDir = join(root, 'public/r');
 const itemDir = join(root, 'registry/items');
+const componentVoicePath = join(root, 'src/docs/component-voice.json');
+
 mkdirSync(outDir, { recursive: true });
 mkdirSync(itemDir, { recursive: true });
+
+const componentVoice = existsSync(componentVoicePath)
+  ? JSON.parse(readFileSync(componentVoicePath, 'utf8'))
+  : {};
 
 const dependencyHints = new Map([
   ['dialog', ['@radix-ui/react-dialog']],
@@ -30,11 +36,23 @@ const dependencyHints = new Map([
   ['command', ['cmdk']],
 ]);
 
+const blockVoice = new Map([
+  ['auth', 'Login, signup, and OTP blocks for forms with bite marks.'],
+  ['content', 'Article, changelog, and content blocks that keep the goblin footnoted.'],
+  ['dashboard', 'Dashboard blocks for queues, stats, charts, and mild operational weather.'],
+  ['docs', 'Docs blocks with sidebars, code, callouts, and adult supervision.'],
+  ['marketing', 'Marketing blocks for pages that refuse to beige themselves quietly.'],
+]);
+
 const uiFiles = readdirSync(uiDir).filter(file => file.endsWith('.tsx')).sort();
 const uiNames = new Set(uiFiles.map(file => file.replace(/\.tsx$/, '')));
 
 function titleCase(name) {
   return name.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+}
+
+function descriptionFor(name) {
+  return componentVoice[name] ?? `${titleCase(name)} component. Still under observation.`;
 }
 
 function localUiDependencies(content, selfName) {
@@ -65,7 +83,7 @@ function uiItemFor(name, filePath) {
     name,
     title: titleCase(name),
     type: 'registry:ui',
-    description: `feral/ui ${titleCase(name)} component. Generated locally; install-test before publishing, cowardly and correctly.`,
+    description: descriptionFor(name),
     dependencies: dependencyHints.get(name) ?? [],
     registryDependencies,
     files,
@@ -79,7 +97,7 @@ function blockItemFor(name, filePath) {
     name: `block-${name}`,
     title: `${titleCase(name)} Block`,
     type: 'registry:block',
-    description: `feral/ui ${titleCase(name)} block source. Generated locally; templates still need fresh-app install receipts.`,
+    description: blockVoice.get(name) ?? `${titleCase(name)} block. Keep hands inside the habitat.`,
     dependencies: [],
     registryDependencies: ['feral-style'],
     files: [
@@ -96,7 +114,7 @@ const styleItem = {
   name: 'feral-style',
   title: 'Feral Style',
   type: 'registry:style',
-  description: 'Controlled-variance CSS token grammar and component classes.',
+  description: 'The habitat file: tokens, borders, pressure, focus rings, and creature chrome.',
   files: [{ path: 'src/styles/feral.css', type: 'registry:style', content: readFileSync(join(root, 'src/styles/feral.css'), 'utf8') }],
 };
 writeItem(styleItem);
@@ -124,7 +142,7 @@ const templateItem = {
   name: 'template-catalog',
   title: 'Template Catalog',
   type: 'registry:page',
-  description: 'feral/ui template catalog basis. Previewable in dogfood app; public install after smoke tests.',
+  description: 'Eight live template habitats. Pick one, then take the creature home.',
   dependencies: [],
   registryDependencies: ['feral-style'],
   files: [{ path: 'src/templates/template-catalog.tsx', type: 'registry:page', content: readFileSync(join(root, 'src/templates/template-catalog.tsx'), 'utf8') }],
@@ -135,12 +153,12 @@ entries.push({ name: 'template-catalog', type: 'registry:page', path: 'public/r/
 const registry = {
   '$schema': 'https://ui.shadcn.com/schema/registry.json',
   name: 'feral-ui-local',
-  homepage: 'https://example.invalid/feral-ui-local',
+  homepage: 'https://harrowhaus.github.io/feral-ui/',
   items: entries,
 };
 writeFileSync(join(root, 'registry/registry.json'), JSON.stringify(registry, null, 2));
 writeFileSync(join(outDir, 'index.json'), JSON.stringify(registry, null, 2));
-console.log(`Generated ${entries.length} registry records: ${entries.filter(e => e.type === 'registry:ui').length} ui, ${entries.filter(e => e.type === 'registry:block').length} blocks. Publish them only after fresh-app install tests. The goblin has been warned twice.`);
+console.log(`Generated ${entries.length} registry records: ${entries.filter(e => e.type === 'registry:ui').length} ui, ${entries.filter(e => e.type === 'registry:block').length} blocks.`);
 
 function writeItem(item) {
   writeFileSync(join(outDir, `${item.name}.json`), JSON.stringify(item, null, 2));
