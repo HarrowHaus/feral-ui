@@ -185,6 +185,7 @@ import {
 } from "./components/ui";
 import { componentCatalog } from "./docs/component-catalog";
 import { ComponentShowcase, componentContent } from "./docs/component-showcase";
+import { ComponentShowcase, componentContent } from "./docs/component-showcase";
 import { templateCatalog } from "./templates/template-catalog";
 import { DocsProductShell } from "./features/docs-shell";
 import { StyleLab } from "./features/style-lab";
