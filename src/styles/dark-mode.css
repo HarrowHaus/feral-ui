@@ -72,14 +72,19 @@
   box-shadow: var(--feral-shadow-x) var(--feral-shadow-y) 0 var(--feral-pink), 0 0 18px rgba(215, 255, 47, .25);
 }
 
+:root[data-feral-scheme="dark"] .feral-card[data-tone="pink"],
+:root[data-feral-scheme="dark"] .feral-card[data-tone="ultra"] {
+  background-color: var(--feral-paper);
+  color: var(--feral-ink);
+  border-color: var(--feral-ink);
+}
+
 :root[data-feral-scheme="dark"] .feral-card[data-tone="pink"] {
-  color: #fff8ec;
-  box-shadow: var(--feral-shadow-x) var(--feral-shadow-y) 0 var(--feral-ultra), 0 0 18px rgba(255, 69, 181, .25);
+  box-shadow: var(--feral-shadow-x) var(--feral-shadow-y) 0 var(--feral-pink), 0 0 18px rgba(255, 69, 181, .32);
 }
 
 :root[data-feral-scheme="dark"] .feral-card[data-tone="ultra"] {
-  color: #fff8ec;
-  box-shadow: var(--feral-shadow-x) var(--feral-shadow-y) 0 var(--feral-acid), 0 0 18px rgba(141, 120, 255, .30);
+  box-shadow: var(--feral-shadow-x) var(--feral-shadow-y) 0 var(--feral-ultra), 0 0 18px rgba(141, 120, 255, .34);
 }
 
 :root[data-feral-scheme="dark"] .feral-input,
@@ -111,7 +116,7 @@
 
 :root[data-feral-scheme="dark"] .feral-card[data-tone="pink"] .feral-card-description,
 :root[data-feral-scheme="dark"] .feral-card[data-tone="ultra"] .feral-card-description {
-  color: rgba(255, 240, 210, .92) !important;
+  color: var(--feral-muted) !important;
 }
 
 :root[data-feral-scheme="dark"] .feral-card[data-tone="acid"] .feral-card-description,
@@ -131,6 +136,16 @@
   border-color: #080a12;
 }
 
+:root[data-feral-scheme="dark"] .feral-button[data-tone="pink"],
+:root[data-feral-scheme="dark"] .feral-button[data-tone="ultra"],
+:root[data-feral-scheme="dark"] .feral-badge[data-tone="pink"],
+:root[data-feral-scheme="dark"] .feral-badge[data-tone="ultra"],
+:root[data-feral-scheme="dark"] .feral-tab:nth-child(2),
+:root[data-feral-scheme="dark"] .feral-tab:nth-child(3) {
+  color: #080a12 !important;
+  border-color: #080a12;
+}
+
 :root[data-feral-scheme="dark"] .site-code,
 :root[data-feral-scheme="dark"] pre,
 :root[data-feral-scheme="dark"] .feral-code-block,
@@ -144,7 +159,7 @@
 :root[data-feral-scheme="dark"] .feral-alert[data-tone="ultra"],
 :root[data-feral-scheme="dark"] .feral-callout[data-tone="ultra"] {
   background: var(--feral-ultra);
-  color: #fff8ec;
+  color: #080a12;
 }
 
 :root[data-feral-scheme="dark"] .feral-badge[data-tone="paper"] {
