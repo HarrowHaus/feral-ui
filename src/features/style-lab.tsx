@@ -169,8 +169,8 @@ export function StyleLab() {
     <section className="site-section" id="style-lab">
       <div className="site-section-head">
         <div>
-          <h2>Style Lab: the moat with sliders.</h2>
-          <p className="site-section-intro">Tune the controlled-variance axes, preview real components, then copy CSS, Tailwind tokens, or a registry-style item. The components are loud. The tokens are disciplined. The goblin is on a leash.</p>
+          <h2>Style Lab: build a look without letting the goblin drive.</h2>
+          <p className="site-section-intro">Pick a preset, tweak the palette roles, preview real components, then copy the CSS. Same family, different jobs: docs, dashboards, shops, warnings, forms, and tiny product disasters.</p>
         </div>
         <FeralStamp tone="pink">v0.6 theme generator</FeralStamp>
       </div>
@@ -179,7 +179,7 @@ export function StyleLab() {
         <Card tone="paper" press={false} className="feral-style-lab-controls">
           <CardHeader>
             <CardTitle>Presets</CardTitle>
-            <CardDescription>Named like a crime scene; output like a design token file.</CardDescription>
+            <CardDescription>Each preset changes color roles, density, radius, and visual temperature. The names are jokes. The combinations are not.</CardDescription>
           </CardHeader>
           <CardContent className="site-stack">
             <div className="feral-preset-grid" role="list" aria-label="Style presets">
@@ -219,13 +219,13 @@ export function StyleLab() {
             <Card tone="acid" radius="none" tilt="left">
               <CardHeader>
                 <CardTitle>{state.label}</CardTitle>
-                <CardDescription>Previewing the token goblin in a safe enclosure.</CardDescription>
+                <CardDescription>Same components, different outfit. The goblin has been asked to stand still.</CardDescription>
               </CardHeader>
               <CardContent className="site-stack">
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <Button tone="pink">Primary</Button>
                   <Button tone="paper">Secondary</Button>
-                  <Badge tone="ultra">Receipt</Badge>
+                  <Badge tone="ultra">Mode</Badge>
                 </div>
                 <Field>
                   <Label htmlFor="lab-demo-input">Demo input</Label>
