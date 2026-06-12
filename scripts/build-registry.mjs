@@ -114,8 +114,11 @@ const styleItem = {
   name: 'feral-style',
   title: 'Feral Style',
   type: 'registry:style',
-  description: 'The habitat file: tokens, borders, pressure, focus rings, and creature chrome.',
-  files: [{ path: 'src/styles/feral.css', type: 'registry:style', content: readFileSync(join(root, 'src/styles/feral.css'), 'utf8') }],
+  description: 'The habitat: tokens.css (the muzzle — every color) then feral.css (borders, pressure, focus rings, creature chrome).',
+  files: [
+    { path: 'src/styles/tokens.css', type: 'registry:style', content: readFileSync(join(root, 'src/styles/tokens.css'), 'utf8') },
+    { path: 'src/styles/feral.css', type: 'registry:style', content: readFileSync(join(root, 'src/styles/feral.css'), 'utf8') },
+  ],
 };
 writeItem(styleItem);
 entries.push({ name: 'feral-style', type: 'registry:style', path: 'public/r/feral-style.json' });

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { clearFeralTheme } from "./theme-session";
-import { applyFeralScheme, readFeralScheme, type FeralScheme } from "./scheme-session";
+import { applyFeralScheme, readFeralScheme, type FeralScheme } from "./color-scheme";
 
 type ThemeSelectorProps = {
   variant?: "desktop" | "icon";

@@ -1,0 +1,111 @@
+/*
+  tokens.css — the muzzle.
+  Color enters the page from exactly two places: the token values below
+  and the scheme attribute. No other stylesheet may declare a color literal.
+
+  Two layers:
+  1. Brand tokens (the muzzle proper) — overridable per-theme by Style Lab.
+  2. Role tokens — semantic, derived from brand tokens. Components consume
+     ONLY role tokens for surface/ink/shadow decisions, never raw brand hues
+     or literals. Dark mode remaps a handful of these values; nothing else.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* — brand: habitat — */
+  --feral-ink: #0a0a0a;
+  --feral-cream: #fff4e0;
+  --feral-bone: #fff9f0;
+  --feral-paper: #ffffff;
+  --feral-muted: #5f5a52;
+
+  /* — brand: signals — */
+  --feral-pink: #ff2d9b;
+  --feral-acid: #bfff00;
+  --feral-ultra: #3d2bff;
+  --feral-verm: #ff3b1d;
+  --feral-cyan: #00e5ff;
+  --feral-violet: #9747ff;
+  --feral-tang: #ff8a00;
+  --feral-sky: #74b9ff;
+
+  --feral-focus: var(--feral-ultra);
+
+  /* — geometry — */
+  --feral-radius-none: 0px;
+  --feral-radius-sm: 6px;
+  --feral-radius-md: 10px;
+  --feral-radius-lg: 16px;
+  --feral-radius-pill: 999px;
+
+  --feral-border-xs: 2px;
+  --feral-border-sm: 3px;
+  --feral-border-md: 4px;
+  --feral-border-lg: 5px;
+  --feral-border-xl: 6px;
+
+  --feral-pressure-sm: 3px;
+  --feral-pressure-md: 5px;
+  --feral-pressure-lg: 7px;
+  --feral-pressure-xl: 9px;
+
+  --feral-speed: 80ms;
+  --feral-font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --feral-font-monoish: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  /* — roles: surface — */
+  --feral-surface: var(--feral-paper);        /* default component surface (was #fff) */
+  --feral-surface-raised: var(--feral-bone);  /* raised panels: menus, dialogs, command */
+  --feral-cream-tint: #fff7ea;                /* subtle warm fill: striped rows */
+  --feral-cream-sunk: #ece2d2;                /* recessed/disabled fill: calendar outside/disabled */
+
+  /* — roles: ink — */
+  --feral-ink-soft: #34302a;                  /* secondary body text (was #333 / warm grays) */
+  --feral-on-signal: #ffffff;                 /* text on a saturated signal color (pink/ultra/verm/violet) */
+  --feral-on-signal-soft: color-mix(in srgb, var(--feral-on-signal) 80%, transparent);
+  --feral-on-bright: #0a0a0a;                 /* text/border on always-bright signage (acid/tang/cyan) — never flips */
+  --feral-ink-anchor: #0a0a0a;                /* a surface that stays dark in BOTH schemes: code/tooltip terminals */
+
+  /* — roles: pressure — */
+  --feral-shadow-tone: var(--feral-ink);      /* the color of a hard offset shadow */
+  --feral-scrim: rgba(10, 10, 10, .62);       /* overlay veil; stays dark in both schemes */
+}
+
+/*
+  Night mode is not an inversion. It is the same animal under blacklight.
+  Token values only — every visual difference below is a remap, never a
+  selector override. If something looks wrong in dark, the cause is a
+  literal that escaped tokenization, not a missing rule here.
+*/
+:root[data-feral-scheme="dark"] {
+  color-scheme: dark;
+
+  /* habitat */
+  --feral-ink: #fff0d2;
+  --feral-cream: #080a12;
+  --feral-bone: #101421;
+  --feral-paper: #171b2c;
+  --feral-muted: #e4d2ad;
+
+  /* signals — every signal brightens so dark ink reads on top of it */
+  --feral-pink: #ff45b5;
+  --feral-acid: #d7ff2f;
+  --feral-ultra: #8d78ff;
+  --feral-verm: #ff6d55;
+  --feral-cyan: #45edff;
+  --feral-violet: #b49bff;
+  --feral-tang: #ffb347;
+  --feral-sky: #9cc7ff;
+  --feral-focus: #d7ff2f;
+
+  /* roles whose relationship to ink flips at night */
+  --feral-ink-soft: var(--feral-muted);
+  --feral-on-signal: #080a12;
+  --feral-on-bright: #080a12;
+  --feral-ink-anchor: #05060c;
+  --feral-cream-tint: #1b2033;
+  --feral-cream-sunk: #0e1220;
+  --feral-shadow-tone: #000000;
+  --feral-scrim: rgba(0, 0, 0, .72);
+}
