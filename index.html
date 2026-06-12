@@ -8,6 +8,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        var routeAliases = {
+          components: "/components",
+          docs: "/docs",
+          blocks: "/blocks",
+          templates: "/templates",
+          "route-docs": "/docs",
+          "style-lab": "/style-lab",
+          ornaments: "/ornaments"
+        };
+        var homeAnchors = {
+          doctrine: true,
+          behavior: true,
+          "forms-data": true,
+          productization: true,
+          "nth-components": true,
+          matrix: true,
+          blueprint: true,
+          repo: true
+        };
+        function normalizeHash() {
+          var raw = window.location.hash.replace(/^#/, "");
+          if (!raw || raw.charAt(0) === "/") return;
+          if (routeAliases[raw]) {
+            window.location.replace(window.location.pathname + window.location.search + "#" + routeAliases[raw]);
+            return;
+          }
+          if (homeAnchors[raw]) {
+            window.sessionStorage.setItem("feral-scroll-anchor", raw);
+            window.location.replace(window.location.pathname + window.location.search + "#/");
+          }
+        }
+        function scrollPendingAnchor() {
+          var anchor = window.sessionStorage.getItem("feral-scroll-anchor");
+          if (!anchor || window.location.hash !== "#/") return;
+          var tries = 0;
+          var timer = window.setInterval(function () {
+            var node = document.getElementById(anchor);
+            if (node) {
+              node.scrollIntoView({ behavior: "smooth", block: "start" });
+              window.sessionStorage.removeItem("feral-scroll-anchor");
+              window.clearInterval(timer);
+            }
+            if (++tries > 24) window.clearInterval(timer);
+          }, 50);
+        }
+        window.addEventListener("hashchange", function () {
+          normalizeHash();
+          window.setTimeout(scrollPendingAnchor, 0);
+        });
+        normalizeHash();
+        window.setTimeout(scrollPendingAnchor, 0);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
