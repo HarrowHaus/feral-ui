@@ -6,13 +6,21 @@ const KEY = "feral-ui-scheme";
 const SELECTOR = 'button[aria-label="Theme toggle"]';
 
 function stored(): FeralScheme {
-  return localStorage.getItem(KEY) === "dark" ? "dark" : "light";
+  try {
+    return localStorage.getItem(KEY) === "dark" ? "dark" : "light";
+  } catch {
+    return "light";
+  }
 }
 
 export function applyFeralScheme(scheme: FeralScheme) {
   document.documentElement.dataset.feralScheme = scheme;
   document.documentElement.style.colorScheme = scheme;
-  localStorage.setItem(KEY, scheme);
+  try {
+    localStorage.setItem(KEY, scheme);
+  } catch {
+    // ignore storage failures
+  }
   syncButtons(scheme);
 }
 
@@ -38,7 +46,7 @@ function init() {
     event.preventDefault();
     toggleFeralScheme();
   });
-  new MutationObserver(() => syncButtons()).observe(document.documentElement, { childList: true, subtree: true });
+  window.setTimeout(() => syncButtons(), 0);
 }
 
 if (typeof window !== "undefined") {
