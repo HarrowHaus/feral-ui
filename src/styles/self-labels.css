@@ -94,6 +94,26 @@
     display: none;
   }
 
+  .site-nav-right > .site-search[aria-label="Theme toggle"] {
+    display: inline-flex !important;
+    width: 44px;
+    min-width: 44px;
+    height: 42px;
+    padding: 0 !important;
+    font-size: 0;
+    overflow: hidden;
+  }
+
+  .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
+    content: "☾";
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  :root[data-feral-scheme="dark"] .site-nav-right > .site-search[aria-label="Theme toggle"]::before {
+    content: "☀";
+  }
+
   .playground-shell::before {
     right: 8px;
   }
