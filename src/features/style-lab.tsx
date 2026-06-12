@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
   CodeTabs,
-  CopyButton,
   Field,
   FeralArrow,
   FeralBurst,
@@ -20,6 +19,14 @@ import {
   Select,
   Slider,
 } from "../components/ui";
+import {
+  applyFeralTheme,
+  clearFeralTheme,
+  loadFeralTheme,
+  saveFeralTheme,
+  themeVarsFor,
+  type FeralThemeState,
+} from "./theme-session";
 
 const presets = {
   default: { label: "Default Feral", ink: "#0a0a0a", cream: "#fff4e0", pink: "#ff2d9b", acid: "#bfff00", ultra: "#3d2bff", cyan: "#00e5ff", tang: "#ff8a00", border: 4, pressure: 5, radius: 10, tilt: 1.5, pattern: 45, density: 52, motion: 80, contrast: "standard" },
@@ -33,50 +40,16 @@ const presets = {
   taxSeasonClown: { label: "Tax Season Clown", ink: "#080808", cream: "#fff4d7", pink: "#ff007a", acid: "#ceff00", ultra: "#2922ff", cyan: "#0ce6ff", tang: "#ff7a00", border: 5, pressure: 8, radius: 4, tilt: 1.7, pattern: 58, density: 64, motion: 65, contrast: "high" },
   mallKiosk: { label: "Mall Kiosk Apocalypse", ink: "#0c0c12", cream: "#fff0ec", pink: "#ff2bbd", acid: "#caff00", ultra: "#3319ff", cyan: "#00d9ff", tang: "#ff8c00", border: 4, pressure: 7, radius: 999, tilt: 2.2, pattern: 80, density: 54, motion: 55, contrast: "standard" },
   printerJam: { label: "Printer Jam Ritual", ink: "#0f0f0f", cream: "#f7efe0", pink: "#f33688", acid: "#b8ff1d", ultra: "#4636e8", cyan: "#09cfe8", tang: "#ff8f12", border: 4, pressure: 5, radius: 0, tilt: -1.2, pattern: 68, density: 48, motion: 80, contrast: "grit" },
-} as const;
+} as const satisfies Record<string, FeralThemeState>;
 
 type PresetKey = keyof typeof presets;
 type ContrastMode = "standard" | "high" | "quiet" | "grit";
-
-type LabState = {
-  label: string;
-  ink: string;
-  cream: string;
-  pink: string;
-  acid: string;
-  ultra: string;
-  cyan: string;
-  tang: string;
-  border: number;
-  pressure: number;
-  radius: number;
-  tilt: number;
-  pattern: number;
-  density: number;
-  motion: number;
-  contrast: ContrastMode | string;
-};
+type LabState = FeralThemeState & { contrast: ContrastMode | string };
 
 function cssFor(state: LabState) {
+  const vars = themeVarsFor(state);
   return `:root {
-  --feral-ink: ${state.ink};
-  --feral-cream: ${state.cream};
-  --feral-pink: ${state.pink};
-  --feral-acid: ${state.acid};
-  --feral-ultra: ${state.ultra};
-  --feral-cyan: ${state.cyan};
-  --feral-tang: ${state.tang};
-  --feral-border-md: ${state.border}px;
-  --feral-border-lg: ${Math.max(state.border + 1, 3)}px;
-  --feral-pressure-md: ${state.pressure}px;
-  --feral-shadow-x: ${state.pressure}px;
-  --feral-shadow-y: ${state.pressure}px;
-  --feral-radius-md: ${state.radius}px;
-  --feral-radius-lg: ${state.radius + 6}px;
-  --feral-tilt-max: ${state.tilt}deg;
-  --feral-pattern-intensity: ${state.pattern}%;
-  --feral-density: ${state.density};
-  --feral-speed: ${state.motion}ms;
+${Object.entries(vars).map(([key, value]) => `  ${key}: ${value};`).join("\n")}
 }`;
 }
 
@@ -105,28 +78,27 @@ function registryFor(state: LabState) {
   return JSON.stringify({
     name: `feral-theme-${state.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`,
     type: "registry:style",
-    description: `${state.label} controlled-variance CSS variables. The goblin is on a leash.`,
-    cssVars: { light: {
-      ink: state.ink,
-      cream: state.cream,
-      pink: state.pink,
-      acid: state.acid,
-      ultra: state.ultra,
-      cyan: state.cyan,
-      tang: state.tang,
-      border: `${state.border}px`,
-      pressure: `${state.pressure}px`,
-      radius: `${state.radius}px`,
-    } }
+    description: `${state.label}. A token leash for loud components.`,
+    cssVars: { light: themeVarsFor(state) },
   }, null, 2);
+}
+
+function initialState(): LabState {
+  return loadFeralTheme() ?? { ...presets.default };
 }
 
 export function StyleLab() {
   const [presetKey, setPresetKey] = React.useState<PresetKey>("default");
-  const [state, setState] = React.useState<LabState>({ ...presets.default });
+  const [state, setState] = React.useState<LabState>(initialState);
   const css = cssFor(state);
   const tailwind = tailwindFor(state);
   const registry = registryFor(state);
+  const vars = themeVarsFor(state) as React.CSSProperties;
+
+  React.useEffect(() => {
+    applyFeralTheme(state);
+    saveFeralTheme(state);
+  }, [state]);
 
   function setPreset(key: PresetKey) {
     setPresetKey(key);
@@ -135,6 +107,11 @@ export function StyleLab() {
 
   function update<K extends keyof LabState>(key: K, value: LabState[K]) {
     setState((current) => ({ ...current, [key]: value }));
+  }
+
+  function resetSiteTheme() {
+    clearFeralTheme();
+    setPreset("default");
   }
 
   function downloadTheme() {
@@ -147,39 +124,21 @@ export function StyleLab() {
     URL.revokeObjectURL(url);
   }
 
-  const vars = {
-    "--feral-ink": state.ink,
-    "--feral-cream": state.cream,
-    "--feral-pink": state.pink,
-    "--feral-acid": state.acid,
-    "--feral-ultra": state.ultra,
-    "--feral-cyan": state.cyan,
-    "--feral-tang": state.tang,
-    "--feral-border-md": `${state.border}px`,
-    "--feral-border-lg": `${Math.max(state.border + 1, 3)}px`,
-    "--feral-pressure-md": `${state.pressure}px`,
-    "--feral-shadow-x": `${state.pressure}px`,
-    "--feral-shadow-y": `${state.pressure}px`,
-    "--feral-radius-md": `${state.radius}px`,
-    "--feral-radius-lg": `${state.radius + 6}px`,
-    "--feral-speed": `${state.motion}ms`,
-  } as React.CSSProperties;
-
   return (
     <section className="site-section" id="style-lab">
       <div className="site-section-head">
         <div>
-          <h2>Style Lab: build a look without letting the goblin drive.</h2>
-          <p className="site-section-intro">Pick a preset, tweak the palette roles, preview real components, then copy the CSS. Same family, different jobs: docs, dashboards, shops, warnings, forms, and tiny product disasters.</p>
+          <h2>Style Lab: the whole site is the preview now.</h2>
+          <p className="site-section-intro">Pick a preset, tweak the token leash, and watch the current session re-skin itself. Then take the CSS home.</p>
         </div>
-        <FeralStamp tone="pink">v0.6 theme generator</FeralStamp>
+        <FeralStamp tone="pink">SITE-WIDE</FeralStamp>
       </div>
 
       <div className="feral-style-lab" style={vars} data-contrast={state.contrast}>
         <Card tone="paper" press={false} className="feral-style-lab-controls">
           <CardHeader>
             <CardTitle>Presets</CardTitle>
-            <CardDescription>Each preset changes color roles, density, radius, and visual temperature. The names are jokes. The combinations are not.</CardDescription>
+            <CardDescription>The entire page responds, not just the little petting zoo on the right.</CardDescription>
           </CardHeader>
           <CardContent className="site-stack">
             <div className="feral-preset-grid" role="list" aria-label="Style presets">
@@ -207,7 +166,11 @@ export function StyleLab() {
             <Field><Label>Density: {state.density}</Label><Slider value={[state.density]} min={24} max={80} step={2} onValueChange={([value]) => update("density", value)} aria-label="Density" /></Field>
             <Field><Label>Motion: {state.motion}ms</Label><Slider value={[state.motion]} min={0} max={180} step={10} onValueChange={([value]) => update("motion", value)} aria-label="Motion level" /></Field>
             <Field><Label htmlFor="lab-contrast">Contrast mode</Label><Select id="lab-contrast" value={state.contrast} onChange={(event) => update("contrast", event.target.value)}><option value="standard">standard</option><option value="high">high</option><option value="quiet">quiet</option><option value="grit">grit</option></Select></Field>
-            <div className="feral-lab-actions"><CopyButton value={css} tone="acid">Copy CSS</CopyButton><Button type="button" tone="paper" onClick={downloadTheme}>Download CSS</Button><Button type="button" tone="pink" onClick={() => setPreset("default")}>Reset</Button></div>
+
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <Button tone="acid" type="button" onClick={downloadTheme}>Download CSS</Button>
+              <Button tone="paper" type="button" onClick={resetSiteTheme}>Reset habitat</Button>
+            </div>
           </CardContent>
         </Card>
 
@@ -218,8 +181,9 @@ export function StyleLab() {
             <FeralArrow tone="ultra" />
             <Card tone="acid" radius="none" tilt="left">
               <CardHeader>
+                <Badge tone="pink">SESSION THEME</Badge>
                 <CardTitle>{state.label}</CardTitle>
-                <CardDescription>Same components, different outfit. The goblin has been asked to stand still.</CardDescription>
+                <CardDescription>Look around. The furniture changed.</CardDescription>
               </CardHeader>
               <CardContent className="site-stack">
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
