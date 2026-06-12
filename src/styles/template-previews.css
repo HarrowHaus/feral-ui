@@ -150,6 +150,91 @@
   align-items: center;
 }
 
+/* route + mobile repair pass */
+.site-nav,
+.route-nav {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.site-nav::-webkit-scrollbar,
+.route-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.site-nav a,
+.route-nav a,
+.site-nav .feral-badge {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.feral-style-lab .feral-preview-frame,
+.feral-style-lab .feral-preview-frame-body {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.feral-style-lab-preview {
+  width: 100%;
+  max-width: 100%;
+  min-height: clamp(240px, 52vw, 360px);
+  padding: clamp(12px, 3vw, 24px);
+  overflow: hidden;
+  place-items: center;
+}
+
+.feral-style-lab-preview .feral-card {
+  width: min(100%, 430px);
+  max-width: calc(100vw - 72px);
+  border-radius: min(var(--feral-radius-lg), 34px);
+}
+
+.feral-style-lab-preview .feral-card-title {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  font-size: clamp(18px, 4.5vw, 24px);
+}
+
+.feral-style-lab-preview .feral-card-description,
+.feral-style-lab-preview .feral-label,
+.feral-style-lab-preview .feral-input {
+  overflow-wrap: anywhere;
+}
+
+.feral-style-lab-preview .feral-ornament:nth-child(1) {
+  top: 4px;
+  left: 2px;
+  width: clamp(54px, 14vw, 92px);
+}
+
+.feral-style-lab-preview .feral-ornament:nth-child(2) {
+  right: 2px;
+  bottom: 8px;
+  width: clamp(58px, 15vw, 92px);
+}
+
+.feral-style-lab-preview .feral-ornament:nth-child(3) {
+  right: 4px;
+  top: 8px;
+  width: clamp(78px, 22vw, 130px);
+}
+
+.feral-style-lab[data-contrast="quiet"] .feral-style-lab-preview,
+.feral-style-lab[data-contrast="quiet"] .feral-style-lab-preview .feral-card {
+  filter: saturate(.7);
+}
+
+.feral-style-lab[data-contrast="high"] .feral-style-lab-preview .feral-card {
+  box-shadow: 10px 10px 0 var(--feral-ink), 18px 18px 0 var(--feral-pink);
+}
+
+.feral-style-lab[data-contrast="grit"] .feral-style-lab-preview {
+  background-image: radial-gradient(rgba(10,10,10,.25) 1.2px, transparent 1.2px), repeating-linear-gradient(45deg, transparent 0 10px, rgba(10,10,10,.08) 10px 11px);
+  background-size: 12px 12px, auto;
+}
+
 @media (max-width: 900px) {
   .template-hero-row,
   .template-shop-hero,
@@ -164,5 +249,49 @@
   .template-post-grid,
   .template-chat-input {
     grid-template-columns: 1fr;
+  }
+
+  .feral-style-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .feral-style-lab-controls {
+    border-radius: 24px;
+  }
+
+  .feral-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feral-preset-grid .feral-button {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 520px) {
+  .feral-style-lab-preview {
+    min-height: 260px;
+    padding: 10px;
+  }
+
+  .feral-style-lab-preview .feral-card {
+    max-width: 100%;
+  }
+
+  .feral-style-lab-preview .feral-card-content {
+    padding: 14px;
+  }
+
+  .feral-style-lab-preview .feral-button,
+  .feral-style-lab-preview .feral-badge {
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: 12px;
   }
 }
