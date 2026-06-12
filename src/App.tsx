@@ -627,7 +627,7 @@ function DocsIndex() {
 
 function docsDescription(slug: string) {
   const map: Record<string, string> = {
-    installation: "No fake CLI spells. Local commands, registry truth, fresh-app smoke receipts.",
+    installation: "One command releases a component into your codebase. It knows the way home.",
     styling: "Landing pages, pressure, radius collision, pattern, tilt, density, and color tokens.",
     theming: "Use the Style Lab output, CSS variables, and controlled presets.",
     accessibility: "The interface looks bitten by a radioactive sticker sheet. The semantics are boring on purpose.",
@@ -647,7 +647,56 @@ function DocPage({ slug }: { slug: string }) {
   if (slug === "styling") return <RoutedShell><RouteHero eyebrow="Styling" title="Controlled variance tokens." description="Landing pages, pressure, collision, signal, pattern, tilt, density. Randomness is just laziness with confetti." /><TokenReceiptPanel /></RoutedShell>;
   if (slug === "controlled-variance") return <RoutedShell><RouteHero eyebrow="Doctrine" title="Feral, not random." description="Every visual offense must map to a declared axis. If it cannot name its axis, it goes to the shame bucket." /><Doctrine /></RoutedShell>;
   if (slug === "changelog") return <RoutedShell><RouteHero eyebrow="Changelog" title="Release notes with receipts." description="Less vibe smoke, more exact surfaces shipped." /><ChangelogBlock /><CodeBlock>{`v0.6\n- hash-routed docs/pages\n- 65 generated component docs entries\n- DataTable hardening\n- Style Lab theme generator\n- 40+ ornament exports\n- 8 template routes`}</CodeBlock></RoutedShell>;
-  return <RoutedShell><RouteHero eyebrow="Installation truth" title="No fake install theater." description="The local source and registry materialization tests exist. Public hosted shadcn commands appear only when hosted fresh-app install passes." /><div className="route-two-col"><CodeTabs tabs={[{ id: "local", label: "Local", code: `npm install\nnpm run registry:build\nnpm run smoke:registry\nnpm run smoke:fresh-app\nnpm run build` }, { id: "termux", label: "Termux", code: `pkg update -y\npkg install -y nodejs unzip\nunzip feral-ui-kit-v0.6.zip\ncd feral-ui-kit\nnpm install\nnpm run dev -- --host 0.0.0.0` }]} /><Callout tone="danger"><CalloutTitle>Receipt rule</CalloutTitle><CalloutDescription>Docs may be rude. Install commands may not hallucinate. The CLI goblin does not get creative writing privileges.</CalloutDescription></Callout></div></RoutedShell>;
+  return <RoutedShell>
+      <RouteHero
+        eyebrow="Installation"
+        title="Releasing a component into your codebase."
+        description="One command. It installs its own source. It knows the way home — the way home is your components/ui folder now."
+      />
+      <div className="route-two-col">
+        <CodeTabs tabs={[
+          {
+            id: "pnpm",
+            label: "pnpm",
+            code: `pnpm dlx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/button.json`
+          },
+          {
+            id: "npm",
+            label: "npm",
+            code: `npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/button.json`
+          },
+          {
+            id: "yarn",
+            label: "yarn",
+            code: `yarn dlx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/button.json`
+          },
+          {
+            id: "bun",
+            label: "bun",
+            code: `bunx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/button.json`
+          },
+          {
+            id: "manual",
+            label: "Catch it by hand",
+            code: `curl https://harrowhaus.github.io/feral-ui/r/button.json`
+          }
+        ]} />
+        <div className="site-stack">
+          <Callout tone="danger">
+            <CalloutTitle>Side effects include:</CalloutTitle>
+            <CalloutDescription>Visible focus rings, chromatic shadows, and your design lead asking to hop on a quick call.</CalloutDescription>
+          </Callout>
+          <Callout tone="acid">
+            <CalloutTitle>Try more creatures</CalloutTitle>
+            <CalloutDescription>Swap button.json for card.json, dialog.json, data-table.json, or any item under /r.</CalloutDescription>
+          </Callout>
+          <CodeBlock>{`https://harrowhaus.github.io/feral-ui/r/button.json
+https://harrowhaus.github.io/feral-ui/r/card.json
+https://harrowhaus.github.io/feral-ui/r/dialog.json
+https://harrowhaus.github.io/feral-ui/r/data-table.json`}</CodeBlock>
+        </div>
+      </div>
+    </RoutedShell>;
 }
 
 function TokenReceiptPanel() {
