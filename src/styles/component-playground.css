@@ -11,6 +11,7 @@
 }
 
 .playground-controls {
+  min-width: 0;
   display: grid;
   gap: 14px;
   align-content: start;
@@ -19,6 +20,7 @@
 .playground-control-group {
   display: grid;
   gap: 8px;
+  min-width: 0;
 }
 
 .playground-control-group > span {
@@ -31,6 +33,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
+}
+
+.playground-control-group .feral-button {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .playground-specimen {
@@ -47,8 +55,42 @@
   overflow: hidden;
 }
 
+.playground-specimen > .feral-button,
+.playground-specimen > .feral-badge {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
 .playground-specimen > .feral-card {
   width: min(100%, 360px);
+  max-width: 100%;
+}
+
+.playground-code-panel {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.playground-code-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.playground-code-head strong {
+  font: 900 13px/1 var(--feral-font-monoish);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.playground-code-panel .site-code {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 760px) {
