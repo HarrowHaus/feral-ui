@@ -97,3 +97,17 @@ satisfying choice was taken.
 - Hardcoded creature counts ("66 loose", "66 creatures") were removed site-wide
   per user request; "Controlled variance UI" on the home hero is now
   "Distemper — feral formalism" per Voice Law.
+
+## Phase 4 — the Distemper manifesto
+
+- `#/docs/distemper` now renders the full manifesto (final copy, verbatim),
+  linked from the sidebar and a "Read the manifesto" button in the home
+  Doctrine section.
+- Per-route meta: `useRouteMeta` sets document title + og:/twitter: title and
+  description from the resolved route. The Distemper page carries an explicit
+  `metaTitle` so its OG/title reads exactly "Distemper — feral formalism for
+  the web".
+- The manifesto ships verbatim including "the shadows are honest"; "honest" is
+  on the Voice-Law banned list, so a single sanctioned exception was added to
+  VOICE-LAW.md — the word here describes the design (real offset shadows), not
+  project integrity, which is what the ban targets.

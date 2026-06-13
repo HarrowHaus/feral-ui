@@ -30,6 +30,12 @@ Committed in Phase 0 (DISTEMPER handoff §2). Supersedes `COPY-LAW.md`
 
 `honest`, `fake`, `receipt`, `earned`, `theater`.
 
+These are banned as *integrity narration* — the project bragging about what it
+doesn't falsely claim. The sole sanctioned exception is the canonical Distemper
+manifesto (`#/docs/distemper`), which ships verbatim per the handoff and uses
+"the shadows are honest" to describe the design (real, un-faked offset shadows),
+not the project. Do not reintroduce these words anywhere else.
+
 ## The Distemper glossary (handoff §0)
 
 | Term | Means |
