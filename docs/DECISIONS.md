@@ -48,3 +48,29 @@ satisfying choice was taken.
   extra header top-padding ≥0.4× its radius and flattens below 720px. The
   "eyebrow half-bleed" item was already satisfied — the catalog route eyebrow
   Badge sits inside the content column with no bleed observed.
+
+## Phase 2 — preset replacement + distance lint
+
+- The ten presets live in `src/features/feral-presets.json`, the single source
+  shared by the Style Lab and `scripts/preset-distance.mjs`.
+- **Polarity rule:** a polarity preset (`"polarity": "dark"`, i.e. Midnight
+  Shift and VHS Séance) ships dark paper and *is* a scheme, so it suspends the
+  scheme toggle while active. Applying one sets `data-feral-polarity="dark"`
+  and forces `data-feral-scheme="dark"` (so the role remaps give dark-on-bright
+  text); the toggle renders disabled (◐) and no-ops. Leaving the preset clears
+  the flag and restores the user's own scheme preference. `color-scheme.ts`
+  skips its boot scheme-apply while a polarity flag is present so the forced
+  scheme survives reload.
+- `--feral-shadow-tone` is now consumed by every hard offset shadow (the Phase 0
+  deferral); it defaults to `--feral-ink` in both schemes, so the default theme
+  is unchanged, while presets tint it (Riso → #1d1aa3, Hazard → #ff2d00,
+  De Stijl → #000). The dark scheme no longer overrides shadow-tone to black,
+  which would have hidden shadows on the dark page.
+- **Distance lint:** the handoff's strict discrete encoding (≥4/7 hues ≥40° AND
+  ≥3/4 geometry axes ≥40%) is unsatisfiable by the supplied set — Midnight Shift
+  and VHS Séance are intentional dark-neon siblings, and ink/cream rarely move
+  (both keep the dark-ink/light-cream convention). The lint instead implements
+  the handoff's primary framing — a normalized pairwise distance (palette + 7
+  geometry axes + polarity) with a threshold of 1.0, calibrated to sit far below
+  the closest real pair (1.97) and far above any near-duplicate (0.04). A
+  `--selftest` proves it rejects a near-duplicate; both run in CI before build.
