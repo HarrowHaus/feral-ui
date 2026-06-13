@@ -28,24 +28,20 @@ import {
   type FeralThemeState,
 } from "./theme-session";
 import { SpecimenToast } from "./specimen-toast";
+import presetData from "./feral-presets.json";
 
-const presets = {
-  default: { label: "Default Feral", ink: "#0a0a0a", cream: "#fff4e0", pink: "#ff2d9b", acid: "#bfff00", ultra: "#3d2bff", cyan: "#00e5ff", tang: "#ff8a00", border: 4, pressure: 5, radius: 10, tilt: 1.5, pattern: 45, density: 52, motion: 80, contrast: "standard" },
-  officeGoblin: { label: "Office Goblin", ink: "#111111", cream: "#f6f1e6", pink: "#ff4f9f", acid: "#d7ff2f", ultra: "#4338ca", cyan: "#22d3ee", tang: "#ff9f1c", border: 3, pressure: 4, radius: 8, tilt: 1, pattern: 30, density: 46, motion: 70, contrast: "standard" },
-  birthdayLawsuit: { label: "Birthday Lawsuit", ink: "#050505", cream: "#fff1d6", pink: "#ff1493", acid: "#c8ff00", ultra: "#2f1bff", cyan: "#00e5ff", tang: "#ff6b00", border: 6, pressure: 8, radius: 16, tilt: 2.5, pattern: 70, density: 62, motion: 60, contrast: "standard" },
-  basementPoster: { label: "Basement Poster", ink: "#130f0f", cream: "#f3dfb7", pink: "#fb3f7f", acid: "#a6ff00", ultra: "#4b2cff", cyan: "#00c7ff", tang: "#f47b20", border: 5, pressure: 7, radius: 2, tilt: 2, pattern: 75, density: 70, motion: 90, contrast: "grit" },
-  acidInvoice: { label: "Acid Invoice", ink: "#050505", cream: "#fbffe6", pink: "#ff2277", acid: "#d7ff00", ultra: "#0022ff", cyan: "#00f0ff", tang: "#ff9500", border: 3, pressure: 6, radius: 0, tilt: .8, pattern: 52, density: 42, motion: 50, contrast: "high" },
-  kindergartenRiot: { label: "Kindergarten Riot", ink: "#111111", cream: "#fff7cc", pink: "#ff4dad", acid: "#caff25", ultra: "#5a31ff", cyan: "#35e7ff", tang: "#ffb000", border: 5, pressure: 6, radius: 18, tilt: 2.8, pattern: 64, density: 58, motion: 75, contrast: "standard" },
-  courtOrderedMinimal: { label: "Court-Ordered Minimal", ink: "#111111", cream: "#fbf7ef", pink: "#d93682", acid: "#d2f55f", ultra: "#4f46e5", cyan: "#67e8f9", tang: "#f59e0b", border: 2, pressure: 3, radius: 6, tilt: 0, pattern: 8, density: 34, motion: 120, contrast: "quiet" },
-  hrWatching: { label: "Feral But HR Is Watching", ink: "#161616", cream: "#fffaf0", pink: "#e24493", acid: "#c9f52f", ultra: "#4750d8", cyan: "#38d4ee", tang: "#f49a25", border: 3, pressure: 4, radius: 12, tilt: .5, pattern: 20, density: 40, motion: 90, contrast: "standard" },
-  taxSeasonClown: { label: "Tax Season Clown", ink: "#080808", cream: "#fff4d7", pink: "#ff007a", acid: "#ceff00", ultra: "#2922ff", cyan: "#0ce6ff", tang: "#ff7a00", border: 5, pressure: 8, radius: 4, tilt: 1.7, pattern: 58, density: 64, motion: 65, contrast: "high" },
-  mallKiosk: { label: "Mall Kiosk Apocalypse", ink: "#0c0c12", cream: "#fff0ec", pink: "#ff2bbd", acid: "#caff00", ultra: "#3319ff", cyan: "#00d9ff", tang: "#ff8c00", border: 4, pressure: 7, radius: 999, tilt: 2.2, pattern: 80, density: 54, motion: 55, contrast: "standard" },
-  printerJam: { label: "Printer Jam Ritual", ink: "#0f0f0f", cream: "#f7efe0", pink: "#f33688", acid: "#b8ff1d", ultra: "#4636e8", cyan: "#09cfe8", tang: "#ff8f12", border: 4, pressure: 5, radius: 0, tilt: -1.2, pattern: 68, density: 48, motion: 80, contrast: "grit" },
-} as const satisfies Record<string, FeralThemeState>;
-
-type PresetKey = keyof typeof presets;
 type ContrastMode = "standard" | "high" | "quiet" | "grit";
 type LabState = FeralThemeState & { contrast: ContrastMode | string };
+type Preset = LabState & { id: string };
+
+// The ten presets live in feral-presets.json — the single source shared with
+// scripts/preset-distance.mjs (the distance lint).
+const presetList = presetData as unknown as Preset[];
+const presetsById: Record<string, Preset> = Object.fromEntries(presetList.map((preset) => [preset.id, preset]));
+
+function presetState({ id: _id, ...rest }: Preset): LabState {
+  return rest;
+}
 
 function cssFor(state: LabState) {
   const vars = themeVarsFor(state);
@@ -85,7 +81,7 @@ function registryFor(state: LabState) {
 }
 
 function initialState(): LabState {
-  return loadFeralTheme() ?? { ...presets.default };
+  return loadFeralTheme() ?? presetState(presetsById.default);
 }
 
 const colorRoles = ["ink", "cream", "pink", "acid", "ultra", "cyan", "tang"] as const;
@@ -105,7 +101,7 @@ function sliderReadout(key: "border" | "pressure" | "radius" | "tilt" | "pattern
 }
 
 export function StyleLab() {
-  const [presetKey, setPresetKey] = React.useState<PresetKey>("default");
+  const [presetKey, setPresetKey] = React.useState<string>("default");
   const [state, setState] = React.useState<LabState>(initialState);
   const [toast, setToast] = React.useState<string | null>(null);
   const css = cssFor(state);
@@ -124,9 +120,9 @@ export function StyleLab() {
     return () => window.clearTimeout(timer);
   }, [toast]);
 
-  function setPreset(key: PresetKey) {
+  function setPreset(key: string) {
     setPresetKey(key);
-    setState({ ...presets[key] });
+    setState(presetState(presetsById[key]));
   }
 
   function update<K extends keyof LabState>(key: K, value: LabState[K]) {
@@ -166,13 +162,13 @@ export function StyleLab() {
           </CardHeader>
           <CardContent className="site-stack">
             <div className="feral-preset-grid" role="list" aria-label="Style presets">
-              {(Object.keys(presets) as PresetKey[]).map((key) => (
-                <button key={key} type="button" className="feral-preset-chip" data-active={presetKey === key} aria-pressed={presetKey === key} onClick={() => setPreset(key)}>
-                  <span className="feral-preset-chip-label">{presets[key].label}</span>
+              {presetList.map((preset) => (
+                <button key={preset.id} type="button" className="feral-preset-chip" data-active={presetKey === preset.id} aria-pressed={presetKey === preset.id} onClick={() => setPreset(preset.id)}>
+                  <span className="feral-preset-chip-label">{preset.label}{preset.polarity ? " ◐" : ""}</span>
                   <span className="feral-preset-chip-dots" aria-hidden="true">
-                    <i style={{ background: presets[key].pink }} />
-                    <i style={{ background: presets[key].acid }} />
-                    <i style={{ background: presets[key].ultra }} />
+                    <i style={{ background: preset.pink }} />
+                    <i style={{ background: preset.acid }} />
+                    <i style={{ background: preset.ultra }} />
                   </span>
                 </button>
               ))}

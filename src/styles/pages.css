@@ -65,7 +65,7 @@
   padding: 18px;
   border: 4px solid var(--feral-ink);
   background: var(--feral-paper);
-  box-shadow: 6px 6px 0 var(--feral-ink);
+  box-shadow: 6px 6px 0 var(--feral-shadow-tone);
 }
 .template-sidebar a,
 .template-doc-nav a,
@@ -142,10 +142,10 @@
   color: var(--feral-ink);
   border: var(--feral-border-sm) solid var(--feral-ink);
   border-radius: var(--feral-radius-sm);
-  box-shadow: 3px 3px 0 var(--feral-ink);
+  box-shadow: 3px 3px 0 var(--feral-shadow-tone);
   font: 800 12px/1.15 var(--feral-font-display);
 }
-.feral-preset-chip[data-active="true"] { background: var(--feral-pink); color: var(--feral-on-signal); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--feral-ink); }
+.feral-preset-chip[data-active="true"] { background: var(--feral-pink); color: var(--feral-on-signal); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--feral-shadow-tone); }
 .feral-preset-chip-label { overflow-wrap: anywhere; }
 .feral-preset-chip-dots { display: inline-flex; gap: 5px; }
 .feral-preset-chip-dots i { width: 12px; height: 12px; border: 2px solid var(--feral-ink); border-radius: var(--feral-radius-pill); }
@@ -236,7 +236,7 @@
 .feral-style-lab-preview .feral-ornament:nth-child(3) { position: absolute; right: 4px; top: 8px; width: clamp(78px, 22vw, 130px); transform: rotate(-8deg); }
 .feral-style-lab[data-contrast="quiet"] .feral-style-lab-preview,
 .feral-style-lab[data-contrast="quiet"] .feral-style-lab-preview .feral-card { filter: saturate(.7); }
-.feral-style-lab[data-contrast="high"] .feral-style-lab-preview .feral-card { box-shadow: 10px 10px 0 var(--feral-ink), 18px 18px 0 var(--feral-pink); }
+.feral-style-lab[data-contrast="high"] .feral-style-lab-preview .feral-card { box-shadow: 10px 10px 0 var(--feral-shadow-tone), 18px 18px 0 var(--feral-pink); }
 .feral-style-lab[data-contrast="grit"] .feral-style-lab-preview {
   background-image: radial-gradient(color-mix(in srgb, var(--feral-ink) 25%, transparent) 1.2px, transparent 1.2px), repeating-linear-gradient(45deg, transparent 0 10px, color-mix(in srgb, var(--feral-ink) 8%, transparent) 10px 11px);
   background-size: 12px 12px, auto;
@@ -376,7 +376,7 @@
   border-radius: 999px;
   background: var(--feral-paper);
   color: var(--feral-ink);
-  box-shadow: 3px 3px 0 var(--feral-ink);
+  box-shadow: 3px 3px 0 var(--feral-shadow-tone);
   padding: 4px 7px;
   font: 900 10px/1 var(--feral-font-monoish);
   white-space: nowrap;

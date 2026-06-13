@@ -106,6 +106,7 @@
   --feral-ink-anchor: #05060c;
   --feral-cream-tint: #1b2033;
   --feral-cream-sunk: #0e1220;
-  --feral-shadow-tone: #000000;
+  /* --feral-shadow-tone deliberately follows --feral-ink here (light cream),
+     so hard shadows stay visible on the dark page; presets may override it. */
   --feral-scrim: rgba(0, 0, 0, .72);
 }

@@ -15,9 +15,18 @@ export type FeralThemeState = {
   density: number;
   motion: number;
   contrast: string;
+  /* Optional hard-shadow tone; defaults to ink when absent. */
+  shadow?: string;
+  /* Polarity presets ("dark") ship dark paper and suspend the scheme toggle. */
+  polarity?: "dark";
+  /* Override for text on saturated signals (pastel palettes need dark text). */
+  onSignal?: string;
 };
 
+import { readFeralScheme } from "./color-scheme";
+
 const STORAGE_KEY = "feral-ui-active-theme";
+const POLARITY_EVENT = "feral-polarity-change";
 const THEME_KEYS = [
   "--feral-ink",
   "--feral-cream",
@@ -42,10 +51,12 @@ const THEME_KEYS = [
   "--feral-pattern-intensity",
   "--feral-density",
   "--feral-speed",
+  "--feral-shadow-tone",
+  "--feral-on-signal",
 ] as const;
 
-export function themeVarsFor(state: FeralThemeState) {
-  return {
+export function themeVarsFor(state: FeralThemeState): Record<string, string> {
+  const vars: Record<string, string> = {
     "--feral-ink": state.ink,
     "--feral-cream": state.cream,
     "--feral-bone": state.cream,
@@ -69,7 +80,28 @@ export function themeVarsFor(state: FeralThemeState) {
     "--feral-pattern-intensity": `${state.pattern}%`,
     "--feral-density": String(state.density),
     "--feral-speed": `${state.motion}ms`,
-  } satisfies Record<(typeof THEME_KEYS)[number], string>;
+    "--feral-shadow-tone": state.shadow ?? state.ink,
+  };
+  // Only override on-signal when a preset asks for it (pastel palettes); else
+  // the role keeps its scheme-driven default (#fff in light, dark in dark).
+  if (state.onSignal) vars["--feral-on-signal"] = state.onSignal;
+  return vars;
+}
+
+/* A polarity preset *is* a scheme: it forces dark role remaps and suspends
+   the toggle. Leaving it restores the user's own scheme preference. */
+function applyPolarity(root: HTMLElement, polarity: FeralThemeState["polarity"]) {
+  if (polarity === "dark") {
+    root.dataset.feralPolarity = "dark";
+    root.dataset.feralScheme = "dark";
+    root.style.colorScheme = "dark";
+  } else if (root.dataset.feralPolarity) {
+    delete root.dataset.feralPolarity;
+    const scheme = readFeralScheme();
+    root.dataset.feralScheme = scheme;
+    root.style.colorScheme = scheme;
+  }
+  window.dispatchEvent(new CustomEvent(POLARITY_EVENT, { detail: polarity ?? null }));
 }
 
 export function applyFeralTheme(state: FeralThemeState) {
@@ -77,6 +109,7 @@ export function applyFeralTheme(state: FeralThemeState) {
   const root = document.documentElement;
   for (const [key, value] of Object.entries(vars)) root.style.setProperty(key, value);
   root.dataset.feralTheme = state.label;
+  applyPolarity(root, state.polarity);
 }
 
 export function saveFeralTheme(state: FeralThemeState) {
@@ -93,8 +126,10 @@ export function loadFeralTheme(): FeralThemeState | null {
 }
 
 export function clearFeralTheme() {
-  for (const key of THEME_KEYS) document.documentElement.style.removeProperty(key);
-  delete document.documentElement.dataset.feralTheme;
+  const root = document.documentElement;
+  for (const key of THEME_KEYS) root.style.removeProperty(key);
+  delete root.dataset.feralTheme;
+  applyPolarity(root, undefined);
   sessionStorage.removeItem(STORAGE_KEY);
 }
 

@@ -30,6 +30,7 @@ export function clearFeralScheme() {
   }
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && !document.documentElement.dataset.feralPolarity) {
+  // A polarity preset owns the scheme; don't override it on boot.
   applyFeralScheme(readFeralScheme());
 }
