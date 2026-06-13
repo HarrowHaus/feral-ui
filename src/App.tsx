@@ -134,7 +134,9 @@ function DesktopNavControls({ onSearch }: { onSearch: () => void }) {
       <button className="site-search" type="button" onClick={onSearch}><Search size={13} /> <span className="site-search-label">Search</span> <kbd className="site-kbd-hint">⌘K</kbd></button>
       <a className="site-search site-icon-link" href="https://github.com/HarrowHaus/feral-ui" aria-label="GitHub"><GithubMark /></a>
       <ThemeSelector variant="desktop" className="site-search" />
-      <Badge tone="paper">{VERSION} — 66 loose</Badge>
+      <span className="site-version" title="creatures currently at large">
+        <span className="site-version-dot" aria-hidden="true" />{VERSION} · 66 at large
+      </span>
     </span>
   );
 }

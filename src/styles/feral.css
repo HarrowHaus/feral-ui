@@ -95,8 +95,8 @@ a { color: inherit; }
   font-weight: 800;
   letter-spacing: -0.01em;
 }
-.feral-button[data-tone="pink"] { --feral-bg: var(--feral-pink); --feral-fg: var(--feral-surface); --feral-shadow-color: var(--feral-shadow-tone); }
-.feral-button[data-tone="ultra"] { --feral-bg: var(--feral-ultra); --feral-fg: var(--feral-surface); --feral-shadow-color: var(--feral-pink); }
+.feral-button[data-tone="pink"] { --feral-bg: var(--feral-pink); --feral-fg: var(--feral-on-signal); --feral-shadow-color: var(--feral-shadow-tone); }
+.feral-button[data-tone="ultra"] { --feral-bg: var(--feral-ultra); --feral-fg: var(--feral-on-signal); --feral-shadow-color: var(--feral-pink); }
 .feral-button[data-tone="ink"] { --feral-bg: var(--feral-ink); --feral-fg: var(--feral-cream); --feral-shadow-color: var(--feral-pink); }
 .feral-button[data-tone="paper"] { --feral-bg: var(--feral-paper); --feral-fg: var(--feral-ink); --feral-shadow-color: var(--feral-shadow-tone); }
 .feral-button[data-tone="tang"] { --feral-bg: var(--feral-tang); --feral-fg: var(--feral-on-bright); --feral-shadow-color: var(--feral-ultra); }
@@ -993,6 +993,10 @@ a { color: inherit; }
 .theme-selector-icon .theme-selector-symbol { font-size: 21px; }
 .theme-selector-suspended { opacity: .55; cursor: not-allowed; }
 
+/* Version tag: quiet mono text, not a loud badge. */
+.site-version { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font: 700 11px/1 var(--feral-font-monoish); color: var(--feral-on-bright); opacity: .72; letter-spacing: .01em; }
+.site-version-dot { width: 7px; height: 7px; flex: none; border-radius: var(--feral-radius-pill); background: var(--feral-pink); }
+
 /* GitHub mark: icon-only, square tap target. */
 .site-icon-link { display: inline-flex; align-items: center; justify-content: center; gap: 0; }
 /* The ⌘K hint is meaningless on touch — show it only where a keyboard lives. */
@@ -1014,36 +1018,6 @@ a { color: inherit; }
   box-shadow: 4px 4px 0 var(--feral-shadow-tone);
   font-weight: 900;
   text-decoration: none;
-}
-
-/* Chrome self-labels: small "this is <Command/>" chips on nav controls. */
-.site-nav-right > .site-search,
-.site-menu-button { position: relative; }
-.site-nav-right > .site-search::after,
-.site-menu-button::after {
-  pointer-events: none;
-  position: absolute;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: calc(100vw - 24px);
-  border: var(--feral-border-xs) solid var(--feral-ink);
-  border-radius: var(--feral-radius-pill);
-  background: var(--feral-paper);
-  color: var(--feral-ink);
-  box-shadow: 3px 3px 0 var(--feral-shadow-tone);
-  padding: 4px 7px;
-  font: 900 10px/1 var(--feral-font-monoish);
-  white-space: nowrap;
-}
-.site-nav-right > .site-search:nth-child(1)::after { content: "<Command/>"; right: -8px; bottom: -22px; }
-.site-nav-right > .site-search:nth-child(2)::after { content: "repo"; right: -8px; bottom: -22px; }
-.site-nav-right > .site-search:nth-child(3)::after { content: "<ThemeSelector/>"; right: -8px; bottom: -22px; }
-.site-menu-button::after { content: "<Sheet/>"; right: -6px; bottom: -22px; }
-
-@media (max-width: 980px) {
-  .site-nav-right > .site-search::after { display: none; }
 }
 
 /* Collapse to the mobile rail (theme icon + Sheet menu) on narrow viewports. */

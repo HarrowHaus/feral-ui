@@ -125,8 +125,16 @@
   color: var(--feral-ink);
 }
 .feral-style-lab-controls { align-self: start; }
-/* The right column stacks: session card → operable specimens → CSS output. */
-.feral-style-lab-right { display: grid; gap: 18px; min-width: 0; align-content: start; }
+/* The lab's own panels are chrome, not specimens: clamp their radius so a pill
+   preset (radius 999) can't bend them into a stadium that clips the copy.
+   The session card inside the preview still shows the theme's real radius. */
+.feral-style-lab-controls.feral-card { --feral-card-radius: min(var(--feral-radius-lg), 22px); }
+.feral-style-lab .feral-preview-frame { border-radius: min(var(--feral-radius-lg), 22px); }
+/* The right column stacks: session card → operable specimens → CSS output.
+   It pins to the viewport while the taller controls column scrolls, so the
+   live preview (its top) stays in view as you reach the lower sliders; the
+   CSS output below it is reached by scrolling within this pinned panel. */
+.feral-style-lab-right { display: grid; gap: 18px; min-width: 0; align-self: start; position: sticky; top: 76px; max-height: calc(100vh - 96px); overflow: auto; }
 
 /* Preset chips: equal-width grid, each with a 3-dot palette preview. */
 .feral-preset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -409,15 +417,13 @@
   .template-chat-input { grid-template-columns: 1fr; }
 
   .feral-style-lab { grid-template-columns: 1fr; }
-  /* Arch panel: round the top, but give it top padding ≥ 0.4× the radius so
-     the header copy never clips into the curve. */
-  .feral-style-lab-controls { border-radius: 24px; }
+  /* Single column: the preview can't usefully stick, so let it flow. */
+  .feral-style-lab-right { position: static; }
+  /* Give the controls header room so copy never meets the rounded top. */
   .feral-style-lab-controls > .feral-card-header { padding-top: 18px; }
 }
 
-/* Below 720px, flatten the arch entirely rather than risk a clipped curve. */
 @media (max-width: 720px) {
-  .feral-style-lab-controls { border-radius: var(--feral-radius-md); }
   .feral-preset-grid { grid-template-columns: 1fr; }
 }
 
