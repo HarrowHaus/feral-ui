@@ -31,3 +31,20 @@ satisfying choice was taken.
 - Mobile-nav breakpoint behavior was preserved as-is from the live
   `navigation-structure.css` rules (collapse to the Sheet rail at ≤1100px).
   Phase 1 owns the proper breakpoint/tap-target fix.
+
+## Phase 1 — defects & chrome polish
+
+- One hero per route via a `hero` prop on `RoutePage`; tool routes (Style Lab,
+  Ornaments) pass `hero={false}` so the feature's own header speaks.
+- Mobile rail now engages on `(max-width: 1100px), (pointer: coarse)`, and the
+  ≤480px tap targets were raised from 40px to 44px to clear the gate.
+- GitHub uses an inline octocat mark SVG — lucide-react dropped its `Github`
+  brand icon in this version, so a real mark is the faithful choice.
+- `component-voice.json` is now the description source for the site catalog
+  (via `componentContent`) as well as the registry generator (Voice Law rule 7).
+- Style Lab preset VALUES are unchanged in Phase 1 — only the chip UI (grid +
+  3-dot palette preview) changed. Phase 2 swaps in the ten new presets.
+- Style Lab "arch panel" = `.feral-style-lab-controls` rounded top; it gets
+  extra header top-padding ≥0.4× its radius and flattens below 720px. The
+  "eyebrow half-bleed" item was already satisfied — the catalog route eyebrow
+  Badge sits inside the content column with no bleed observed.
