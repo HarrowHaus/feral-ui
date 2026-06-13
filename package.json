@@ -10,6 +10,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "check": "tsc --noEmit",
     "registry:build": "node scripts/build-registry.mjs",
+    "lint:presets": "node scripts/preset-distance.mjs && node scripts/preset-distance.mjs --selftest",
     "smoke:registry": "node scripts/smoke-registry.mjs",
     "smoke:fresh-app": "node scripts/smoke-fresh-app.mjs",
     "smoke:hosted-registry": "node scripts/smoke-hosted-registry.mjs"

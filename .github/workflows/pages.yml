@@ -29,6 +29,8 @@ jobs:
         run: npm install --registry=https://registry.npmjs.org --no-audit --no-fund
       - name: Build registry
         run: npm run registry:build
+      - name: Lint presets (distance + self-test)
+        run: npm run lint:presets
       - name: Build React preview
         run: npm run build
       - name: Configure Pages
