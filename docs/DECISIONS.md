@@ -74,3 +74,26 @@ satisfying choice was taken.
   geometry axes + polarity) with a threshold of 1.0, calibrated to sit far below
   the closest real pair (1.97) and far above any near-duplicate (0.04). A
   `--selftest` proves it rejects a near-duplicate; both run in CI before build.
+
+## Phase 3 — second nav level + layout archetypes
+
+- Routing is a declarative `resolveRoute(route)` table returning one of three
+  archetypes per route: `marketing` (home, full-bleed, no sidebar), `catalog`
+  (indexes: wrapper hero + grid), `tool-doc` (sidebar + header + content +
+  pager). The archetype is enforced by the resolver, not remembered per page.
+- The persistent grouped sidebar (Getting started / Style / Creatures-by-layer
+  with status dots / Surfaces) replaces the orphaned `docs-shell.tsx` and shows
+  on BOTH catalog and tool-doc routes — so the sidebar (which lists everything)
+  is always one click from any non-home page, giving two-click reachability.
+  The handoff's CATALOG spec didn't mention a sidebar, but reachability requires
+  it there too; catalog keeps its wrapper hero, tool-doc gets a feature header.
+- "One hero" holds via `ownHeader`: Style Lab and Ornaments render their own
+  header, so the shell suppresses its `doc-page-header`; every other tool-doc
+  page gets the shell-provided header. Catalog uses the wrapper `.route-hero`.
+- On mobile (≤900px) the sidebar is hidden and the full grouped tree lives in
+  the Sheet menu, preserving two-tap reachability.
+- Added `/docs/theming` and `/docs/distemper` stub routes referenced by the
+  sidebar; the Distemper page is a placeholder until Phase 4's manifesto.
+- Hardcoded creature counts ("66 loose", "66 creatures") were removed site-wide
+  per user request; "Controlled variance UI" on the home hero is now
+  "Distemper — feral formalism" per Voice Law.
