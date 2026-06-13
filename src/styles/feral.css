@@ -1010,13 +1010,21 @@ a { color: inherit; }
 .site-nav-desktop-controls .site-menu-button { display: none; }
 .site-menu-button { display: none; }
 
+/* The mobile Sheet carries the full grouped nav tree so every page is
+   reachable on touch in two taps (open menu → pick). */
+.site-sheet-nav { display: grid; gap: 16px; }
+.site-sheet-group { display: grid; gap: 6px; }
+.site-sheet-group h4 { margin: 0; font: 900 11px/1 var(--feral-font-display); text-transform: uppercase; letter-spacing: .08em; color: var(--feral-ultra); }
+.site-sheet-group h5 { margin: 6px 0 0; font: 800 10px/1 var(--feral-font-monoish); text-transform: uppercase; letter-spacing: .06em; color: var(--feral-muted); }
 .site-sheet-link {
   display: block;
-  padding: 12px 14px;
-  border: var(--feral-border-sm) solid var(--feral-ink);
+  padding: 9px 12px;
+  border: var(--feral-border-xs) solid var(--feral-ink);
+  border-radius: var(--feral-radius-sm);
   background: var(--feral-paper);
-  box-shadow: 4px 4px 0 var(--feral-shadow-tone);
-  font-weight: 900;
+  box-shadow: 3px 3px 0 var(--feral-shadow-tone);
+  font-weight: 800;
+  font-size: 13px;
   text-decoration: none;
 }
 

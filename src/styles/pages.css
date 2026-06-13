@@ -453,3 +453,58 @@
   .ornament-grid .feral-card-title { font-size: 18px; }
   .ornament-specimen > svg.feral-ornament { width: min(70%, 132px); max-height: 126px; }
 }
+
+/* ── Tool/doc + catalog shell: persistent grouped sidebar + content ──────── */
+.doc-layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  display: grid;
+  grid-template-columns: 246px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+.doc-sidebar { position: sticky; top: 74px; max-height: calc(100vh - 90px); overflow: auto; min-width: 0; padding-top: 24px; }
+.doc-main { min-width: 0; display: grid; gap: 20px; padding-top: 24px; }
+.doc-main > .route-hero { padding-top: 8px; }
+.doc-page-header { display: grid; gap: 10px; }
+.doc-page-header h1 { margin: 0; font-size: clamp(30px, 5vw, 52px); line-height: .95; letter-spacing: -.04em; }
+.doc-page-header p { margin: 0; max-width: 70ch; color: var(--feral-ink-soft); font-size: 17px; line-height: 1.5; }
+
+.doc-nav {
+  display: grid;
+  gap: 16px;
+  padding: 16px 13px;
+  border: var(--feral-border-sm) solid var(--feral-ink);
+  border-radius: var(--feral-radius-md);
+  background: var(--feral-surface);
+  box-shadow: 5px 5px 0 var(--feral-shadow-tone);
+}
+.doc-nav-group { display: grid; gap: 3px; }
+.doc-nav-group > h4 { margin: 0 0 3px; font: 900 11px/1 var(--feral-font-display); text-transform: uppercase; letter-spacing: .08em; color: var(--feral-ultra); }
+.doc-nav-sub { display: grid; gap: 2px; }
+.doc-nav-sub > h5 { margin: 7px 0 1px; font: 800 10px/1 var(--feral-font-monoish); text-transform: uppercase; letter-spacing: .06em; color: var(--feral-ink-soft); }
+.doc-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 9px;
+  border: var(--feral-border-xs) solid transparent;
+  border-radius: var(--feral-radius-sm);
+  color: var(--feral-ink);
+  text-decoration: none;
+  font: 800 13px/1.25 var(--feral-font-display);
+}
+.doc-nav-link:hover { border-color: var(--feral-ink); background: var(--feral-cream-tint); }
+.doc-nav-link[data-active="true"] { background: var(--feral-pink); color: var(--feral-on-signal); border-color: var(--feral-ink); box-shadow: 3px 3px 0 var(--feral-shadow-tone); }
+.doc-nav-status { width: 9px; height: 9px; flex: none; border-radius: var(--feral-radius-pill); border: var(--feral-border-xs) solid var(--feral-ink); }
+.doc-nav-status-built { background: var(--feral-acid); }
+.doc-nav-status-basis { background: var(--feral-tang); }
+.doc-nav-status-planned { background: var(--feral-muted); }
+
+@media (max-width: 900px) {
+  .doc-layout { grid-template-columns: 1fr; gap: 0; }
+  /* On narrow screens the grouped tree lives in the Sheet menu instead. */
+  .doc-sidebar { display: none; }
+}
