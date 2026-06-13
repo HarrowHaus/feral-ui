@@ -1,5 +1,8 @@
 import * as React from "react";
 import { Code2, FileText, Image, Trash2, Zap } from "lucide-react";
+// Voice Law rule 7: component-voice.json is the single source of component
+// descriptions for BOTH the registry generator and this site catalog.
+import componentVoice from "./component-voice.json";
 import {
   Accordion,
   Alert,
@@ -207,12 +210,16 @@ const copy: Record<string, { description: string; usage: string; accessibility: 
   tooltip: { description: "Short helper text for icons, abbreviations, and UI decisions that need a whisper.", usage: "<Tooltip>...</Tooltip>", accessibility: "Do not hide essential information only in a tooltip." },
 };
 
+const voiceDescriptions = componentVoice as Record<string, string>;
+
 export function componentContent(item: ComponentCatalogItem) {
-  return copy[item.slug] ?? {
+  const base = copy[item.slug] ?? {
     description: `${item.name} component preview. It gets its own page so users can inspect it without spelunking through the demo scroll.`,
     usage: item.snippet,
     accessibility: item.accessibility ?? "Use semantic labels and visible focus styles.",
   };
+  // Description always comes from the voice catalog when present (single source).
+  return { ...base, description: voiceDescriptions[item.slug] ?? base.description };
 }
 
 export function ComponentShowcase({ slug }: { slug: string }) {
