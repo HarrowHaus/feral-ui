@@ -73,12 +73,12 @@ type NavLink = { label: string; href: string; status?: string };
 type NavSection = { title: string; links?: NavLink[]; subgroups?: { label: string; links: NavLink[] }[] };
 
 // Standalone doc pages, keyed by /docs/<slug>.
-const docPages: Record<string, { title: string; desc: string }> = {
+const docPages: Record<string, { title: string; desc: string; metaTitle?: string }> = {
   installation: { title: "Releasing a component into your codebase.", desc: "One command. It installs its own source — the way home is your components/ui folder now." },
   theming: { title: "Theming: one file holds the leash.", desc: "Every axis of variance is a token. Re-tint the whole habitat by editing tokens.css; nothing else declares a color." },
   accessibility: { title: "Boring semantics. Radioactive sticker sheet.", desc: "The interaction layer behaves like a professional adult with a mortgage." },
   changelog: { title: "Molt Log: things grew limbs.", desc: "Release notes for a library that keeps escaping its enclosure." },
-  distemper: { title: "Distemper", desc: "Feral formalism for the web. The full manifesto moves in next." },
+  distemper: { title: "Distemper", desc: "Feral formalism for the web.", metaTitle: "Distemper — feral formalism for the web" },
 };
 
 const layerLabels: Record<string, string> = { primitive: "Primitives", radix: "Radix-backed", composite: "Composite", "block-helper": "Block helpers", ornament: "Ornaments" };
@@ -139,10 +139,29 @@ function useHashRoute() {
   return route;
 }
 
-function useDocumentTitle(route: string) {
+function setMetaTag(key: string, content: string, attr: "name" | "property" = "name") {
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+// Per-route meta: document title plus OG/description tags, derived from the
+// resolved route. The Distemper page carries an explicit metaTitle.
+function useRouteMeta(resolved: Resolved, route: string) {
   React.useEffect(() => {
-    const clean = route === "/" ? "Home" : route.split("/").filter(Boolean).map((part) => part.replace(/-/g, " ")).join(" — ");
-    document.title = `feral/ui — ${clean}`;
+    const isHome = resolved.archetype === "marketing";
+    const title = resolved.metaTitle ?? (isHome ? "feral/ui — Distemper, feral formalism for the web" : `${resolved.title} — feral/ui`);
+    const description = resolved.desc || "feral/ui — Distemper: feral formalism for the web. Controlled-variance React + Radix components, tokens, and a live Style Lab.";
+    document.title = title;
+    setMetaTag("description", description);
+    setMetaTag("og:title", title, "property");
+    setMetaTag("og:description", description, "property");
+    setMetaTag("og:type", "website", "property");
+    setMetaTag("twitter:title", title);
   }, [route]);
 }
 
@@ -199,6 +218,7 @@ function MobileNavControls() {
 function AppShell({ route }: { route: string }) {
   const [searchOpen, setSearchOpen] = React.useState(false);
   const resolved = resolveRoute(route);
+  useRouteMeta(resolved, route);
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -272,7 +292,7 @@ function ComponentCollage() {
   return <section className="site-collage" aria-label="Component collage"><Card tilt="left" radius="none"><CardHeader><CardTitle>Login to your account</CardTitle><CardDescription>Calmer than it looks. Still wearing the traffic cone.</CardDescription></CardHeader><CardContent className="site-stack"><Field><Label htmlFor="email">Email</Label><Input id="email" type="email" placeholder="you@feral.dev" /></Field><Field><Label htmlFor="password">Password</Label><Input id="password" type="password" placeholder="••••••••" /><FieldHelp>Password managers welcome. We are loud, not foolish.</FieldHelp></Field></CardContent><CardFooter><Button tone="acid">Login</Button><Button tone="paper">Google</Button></CardFooter></Card><Alert tone="ultra"><AlertIcon>⚡</AlertIcon><div><AlertTitle>Saved.</AlertTitle><AlertDescription>The beige committee has been notified and is coping poorly.</AlertDescription></div></Alert><Accordion items={[{ title: "Is it accessible?", content: "Yes. The chaos is strictly visual. Keyboards are sacred ground.", defaultOpen: true }, { title: "Why does it tilt?", content: "It heard something." }]} /><Card tone="acid" radius="none"><CardHeader><CardTitle>OTP code</CardTitle><CardDescription>Six boxes. One tiny security ritual.</CardDescription></CardHeader><CardContent><OtpInput length={6} label="Demo OTP code" /></CardContent></Card><Tabs items={[{ id: "law", label: "Law", content: "One broken rule per creature." }, { id: "leash", label: "Leash", content: "Every axis is a token." }, { id: "beige", label: "Beige", content: "Beige is a choice. So is this." }]} /><Card tone="pink"><CardContent className="site-stack"><SwitchRow><Switch defaultChecked /> Feral mode</SwitchRow><SwitchRow><Switch /> Domesticated</SwitchRow></CardContent></Card><Card tone="ultra" radius="none"><CardHeader><CardTitle>Data table</CardTitle><CardDescription>Sorts, filters, paginates, selects rows, holds grudges.</CardDescription></CardHeader><CardContent><DataTable data={rows} columns={[{ key: "component", header: "Component" }, { key: "state", header: "State" }, { key: "mode", header: "Mode" }]} /></CardContent></Card><Card tone="tang"><CardHeader><CardTitle>Combobox</CardTitle><CardDescription>A dropdown that went to grad school.</CardDescription></CardHeader><CardContent><Combobox options={[{ value: "acid", label: "Acid" }, { value: "pink", label: "Pink" }, { value: "ultra", label: "Ultra" }]} /></CardContent></Card><Card><CardContent><Pagination /></CardContent></Card></section>;
 }
 
-function Doctrine() { return <section className="site-section"><h2>One broken rule per creature.</h2><p className="site-section-intro">Every component violates exactly one settled convention — a tilt, a clash, a chromatic shadow. Variance with a leash.</p><div className="site-grid"><Card tone="acid" radius="none"><CardHeader><CardTitle>The leash is a token.</CardTitle><CardDescription>Every axis of chaos is a named CSS variable.</CardDescription></CardHeader><CardContent>Re-tint the whole habitat from one file.</CardContent></Card><Card tone="pink"><CardHeader><CardTitle>Loud face, quiet hands.</CardTitle><CardDescription>The visuals are off-leash.</CardDescription></CardHeader><CardContent>Keyboard, focus, and screen-reader behavior are trained professionals.</CardContent></Card><Card tone="ultra" radius="none"><CardHeader><CardTitle>Beige is a choice.</CardTitle><CardDescription>So is this.</CardDescription></CardHeader><CardContent>Not every interface needs to dress like a payroll portal.</CardContent></Card><Card tone="tang"><CardHeader><CardTitle>Take the source.</CardTitle><CardDescription>The registry is live.</CardDescription></CardHeader><CardContent><Button tone="paper" onClick={() => navigate("/docs/installation")}>Release one</Button></CardContent></Card></div></section>; }
+function Doctrine() { return <section className="site-section" id="doctrine"><h2>One broken rule per creature.</h2><p className="site-section-intro">Every component violates exactly one settled convention — a tilt, a clash, a chromatic shadow. Variance with a leash.</p><div className="site-section-action"><Button tone="ink" onClick={() => navigate("/docs/distemper")}>Read the manifesto</Button></div><div className="site-grid"><Card tone="acid" radius="none"><CardHeader><CardTitle>The leash is a token.</CardTitle><CardDescription>Every axis of chaos is a named CSS variable.</CardDescription></CardHeader><CardContent>Re-tint the whole habitat from one file.</CardContent></Card><Card tone="pink"><CardHeader><CardTitle>Loud face, quiet hands.</CardTitle><CardDescription>The visuals are off-leash.</CardDescription></CardHeader><CardContent>Keyboard, focus, and screen-reader behavior are trained professionals.</CardContent></Card><Card tone="ultra" radius="none"><CardHeader><CardTitle>Beige is a choice.</CardTitle><CardDescription>So is this.</CardDescription></CardHeader><CardContent>Not every interface needs to dress like a payroll portal.</CardContent></Card><Card tone="tang"><CardHeader><CardTitle>Take the source.</CardTitle><CardDescription>The registry is live.</CardDescription></CardHeader><CardContent><Button tone="paper" onClick={() => navigate("/docs/installation")}>Release one</Button></CardContent></Card></div></section>; }
 function BehaviorTeaser() { return <section className="site-section"><h2>Raised by wolves. Housebroken by Radix.</h2><p className="site-section-intro">Dialogs, sheets, menus, hover cards, tooltips, command search, and popovers are the grown-up bones under the loud jacket.</p><div className="site-grid">{componentCatalog.filter((item) => ["dialog", "dropdown-menu", "command", "tooltip"].includes(item.slug)).map((item) => <ComponentCard key={item.slug} item={item} />)}</div></section>; }
 function StyleLabTeaser() { return <section className="site-section"><h2>Style Lab: let the tokens touch the furniture.</h2><p className="site-section-intro">Same component family, different jobs: docs, dashboards, shops, warnings, forms, and tiny product disasters.</p><Card tone="acid" radius="none"><CardHeader><CardTitle>Preview modes</CardTitle><CardDescription>Emergency Broadcast, Night Shift Docs, Sticker Shop, Spreadsheet Mutant.</CardDescription></CardHeader><CardContent className="site-mini-grid">{["Emergency Broadcast", "Night Shift Docs", "Sticker Shop", "Spreadsheet Mutant"].map((label) => <Button key={label} tone="paper">{label}</Button>)}</CardContent><CardFooter><Button tone="pink" onClick={() => navigate("/style-lab")}>Open the Lab</Button></CardFooter></Card></section>; }
 function TemplateTeaser() { return <section className="site-section"><h2>Templates with doors out.</h2><p className="site-section-intro">Live previews stay in the habitat. Take-home artifacts come next.</p><div className="site-grid">{templateCatalog.slice(0, 3).map((template) => <Card key={template.name} tone="paper"><CardHeader><CardTitle>{template.name}</CardTitle><CardDescription>{template.description}</CardDescription></CardHeader><CardFooter><Button tone="acid" onClick={() => navigate(`/templates/${slugify(template.name)}`)}>View template</Button></CardFooter></Card>)}</div><div className="site-section-action"><Button tone="pink" onClick={() => navigate("/templates")}>Browse all templates</Button></div></section>; }
@@ -300,7 +320,51 @@ function InstallationBody() { return <div className="route-two-col"><CodeTabs ta
 npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/dialog.json
 npx shadcn@latest add https://harrowhaus.github.io/feral-ui/r/data-table.json`}</CodeBlock></CardContent></Card></div>; }
 function ThemingBody() { return <div className="site-stack"><Card tone="acid" radius="none"><CardHeader><CardTitle>The muzzle is one file</CardTitle><CardDescription>tokens.css holds every color and the dark-scheme remap. feral.css and pages.css consume roles only — they never declare a literal.</CardDescription></CardHeader><CardContent className="feral-token-grid">{["--feral-ink", "--feral-surface", "--feral-on-signal", "--feral-shadow-tone", "--feral-pink", "--feral-acid", "--feral-ultra"].map((token) => <Badge key={token} tone="paper">{token}</Badge>)}</CardContent></Card><CodeTabs tabs={[{ id: "css", label: "tokens.css", code: `:root {\n  --feral-ink: #0a0a0a;\n  --feral-cream: #fff4e0;\n  --feral-pink: #ff2d9b;\n  --feral-border-md: 4px;\n  --feral-pressure-md: 5px;\n}` }]} /><Callout tone="ultra"><CalloutTitle>Re-skin from the Lab</CalloutTitle><CalloutDescription>The Style Lab writes these variables live. Pick a preset, then take the CSS home.</CalloutDescription></Callout></div>; }
-function DistemperBody() { return <div className="site-stack"><Card tone="ultra" radius="none"><CardHeader><CardTitle>Feral formalism for the web</CardTitle><CardDescription>Every surface obeys a strict grammar — hard borders, hard offset shadows, the loudest focus ring in the room — and inside that fence, each component is allowed exactly one act of violence.</CardDescription></CardHeader></Card><Callout tone="tang"><CalloutTitle>SIGHTED</CalloutTitle><CalloutDescription>The full citable manifesto moves in next. For now: one broken rule per creature.</CalloutDescription></Callout></div>; }
+const distemperAnatomy: { tone: "acid" | "pink" | "ultra" | "tang" | "paper"; term: string; body: string }[] = [
+  { tone: "acid", term: "The muzzle", body: "Every axis of wildness is a named token. Re-tint the entire habitat from one file. If you can't re-skin it in one move, it isn't Distemper — it's just loud." },
+  { tone: "pink", term: "Bitework", body: "The interaction layer is trained, not tame. Keyboard-perfect, focus-visible, screen-reader boring. Controlled aggression is still control." },
+  { tone: "ultra", term: "The zoomies", body: "Motion is press physics: things depress, lift, and settle like objects with mass. Respect reduced-motion. The zoomies are optional; the mass is not." },
+  { tone: "tang", term: "Shedding", body: "Stickers, bursts, stamps, and scribbles are components, not decoration. The sticker sheet has a changelog." },
+  { tone: "paper", term: "One broken rule per creature", body: "The whole doctrine in six words." },
+];
+const distemperFieldTest = [
+  "Hard borders — no gradient pretending to be an edge.",
+  "Hard offset shadows, zero blur. Shadows may have a color and an opinion.",
+  "Exactly one convention violated per component.",
+  "Tokens govern every axis of variance; the whole surface re-tints from one file.",
+  "Focus states are the clearest states.",
+  "Paper backgrounds with visible grain or pattern.",
+  "Loud display type over workmanlike body type.",
+  "Ornaments shipped as first-class components.",
+  "Interaction behavior that would pass in a payroll portal.",
+  "Not Beige. Not even ironically.",
+];
+function DistemperBody() {
+  return (
+    <article className="distemper-manifesto">
+      <p className="distemper-def"><b>dis·tem·per</b> <i>(n.)</i> — 1. A disease of undomesticated animals. 2. What your design system has now.</p>
+      <p className="distemper-lede">Distemper is what happens when formalism gets bitten. Every surface obeys a strict grammar — the borders are real, the shadows are honest, the focus ring is the loudest thing in the room — and inside that fence, every component is allowed exactly one act of violence. A tilt. A clash. A chromatic shadow. Never two.</p>
+      <p>This is not chaos. Chaos is cheap and Beige loves it, because chaos discredits the alternative. Distemper is a leash long enough to be interesting.</p>
+
+      <h2>The anatomy</h2>
+      <div className="route-card-grid">
+        {distemperAnatomy.map((item) => (
+          <Card key={item.term} tone={item.tone} radius={item.tone === "acid" || item.tone === "ultra" ? "none" : undefined}>
+            <CardHeader><CardTitle>{item.term}</CardTitle><CardDescription>{item.body}</CardDescription></CardHeader>
+          </Card>
+        ))}
+      </div>
+
+      <h2>Is it Distemper? The field test</h2>
+      <ol className="distemper-test">
+        {distemperFieldTest.map((line) => <li key={line}>{line}</li>)}
+      </ol>
+      <Callout tone="pink"><CalloutTitle>Scoring</CalloutTitle><CalloutDescription>Score eight or better and you may call it Distemper. Score ten and the facility will send a collectible sticker.</CalloutDescription></Callout>
+
+      <p className="distemper-colophon"><em>Reference implementation: feral/ui. MIT licensed. Raised under duress.</em></p>
+    </article>
+  );
+}
 function ChangelogBody() { return <div className="site-stack">{[["v0.7", "Calendar range mode, toast provider, carousel controls, sidebar behavior."], ["v0.6", "Routed pages, Style Lab route, ornaments, template routes."], ["v0.5", "Registry basis and docs product shell."]].map(([version, body]) => <Card key={version}><CardHeader><CardTitle>{version}</CardTitle><CardDescription>{body}</CardDescription></CardHeader></Card>)}</div>; }
 function AccessibilityBody() { return <div className="route-card-grid"><Card><CardHeader><CardTitle>Focus rings</CardTitle><CardDescription>Visible, loud, and not optional.</CardDescription></CardHeader></Card><Card><CardHeader><CardTitle>Keyboard ground</CardTitle><CardDescription>Keyboards are sacred ground. The goblin removes its shoes.</CardDescription></CardHeader></Card><Card><CardHeader><CardTitle>Radix where it matters</CardTitle><CardDescription>Dialogs and menus inherit the boring adult behavior.</CardDescription></CardHeader></Card></div>; }
 function docBody(slug: string) { if (slug === "installation") return <InstallationBody />; if (slug === "theming") return <ThemingBody />; if (slug === "accessibility") return <AccessibilityBody />; if (slug === "changelog") return <ChangelogBody />; if (slug === "distemper") return <DistemperBody />; return null; }
@@ -311,7 +375,7 @@ function RoadmapBody() { return <div className="site-stack">{["Charts route", "S
 function NotFoundBody() { return <Button tone="acid" onClick={() => navigate("/")}>Go home</Button>; }
 
 /* ── three layout archetypes, declared per route ── */
-type Resolved = { archetype: Archetype; title: string; desc: string; content: React.ReactNode; crumbs: Crumb[]; navHref: string; ownHeader?: boolean };
+type Resolved = { archetype: Archetype; title: string; desc: string; content: React.ReactNode; crumbs: Crumb[]; navHref: string; ownHeader?: boolean; metaTitle?: string };
 const HOME_CRUMB: Crumb = { label: "Home", href: "#/" };
 const marketing = (content: React.ReactNode): Resolved => ({ archetype: "marketing", title: "", desc: "", content, crumbs: [], navHref: "/" });
 const catalog = (navHref: string, title: string, desc: string, content: React.ReactNode, crumbs: Crumb[]): Resolved => ({ archetype: "catalog", title, desc, content, crumbs, navHref });
@@ -325,7 +389,7 @@ function resolveRoute(route: string): Resolved {
     if (!parts[1]) return catalog("/docs", "Documentation with fewer trap doors.", "Install, theme, browse the creatures, and keep Beige outside the fence.", <DocsIndex />, [HOME_CRUMB, { label: "Docs" }]);
     const page = docPages[parts[1]];
     if (!page || parts[2]) return notFound(route);
-    return tool(`/docs/${parts[1]}`, page.title, page.desc, docBody(parts[1]), [HOME_CRUMB, { label: "Docs", href: "#/docs" }, { label: page.title.split(":")[0].split(".")[0] }]);
+    return { ...tool(`/docs/${parts[1]}`, page.title, page.desc, docBody(parts[1]), [HOME_CRUMB, { label: "Docs", href: "#/docs" }, { label: page.title.split(":")[0].split(".")[0] }]), metaTitle: page.metaTitle };
   }
   if (parts[0] === "components") {
     if (!parts[1]) return catalog("/components", "Browse the enclosures.", "Every creature gets its own page. Tap the glass — they like it.", <ComponentsIndex />, [HOME_CRUMB, { label: "Components" }]);
@@ -416,4 +480,4 @@ function ArchetypeShell({ resolved }: { resolved: Resolved }) {
   );
 }
 
-export default function App() { const route = useHashRoute(); useDocumentTitle(route); return <AppShell route={route} />; }
+export default function App() { const route = useHashRoute(); return <AppShell route={route} />; }

@@ -508,3 +508,29 @@
   /* On narrow screens the grouped tree lives in the Sheet menu instead. */
   .doc-sidebar { display: none; }
 }
+
+/* ── Distemper manifesto ─────────────────────────────────────────────────── */
+.distemper-manifesto { display: grid; gap: 18px; max-width: 760px; }
+.distemper-manifesto p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--feral-ink); }
+.distemper-manifesto h2 { margin: 16px 0 2px; font-size: clamp(24px, 3.2vw, 34px); letter-spacing: -.03em; line-height: 1; }
+.distemper-def { font: 700 16px/1.55 var(--feral-font-monoish); padding: 12px 16px; border: var(--feral-border-sm) dashed var(--feral-ink); border-radius: var(--feral-radius-md); background: var(--feral-surface); }
+.distemper-lede { font-weight: 650; }
+.distemper-test { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: distemper; }
+.distemper-test li { counter-increment: distemper; display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; font-size: 16px; line-height: 1.5; }
+.distemper-test li::before {
+  content: counter(distemper);
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: var(--feral-border-sm) solid var(--feral-ink);
+  border-radius: var(--feral-radius-none);
+  background: var(--feral-acid);
+  color: var(--feral-on-bright);
+  font: 900 14px var(--feral-font-display);
+  box-shadow: 3px 3px 0 var(--feral-shadow-tone);
+}
+.distemper-colophon { color: var(--feral-ink-soft); font-size: 14px; }
+
+/* Homepage section call-to-action row (TemplateTeaser, Doctrine). */
+.site-section-action { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
