@@ -27,6 +27,7 @@ import {
   themeVarsFor,
   type FeralThemeState,
 } from "./theme-session";
+import { SpecimenToast } from "./specimen-toast";
 
 const presets = {
   default: { label: "Default Feral", ink: "#0a0a0a", cream: "#fff4e0", pink: "#ff2d9b", acid: "#bfff00", ultra: "#3d2bff", cyan: "#00e5ff", tang: "#ff8a00", border: 4, pressure: 5, radius: 10, tilt: 1.5, pattern: 45, density: 52, motion: 80, contrast: "standard" },
@@ -87,9 +88,26 @@ function initialState(): LabState {
   return loadFeralTheme() ?? { ...presets.default };
 }
 
+const colorRoles = ["ink", "cream", "pink", "acid", "ultra", "cyan", "tang"] as const;
+
+// Slider value display: a plain reading mid-range, the bit rendered AS the
+// value at the poles ("999 — pill outbreak", "0 — sedated").
+function sliderReadout(key: "border" | "pressure" | "radius" | "tilt" | "pattern" | "density" | "motion", value: number): string {
+  switch (key) {
+    case "border": return value <= 2 ? "2 — hairline" : value >= 8 ? "8 — armored" : `${value}px`;
+    case "pressure": return value <= 2 ? "2 — flat" : value >= 10 ? "10 — bottomless" : `${value}px`;
+    case "radius": return value >= 999 ? "999 — pill outbreak" : value === 0 ? "0 — guillotine" : `${value}px`;
+    case "tilt": return value === 0 ? "0 — sedated" : Math.abs(value) >= 3 ? `${value}° — off the leash` : `${value}°`;
+    case "pattern": return value <= 0 ? "0 — blank" : value >= 100 ? "100 — infested" : `${value}%`;
+    case "density": return value <= 24 ? "24 — sparse" : value >= 80 ? "80 — swarm" : `${value}`;
+    case "motion": return value <= 0 ? "0 — frozen" : value >= 180 ? "180 — zoomies" : `${value}ms`;
+  }
+}
+
 export function StyleLab() {
   const [presetKey, setPresetKey] = React.useState<PresetKey>("default");
   const [state, setState] = React.useState<LabState>(initialState);
+  const [toast, setToast] = React.useState<string | null>(null);
   const css = cssFor(state);
   const tailwind = tailwindFor(state);
   const registry = registryFor(state);
@@ -99,6 +117,12 @@ export function StyleLab() {
     applyFeralTheme(state);
     saveFeralTheme(state);
   }, [state]);
+
+  React.useEffect(() => {
+    if (!toast) return;
+    const timer = window.setTimeout(() => setToast(null), 2600);
+    return () => window.clearTimeout(timer);
+  }, [toast]);
 
   function setPreset(key: PresetKey) {
     setPresetKey(key);
@@ -138,70 +162,83 @@ export function StyleLab() {
         <Card tone="paper" press={false} className="feral-style-lab-controls">
           <CardHeader>
             <CardTitle>Presets</CardTitle>
-            <CardDescription>The entire page responds, not just the little petting zoo on the right.</CardDescription>
+            <CardDescription>The entire page responds, not just the petting zoo on the right.</CardDescription>
           </CardHeader>
           <CardContent className="site-stack">
             <div className="feral-preset-grid" role="list" aria-label="Style presets">
               {(Object.keys(presets) as PresetKey[]).map((key) => (
-                <Button key={key} type="button" tone={presetKey === key ? "pink" : "paper"} size="sm" onClick={() => setPreset(key)}>
-                  {presets[key].label}
-                </Button>
+                <button key={key} type="button" className="feral-preset-chip" data-active={presetKey === key} aria-pressed={presetKey === key} onClick={() => setPreset(key)}>
+                  <span className="feral-preset-chip-label">{presets[key].label}</span>
+                  <span className="feral-preset-chip-dots" aria-hidden="true">
+                    <i style={{ background: presets[key].pink }} />
+                    <i style={{ background: presets[key].acid }} />
+                    <i style={{ background: presets[key].ultra }} />
+                  </span>
+                </button>
               ))}
             </div>
 
-            <div className="feral-lab-color-grid">
-              {(["ink", "cream", "pink", "acid", "ultra", "cyan", "tang"] as const).map((key) => (
-                <Field key={key}>
-                  <Label htmlFor={`lab-${key}`}>{key}</Label>
-                  <Input id={`lab-${key}`} type="color" value={state[key]} onChange={(event) => update(key, event.target.value)} />
-                </Field>
+            <div className="feral-lab-color-rows" role="group" aria-label="Palette roles">
+              {colorRoles.map((key) => (
+                <label key={key} className="feral-lab-color-row" htmlFor={`lab-${key}`}>
+                  <span className="feral-lab-color-name">{key}</span>
+                  <span className="feral-lab-color-hex">{state[key]}</span>
+                  <input id={`lab-${key}`} className="feral-color-input" type="color" aria-label={`${key} color`} value={state[key]} onChange={(event) => update(key, event.target.value)} />
+                </label>
               ))}
             </div>
 
-            <Field><Label>Border mass: {state.border}px</Label><Slider value={[state.border]} min={2} max={8} step={1} onValueChange={([value]) => update("border", value)} aria-label="Border mass" /></Field>
-            <Field><Label>Press depth: {state.pressure}px</Label><Slider value={[state.pressure]} min={2} max={10} step={1} onValueChange={([value]) => update("pressure", value)} aria-label="Press depth" /></Field>
-            <Field><Label>Radius collision: {state.radius === 999 ? "pill outbreak" : `${state.radius}px`}</Label><Slider value={[state.radius === 999 ? 32 : state.radius]} min={0} max={32} step={2} onValueChange={([value]) => update("radius", value >= 32 ? 999 : value)} aria-label="Radius collision" /></Field>
-            <Field><Label>Tilt intensity: {state.tilt}°</Label><Slider value={[state.tilt]} min={-3} max={3} step={0.1} onValueChange={([value]) => update("tilt", value)} aria-label="Tilt intensity" /></Field>
-            <Field><Label>Pattern intensity: {state.pattern}%</Label><Slider value={[state.pattern]} min={0} max={100} step={1} onValueChange={([value]) => update("pattern", value)} aria-label="Pattern intensity" /></Field>
-            <Field><Label>Density: {state.density}</Label><Slider value={[state.density]} min={24} max={80} step={2} onValueChange={([value]) => update("density", value)} aria-label="Density" /></Field>
-            <Field><Label>Motion: {state.motion}ms</Label><Slider value={[state.motion]} min={0} max={180} step={10} onValueChange={([value]) => update("motion", value)} aria-label="Motion level" /></Field>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>border</span><b>{sliderReadout("border", state.border)}</b></div><Slider value={[state.border]} min={2} max={8} step={1} onValueChange={([value]) => update("border", value)} aria-label="Border mass" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>pressure</span><b>{sliderReadout("pressure", state.pressure)}</b></div><Slider value={[state.pressure]} min={2} max={10} step={1} onValueChange={([value]) => update("pressure", value)} aria-label="Press depth" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>radius</span><b>{sliderReadout("radius", state.radius)}</b></div><Slider value={[state.radius === 999 ? 32 : state.radius]} min={0} max={32} step={2} onValueChange={([value]) => update("radius", value >= 32 ? 999 : value)} aria-label="Radius collision" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>tilt</span><b>{sliderReadout("tilt", state.tilt)}</b></div><Slider value={[state.tilt]} min={-3} max={3} step={0.1} onValueChange={([value]) => update("tilt", value)} aria-label="Tilt intensity" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>pattern</span><b>{sliderReadout("pattern", state.pattern)}</b></div><Slider value={[state.pattern]} min={0} max={100} step={1} onValueChange={([value]) => update("pattern", value)} aria-label="Pattern intensity" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>density</span><b>{sliderReadout("density", state.density)}</b></div><Slider value={[state.density]} min={24} max={80} step={2} onValueChange={([value]) => update("density", value)} aria-label="Density" /></div>
+            <div className="feral-lab-slider"><div className="feral-lab-slider-label"><span>motion</span><b>{sliderReadout("motion", state.motion)}</b></div><Slider value={[state.motion]} min={0} max={180} step={10} onValueChange={([value]) => update("motion", value)} aria-label="Motion level" /></div>
+
             <Field><Label htmlFor="lab-contrast">Contrast mode</Label><Select id="lab-contrast" value={state.contrast} onChange={(event) => update("contrast", event.target.value)}><option value="standard">standard</option><option value="high">high</option><option value="quiet">quiet</option><option value="grit">grit</option></Select></Field>
 
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div className="feral-lab-actions">
               <Button tone="acid" type="button" onClick={downloadTheme}>Download CSS</Button>
-              <Button tone="paper" type="button" onClick={resetSiteTheme}>Reset habitat</Button>
+              <Button tone="pink" type="button" onClick={resetSiteTheme}>Reset to Default Feral</Button>
             </div>
           </CardContent>
         </Card>
 
-        <PreviewFrame title="Live variance preview">
-          <div className="feral-style-lab-preview">
-            <FeralBurst tone="acid" />
-            <FeralSplat tone="pink" />
-            <FeralArrow tone="ultra" />
-            <Card tone="acid" radius="none" tilt="left">
-              <CardHeader>
-                <Badge tone="pink">SESSION THEME</Badge>
-                <CardTitle>{state.label}</CardTitle>
-                <CardDescription>Look around. The furniture changed.</CardDescription>
-              </CardHeader>
-              <CardContent className="site-stack">
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <Button tone="pink">Primary</Button>
-                  <Button tone="paper">Secondary</Button>
-                  <Badge tone="ultra">Mode</Badge>
-                </div>
-                <Field>
-                  <Label htmlFor="lab-demo-input">Demo input</Label>
-                  <Input id="lab-demo-input" placeholder="The form is fine. The form has seen things." />
-                </Field>
-              </CardContent>
-            </Card>
-          </div>
-        </PreviewFrame>
+        <div className="feral-style-lab-right">
+          <PreviewFrame title="Live session card">
+            <div className="feral-style-lab-preview">
+              <FeralBurst tone="acid" />
+              <FeralSplat tone="pink" />
+              <FeralArrow tone="ultra" />
+              <Card tone="acid" radius="none" tilt="left">
+                <CardHeader>
+                  <Badge tone="pink">SESSION THEME</Badge>
+                  <CardTitle>{state.label}</CardTitle>
+                  <CardDescription>Look around. The furniture changed.</CardDescription>
+                </CardHeader>
+                <CardContent className="site-stack">
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    <Button tone="pink">Primary</Button>
+                    <Button tone="paper">Secondary</Button>
+                    <Badge tone="ultra">Mode</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </PreviewFrame>
 
-        <CodeTabs tabs={[{ id: "css", label: "CSS", code: css }, { id: "tailwind", label: "Tailwind", code: tailwind }, { id: "registry", label: "Registry item", code: registry }]} />
+          <div className="feral-lab-specimen-strip" aria-label="Operable specimens">
+            <Button tone="ultra" type="button" onClick={() => setToast("Button fired. Nothing exploded.")}>Button</Button>
+            <Input aria-label="Specimen input" placeholder="Type at me" />
+            <Badge tone="tang">Badge</Badge>
+            <Button tone="paper" type="button" onClick={() => setToast("Toast served. Pigeon dispatched.")}>Toast it</Button>
+          </div>
+
+          <CodeTabs tabs={[{ id: "css", label: "CSS", code: css }, { id: "tailwind", label: "Tailwind", code: tailwind }, { id: "registry", label: "Registry item", code: registry }]} />
+        </div>
       </div>
+      <SpecimenToast value={toast} />
     </section>
   );
 }

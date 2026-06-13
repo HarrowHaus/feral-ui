@@ -125,12 +125,78 @@
   color: var(--feral-ink);
 }
 .feral-style-lab-controls { align-self: start; }
-.feral-preset-grid {
+/* The right column stacks: session card → operable specimens → CSS output. */
+.feral-style-lab-right { display: grid; gap: 18px; min-width: 0; align-content: start; }
+
+/* Preset chips: equal-width grid, each with a 3-dot palette preview. */
+.feral-preset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.feral-preset-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 11px;
+  text-align: left;
+  cursor: pointer;
+  background: var(--feral-surface);
+  color: var(--feral-ink);
+  border: var(--feral-border-sm) solid var(--feral-ink);
+  border-radius: var(--feral-radius-sm);
+  box-shadow: 3px 3px 0 var(--feral-ink);
+  font: 800 12px/1.15 var(--feral-font-display);
+}
+.feral-preset-chip[data-active="true"] { background: var(--feral-pink); color: var(--feral-on-signal); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--feral-ink); }
+.feral-preset-chip-label { overflow-wrap: anywhere; }
+.feral-preset-chip-dots { display: inline-flex; gap: 5px; }
+.feral-preset-chip-dots i { width: 12px; height: 12px; border: 2px solid var(--feral-ink); border-radius: var(--feral-radius-pill); }
+
+/* Color rows: name + live hex + native swatch/picker (not a progress bar). */
+.feral-lab-color-rows { display: grid; gap: 8px; }
+.feral-lab-color-row {
+  display: grid;
+  grid-template-columns: 1fr auto 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: var(--feral-border-xs) solid var(--feral-ink);
+  border-radius: var(--feral-radius-sm);
+  background: var(--feral-surface);
+  font: 800 13px var(--feral-font-display);
+  cursor: pointer;
+}
+.feral-lab-color-name { text-transform: uppercase; letter-spacing: .04em; }
+.feral-lab-color-hex { font: 700 12px var(--feral-font-monoish); color: var(--feral-ink-soft); }
+.feral-color-input {
+  width: 44px;
+  height: 32px;
+  padding: 0;
+  border: var(--feral-border-sm) solid var(--feral-ink);
+  border-radius: var(--feral-radius-none);
+  background: transparent;
+  cursor: pointer;
+}
+.feral-color-input::-webkit-color-swatch-wrapper { padding: 2px; }
+.feral-color-input::-webkit-color-swatch { border: 0; }
+
+/* Slider rows: name left, value (or pole bit) right. */
+.feral-lab-slider { display: grid; gap: 6px; }
+.feral-lab-slider-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font: 800 13px var(--feral-font-display); }
+.feral-lab-slider-label span { text-transform: uppercase; letter-spacing: .04em; }
+.feral-lab-slider-label b { font: 800 12px var(--feral-font-monoish); color: var(--feral-ink-soft); text-align: right; }
+
+/* Operable specimen strip between the session card and the CSS output. */
+.feral-lab-specimen-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: var(--feral-border-sm) dashed var(--feral-ink);
+  border-radius: var(--feral-radius-md);
+  background: var(--feral-surface);
 }
-.feral-lab-color-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.feral-lab-specimen-strip .feral-input { width: auto; flex: 1 1 140px; min-width: 0; }
+
 .feral-lab-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .feral-style-lab[data-contrast="high"] { --feral-muted: var(--feral-ink); }
 .feral-style-lab[data-contrast="quiet"] { --feral-pink: color-mix(in srgb, var(--feral-pink) 68%, var(--feral-surface)); --feral-acid: color-mix(in srgb, var(--feral-acid) 70%, var(--feral-surface)); }
@@ -343,20 +409,16 @@
   .template-chat-input { grid-template-columns: 1fr; }
 
   .feral-style-lab { grid-template-columns: 1fr; }
+  /* Arch panel: round the top, but give it top padding ≥ 0.4× the radius so
+     the header copy never clips into the curve. */
   .feral-style-lab-controls { border-radius: 24px; }
-  .feral-preset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .feral-preset-grid .feral-button {
-    width: 100%;
-    min-width: 0;
-    justify-content: center;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.05;
-  }
+  .feral-style-lab-controls > .feral-card-header { padding-top: 18px; }
 }
 
-@media (max-width: 860px) {
-  .feral-lab-color-grid { grid-template-columns: 1fr; }
+/* Below 720px, flatten the arch entirely rather than risk a clipped curve. */
+@media (max-width: 720px) {
+  .feral-style-lab-controls { border-radius: var(--feral-radius-md); }
+  .feral-preset-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
